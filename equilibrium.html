@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Equilibrium 5.0 | Ashoka University Economics Society</title>
+<meta name="description" content="Equilibrium, AUES's flagship economics fest. The next edition is on its way.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,800;9..144,900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Bitter:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#E0102A; --blue:#0B1E4D; --white:#FFFFFF; --panel:#F7F4EE; --ink:#0A0A0A; --muted:#5B6472; --muted-light:#B9C2DA;
+    --display:'Fraunces', serif; --body:'Source Serif 4', serif; --accent:'Bitter', serif;
+    --ease: cubic-bezier(.16,.84,.24,1);
+    --r-lg: 40px; --r-md: 24px; --r-pill: 999px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;text-size-adjust:100%;}
+  body{background:var(--blue);color:#fff;font-family:var(--body);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  a{color:inherit;text-decoration:none;}
+  button{font-family:inherit;}
+  .wrap{max-width:1320px;margin:0 auto;padding:0 48px;}
+  @media(max-width:768px){.wrap{padding:0 24px;}}
+
+  header.site-nav{position:sticky;top:0;z-index:100;background:rgba(11,30,77,.92);backdrop-filter:blur(14px);}
+  .nav-inner{max-width:1320px;margin:0 auto;padding:18px 48px;display:flex;align-items:center;justify-content:center;position:relative;}
+  .nav-pill{display:flex;align-items:center;gap:36px;background:var(--blue);border-radius:var(--r-pill);padding:10px 10px 10px 24px;box-shadow:0 8px 30px rgba(0,0,0,.25);}
+  .nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--accent);font-weight:800;font-size:18px;color:#fff;}
+  .nav-brand .dot{width:9px;height:9px;border-radius:50%;background:var(--red);display:inline-block;}
+  nav.nav-links{display:flex;gap:28px;align-items:center;}
+  nav.nav-links > a{font-family:var(--accent);font-size:13px;font-weight:600;color:#fff;}
+  nav.nav-links > a:hover{color:var(--red);}
+  .nav-item{position:relative;}
+  .nav-item > .nav-trigger{font-family:var(--accent);font-size:13px;font-weight:600;color:#fff;background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:5px;}
+  .nav-caret{width:8px;height:8px;}
+  .nav-dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%);padding-top:20px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .25s var(--ease), visibility .25s;}
+  .nav-dropdown-inner{min-width:200px;background:#16265c;border-radius:var(--r-md);box-shadow:0 20px 50px rgba(0,0,0,.35);padding:8px;transform:translateY(6px);transition:transform .25s var(--ease);}
+  .nav-item:hover .nav-dropdown{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0);}
+  .nav-dropdown a{display:block;font-family:var(--accent);font-size:13px;font-weight:600;color:#fff;padding:12px 18px;border-radius:14px;}
+  .nav-dropdown a:hover{background:rgba(255,255,255,.12);color:var(--red-soft);}
+  .nav-cta{font-family:var(--accent);font-size:13px;font-weight:700;color:#fff;background:var(--red);padding:12px 26px;border-radius:var(--r-pill);}
+  @media(max-width:1080px){nav.nav-links{display:none;}.nav-cta{padding:10px 18px;font-size:12px;}.nav-pill{gap:14px;padding:8px 8px 8px 18px;}}
+  .nav-burger{display:none;background:none;border:none;cursor:pointer;padding:8px;flex-direction:column;justify-content:center;gap:5px;position:absolute;right:48px;}
+  @media(max-width:1080px){.nav-burger{display:flex;}}
+  @media(max-width:768px){.nav-burger{right:24px;}}
+  .nav-burger span{display:block;width:22px;height:2px;border-radius:2px;background:#fff;transition:transform .3s var(--ease), opacity .3s var(--ease);}
+  .nav-burger.is-active span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .nav-burger.is-active span:nth-child(2){opacity:0;}
+  .nav-burger.is-active span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+  .mobile-menu{position:fixed;inset:0;z-index:200;background:var(--blue);transform:translateX(100%);transition:transform .45s var(--ease);overflow-y:auto;visibility:hidden;}
+  .mobile-menu.is-open{transform:translateX(0);visibility:visible;}
+  .mobile-menu-inner{padding:110px 32px 60px;max-width:520px;margin:0 auto;}
+  .mm-link{display:block;font-family:var(--accent);font-weight:700;font-size:24px;color:#fff;padding:18px 0;}
+  .mm-group-trigger{display:flex;justify-content:space-between;align-items:center;width:100%;background:none;border:none;font-family:var(--accent);font-weight:700;font-size:24px;color:#fff;padding:18px 0;cursor:pointer;}
+  .mm-sub{max-height:0;overflow:hidden;transition:max-height .4s var(--ease);}
+  .mm-group.is-open .mm-sub{max-height:260px;}
+  .mm-sub a{display:block;font-family:var(--body);font-weight:500;font-size:16px;color:var(--muted-light);padding:12px 0 12px 4px;}
+  .mobile-menu-close{position:absolute;top:26px;right:28px;background:none;border:none;font-size:30px;color:#fff;cursor:pointer;}
+  .mm-cta{margin-top:28px;display:inline-block;}
+
+  /* ---------- SPLIT COMPOSITION ---------- */
+  .split{position:relative;min-height:82vh;overflow:hidden;margin:24px;border-radius:var(--r-lg);}
+  .split-half{position:absolute;top:0;bottom:0;width:50%;}
+  .split-red{left:0;background:var(--red);}
+  .split-blue{right:0;background:var(--red);}
+  @media(max-width:860px){
+    .split-half{width:100%;height:50%;}
+    .split-blue{top:50%;bottom:auto;}
+    .split-red{bottom:50%;top:auto;height:50%;}
+  }
+  .split-content{position:relative;z-index:2;min-height:82vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 24px;}
+  .split-eyebrow{font-family:var(--accent);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#fff;opacity:.75;margin-bottom:18px;}
+  .split-title{font-family:var(--display);font-weight:900;letter-spacing:-.02em;line-height:.94;font-size:clamp(50px,10vw,150px);color:#fff;}
+  .split-title .half-red{color:var(--red);-webkit-text-stroke:2px #fff;}
+  .split-sub{max-width:520px;margin-top:30px;font-family:var(--body);font-size:16.5px;line-height:1.7;color:rgba(255,255,255,.82);}
+  .split-cta{margin-top:40px;}
+  .split-cta button{font-family:var(--accent);font-weight:700;font-size:13px;color:var(--ink);background:#fff;border-radius:var(--r-pill);padding:16px 30px;border:none;cursor:pointer;transition:transform .3s var(--ease);}
+  .split-cta button:hover{transform:translateY(-2px);}
+  .split-tags{display:flex;gap:14px;margin-top:44px;flex-wrap:wrap;justify-content:center;}
+  .split-tags span{font-family:var(--accent);font-weight:600;font-size:13px;color:#fff;background:rgba(255,255,255,.16);border-radius:var(--r-pill);padding:9px 18px;}
+
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <div class="nav-pill">
+      <a href="index.html" class="nav-brand"><span class="dot"></span>AUES</a>
+      <nav class="nav-links">
+        <a href="team.html">Team</a>
+        <a href="blog.html">The Gazette</a>
+        <a href="auer.html">AUER</a>
+        <div class="nav-item">
+          <button class="nav-trigger" type="button">Initiatives
+            <svg class="nav-caret" viewBox="0 0 8 8" fill="none"><path d="M1 2.5L4 5.5L7 2.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="nav-dropdown"><div class="nav-dropdown-inner">
+            <a href="initiatives.html#conclave">Conclave</a>
+            <a href="initiatives.html#olympiad">Olympiad</a>
+            <a href="initiatives.html#seminars">Seminars</a>
+            <a href="initiatives.html#podcast">Podcast</a>
+          </div></div>
+        </div>
+        <a href="events.html">Events</a>
+        <a href="opportunities.html">Opportunities</a>
+      </nav>
+      <a href="equilibrium.html" class="nav-cta">Equilibrium 5.0</a>
+    </div>
+    <button class="nav-burger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="mobile-menu">
+  <button class="mobile-menu-close" aria-label="Close menu">&times;</button>
+  <div class="mobile-menu-inner">
+    <a class="mm-link" href="team.html">Team</a>
+    <a class="mm-link" href="blog.html">The Gazette</a>
+    <a class="mm-link" href="auer.html">AUER</a>
+    <div class="mm-group">
+      <button class="mm-group-trigger">Initiatives <span>+</span></button>
+      <div class="mm-sub">
+        <a href="initiatives.html#conclave">Conclave</a>
+        <a href="initiatives.html#olympiad">Olympiad</a>
+        <a href="initiatives.html#seminars">Seminars</a>
+        <a href="initiatives.html#podcast">Podcast</a>
+      </div>
+    </div>
+    <a class="mm-link" href="events.html">Events</a>
+    <a class="mm-link" href="opportunities.html">Opportunities</a>
+    <a class="mm-cta nav-cta" href="equilibrium.html">Equilibrium 5.0</a>
+  </div>
+</div>
+
+<!-- SPLIT COMPOSITION -->
+<section class="split">
+  <div class="split-half split-red"></div>
+  <div class="split-half split-blue"></div>
+  <div class="wrap split-content">
+    <div class="split-eyebrow">AUES's flagship fest</div>
+    <h1 class="split-title">Equilibrium<br><span class="half-red">5.0</span></h1>
+    <p class="split-sub">The next edition is in the works. Dates, speakers and events will land here the moment they're locked.</p>
+    <div class="split-tags">
+      <span>Case Competitions</span>
+      <span>Speaker Sessions</span>
+      <span>Socials</span>
+    </div>
+    <div class="split-cta">
+      <button id="eqContactBtn" type="button">Get in touch</button>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap footer-mega">AUES</div>
+  <div class="wrap footer-top">
+    <div><div style="font-family:var(--accent);font-size:22px;font-weight:800;margin-bottom:16px;display:flex;align-items:center;gap:8px;"><span style="width:7px;height:7px;border-radius:50%;background:var(--red);display:inline-block;"></span>AUES</div><p style="font-family:var(--body);font-size:13.5px;color:rgba(255,255,255,.5);line-height:1.7;max-width:280px;">The Ashoka University Economics Society. Economics, beyond the classroom.</p></div>
+    <div class="footer-col"><h4>Society</h4><a href="index.html#story">About Us</a><a href="team.html">Team</a><a href="index.html#alumni">Alumni</a><a href="index.html#contact">Contact</a></div>
+    <div class="footer-col"><h4>Initiatives</h4><a href="blog.html">The Gazette</a><a href="initiatives.html#podcast">Podcast</a><a href="auer.html">AUER</a></div>
+    <div class="footer-col"><h4>Events</h4><a href="equilibrium.html">Equilibrium</a><a href="initiatives.html#conclave">Leadership Conclave</a><a href="initiatives.html#olympiad">Economics Olympiad</a></div>
+    <div class="footer-col"><h4>Connect</h4><a href="https://www.instagram.com/econsoc.ashoka" target="_blank" rel="noopener">Instagram</a><a href="https://www.linkedin.com/company/ashokaeconsoc/home/" target="_blank" rel="noopener">LinkedIn</a><a href="mailto:econsoc@ashoka.edu.in">Email</a></div>
+  </div>
+  <div class="wrap footer-credit">Lead Developer: Shranya Gupta, Aneesh Dasgupta</div>
+  <div class="wrap footer-bottom"><span>&copy; 2026 Ashoka University Economics Society</span><span>Rajiv Gandhi Education City, Sonipat, Haryana 131029</span></div>
+</footer>
+<style>
+  .site-footer{background:#060B22;border-top:1px solid rgba(255,255,255,.08);color:#fff;padding-top:80px;margin-top:40px;position:relative;overflow:hidden;}
+  .footer-mega{font-family:var(--display);font-weight:800;font-size:clamp(70px,14vw,240px);letter-spacing:-.03em;line-height:.8;color:rgba(255,255,255,.05);white-space:nowrap;overflow:hidden;user-select:none;}
+  .footer-top{display:grid;grid-template-columns:1.4fr repeat(4,1fr);gap:40px;padding:60px 0 50px;position:relative;z-index:2;}
+  .footer-top > div{min-width:0;}
+  .footer-col h4{font-family:var(--accent);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:18px;}
+  .footer-col a{display:block;font-family:var(--body);font-weight:500;font-size:14px;color:rgba(255,255,255,.82);padding:6px 0;transition:color .3s var(--ease);word-break:break-word;}
+  .footer-col a:hover{color:var(--red-soft);}
+  .footer-credit{text-align:center;padding-top:20px;font-family:var(--body);font-size:12px;color:rgba(255,255,255,.35);position:relative;z-index:2;border-top:1px solid rgba(255,255,255,.08);}
+  .footer-bottom{display:flex;justify-content:space-between;padding:20px 0 30px;font-family:var(--body);font-size:12.5px;color:rgba(255,255,255,.3);flex-wrap:wrap;gap:10px;position:relative;z-index:2;}
+  @media(max-width:900px){ .footer-top{grid-template-columns:1fr 1fr;} }
+  @media(max-width:560px){ .footer-top{grid-template-columns:1fr;gap:32px;} .footer-bottom{flex-direction:column;text-align:center;gap:6px;} }
+</style>
+
+<script>
+  document.querySelectorAll('.nav-item').forEach(item => {
+    const trigger = item.querySelector('.nav-trigger');
+    trigger.addEventListener('click', (e) => { e.stopPropagation(); item.classList.toggle('is-open'); });
+  });
+  const navBurger = document.querySelector('.nav-burger');
+  const mobileMenu = document.querySelector('.mobile-menu');
+  const mmCloseBtn = document.querySelector('.mobile-menu-close');
+  if(navBurger && mobileMenu){
+    const openMM = ()=>{ mobileMenu.classList.add('is-open'); navBurger.classList.add('is-active'); document.body.style.overflow='hidden'; };
+    const closeMM = ()=>{ mobileMenu.classList.remove('is-open'); navBurger.classList.remove('is-active'); document.body.style.overflow=''; };
+    navBurger.addEventListener('click', ()=> mobileMenu.classList.contains('is-open') ? closeMM() : openMM());
+    if(mmCloseBtn) mmCloseBtn.addEventListener('click', closeMM);
+    mobileMenu.querySelectorAll('.mm-link, .mm-sub a, .mm-cta').forEach(a=> a.addEventListener('click', closeMM));
+    mobileMenu.querySelectorAll('.mm-group-trigger').forEach(btn=> btn.addEventListener('click', ()=> btn.closest('.mm-group').classList.toggle('is-open')));
+  }
+
+  const eqContactBtn = document.getElementById('eqContactBtn');
+  if(eqContactBtn){
+    eqContactBtn.addEventListener('click', () => {
+      const email = 'econsoc@ashoka.edu.in';
+      if(navigator.clipboard){
+        navigator.clipboard.writeText(email).then(() => {
+          const original = eqContactBtn.textContent;
+          eqContactBtn.textContent = 'Copied ' + email;
+          setTimeout(() => { eqContactBtn.textContent = original; }, 2200);
+        });
+      }
+      window.location.href = 'mailto:' + email;
+    });
+  }
+
+  // Mailto links: copy the address to clipboard as a fallback in case
+  // the device has no default mail app configured
+  document.querySelectorAll('a[href^="mailto:"]').forEach(a => {
+    a.addEventListener('click', () => {
+      const email = a.getAttribute('href').replace('mailto:', '').split('?')[0];
+      if(navigator.clipboard){ navigator.clipboard.writeText(email).catch(()=>{}); }
+    });
+  });
+</script>
+
+</body>
+</html>

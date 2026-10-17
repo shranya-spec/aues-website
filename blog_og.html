@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ashoka University Economics Society | AUES</title>
+<meta name="description" content="The official academic economics society of Ashoka University. Equilibrium, The Gazette, the AUER journal, seminars and eleven student-run departments.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,500;0,600;0,700;0,800;1,600&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0D1B3E;
+    --navy-80: rgba(13,27,62,.8);
+    --navy-40: rgba(13,27,62,.4);
+    --navy-12: rgba(13,27,62,.12);
+    --navy-06: rgba(13,27,62,.06);
+    --rust:#A6391F;
+    --rust-dim: rgba(166,57,31,.14);
+    --sand:#E7C7A8;
+    --bg:#FAF7F1;
+    --bg-alt:#F0E9DC;
+    --ink:#141310;
+    --ink-55: rgba(20,19,16,.55);
+    --line: rgba(13,27,62,.13);
+    --disp: 'Archivo', sans-serif;
+    --serif: 'Fraunces', serif;
+    --sans: 'IBM Plex Sans', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+    --ease: cubic-bezier(.16,.84,.24,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1280px;margin:0 auto;padding:0 44px;}
+  @media(max-width:768px){.wrap{padding:0 22px;}}
+  ::selection{background:var(--rust);color:#fff;}
+
+  /* ---------- NAV ---------- */
+  header.site-nav{position:sticky;top:0;z-index:100;background:rgba(250,247,241,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);}
+  .nav-inner{max-width:1280px;margin:0 auto;padding:20px 44px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-brand{font-family:var(--disp);font-weight:800;font-size:19px;letter-spacing:-.01em;color:var(--navy);}
+  .nav-brand span{color:var(--rust);}
+  nav.nav-links{display:flex;gap:36px;align-items:center;}
+  nav.nav-links > a{font-family:var(--disp);font-size:13px;font-weight:600;letter-spacing:.02em;text-transform:uppercase;color:var(--navy);position:relative;padding:4px 0;transition:color .3s var(--ease);}
+  nav.nav-links > a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--rust);transition:width .35s var(--ease);}
+  nav.nav-links > a:hover{color:var(--rust);}
+  nav.nav-links > a:hover::after{width:100%;}
+  nav.nav-links > a.is-current{color:var(--rust);}
+  nav.nav-links > a.is-current::after{width:100%;}
+  .nav-item{position:relative;}
+  .nav-item > .nav-trigger{font-family:var(--disp);font-size:13px;font-weight:600;letter-spacing:.02em;text-transform:uppercase;color:var(--navy);position:relative;padding:4px 0;background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:5px;transition:color .3s var(--ease);}
+  .nav-item > .nav-trigger::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--rust);transition:width .35s var(--ease);}
+  .nav-item:hover > .nav-trigger, .nav-item.is-open > .nav-trigger{color:var(--rust);}
+  .nav-item:hover > .nav-trigger::after, .nav-item.is-open > .nav-trigger::after{width:100%;}
+  .nav-item.is-current > .nav-trigger{color:var(--rust);}
+  .nav-item.is-current > .nav-trigger::after{width:100%;}
+  .nav-caret{width:8px;height:8px;flex-shrink:0;transition:transform .3s var(--ease);}
+  .nav-item:hover .nav-caret, .nav-item.is-open .nav-caret{transform:rotate(180deg);}
+  .nav-dropdown{position:absolute;top:calc(100% + 18px);left:50%;transform:translateX(-50%) translateY(6px);min-width:200px;background:var(--bg);border:1px solid var(--line);box-shadow:0 18px 40px rgba(13,27,62,.14);padding:8px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .25s var(--ease), transform .25s var(--ease), visibility .25s;}
+  .nav-item:hover .nav-dropdown, .nav-item.is-open .nav-dropdown{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0);}
+  .nav-dropdown a{display:block;font-family:var(--disp);font-size:13px;font-weight:600;letter-spacing:.02em;color:var(--navy);padding:11px 16px;transition:background .25s var(--ease), color .25s var(--ease);}
+  .nav-dropdown a:hover{background:var(--rust-dim);color:var(--rust);}
+  .nav-cta{font-family:var(--disp);font-size:13px;font-weight:700;letter-spacing:.02em;text-transform:uppercase;color:#fff;background:var(--rust);padding:11px 22px;transition:background .3s var(--ease), transform .3s var(--ease);}
+  .nav-cta:hover{background:var(--navy);transform:translateY(-1px);}
+  @media(max-width:1080px){nav.nav-links{display:none;}}
+
+  /* ---------- PAGE HERO ---------- */
+  .pg-hero{position:relative;min-height:78vh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;border-bottom:1px solid var(--line);}
+  .pg-hero-bg{position:absolute;inset:0;z-index:0;
+    background:linear-gradient(180deg, rgba(13,27,62,.35) 0%, rgba(13,27,62,.5) 45%, rgba(10,16,32,.97) 100%),
+      url('hero-campus.jpg') center 58%/cover no-repeat;
+    transform:scale(1.08);animation:heroZoom 16s var(--ease) forwards;}
+  @keyframes heroZoom{to{transform:scale(1);}}
+  .pg-hero-card{position:absolute;z-index:2;top:22%;right:8%;background:rgba(10,16,32,.82);border:1px solid rgba(255,255,255,.16);padding:16px 18px;backdrop-filter:blur(6px);opacity:0;animation:cardIn .8s var(--ease) .95s forwards;}
+  .pg-hero-card .fc-label{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:8px;}
+  .pg-hero-card .fc-num{font-family:var(--disp);font-size:26px;font-weight:700;color:#fff;line-height:1;}
+  .pg-hero-card .fc-num span{color:var(--sand);}
+  .pg-hero-card .fc-bars{display:flex;gap:3px;align-items:flex-end;height:20px;margin-top:10px;}
+  .pg-hero-card .fc-bars i{display:block;width:4px;background:var(--sand);opacity:.85;}
+  @keyframes cardIn{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+  @media(max-width:860px){.pg-hero-card{display:none;}}
+  .pg-hero-content{position:relative;z-index:3;padding-bottom:60px;}
+  .pg-eyebrow{font-family:var(--sans);font-weight:600;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--sand);display:flex;align-items:center;gap:10px;margin-bottom:20px;opacity:0;animation:fadeUp .8s var(--ease) .2s forwards;}
+  .pg-eyebrow::before{content:"";width:24px;height:1px;background:var(--sand);display:inline-block;}
+  .pg-wordmark{font-family:var(--disp);font-weight:800;letter-spacing:-.03em;line-height:.98;font-size:clamp(34px, 6.6vw, 96px);color:#fff;margin-left:-3px;}
+  .pg-wordmark .line{display:block;overflow:hidden;}
+  .pg-wordmark .line span{display:inline-block;transform:translateY(105%);animation:riseIn 1s var(--ease) forwards;}
+  .pg-wordmark .line:nth-child(1) span{animation-delay:.05s;}
+  .pg-wordmark .line:nth-child(2) span{animation-delay:.18s;color:var(--sand);}
+  @keyframes riseIn{to{transform:translateY(0);}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+  .pg-sub{max-width:460px;margin-top:30px;font-size:15.5px;line-height:1.65;color:rgba(255,255,255,.75);opacity:0;animation:fadeUp .8s var(--ease) .55s forwards;}
+
+  /* ---------- SECTIONS ---------- */
+  .section{padding:120px 0;border-bottom:1px solid var(--line);}
+  .section-alt{background:var(--bg-alt);}
+  .section-head{max-width:660px;margin-bottom:64px;}
+  .kicker{font-family:var(--sans);font-weight:600;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--rust);display:block;margin-bottom:18px;}
+  .section-title{font-family:var(--disp);font-weight:700;font-size:clamp(32px,4.2vw,54px);color:var(--navy);letter-spacing:-.02em;line-height:1.04;}
+  .section-title em{font-style:italic;font-family:var(--serif);font-weight:500;color:var(--rust);}
+  .section-desc{margin-top:20px;font-size:16.5px;color:var(--ink-55);line-height:1.7;}
+
+  /* ---------- STORY ---------- */
+  .story-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:90px;align-items:start;}
+  @media(max-width:900px){.story-grid{grid-template-columns:1fr;gap:44px;}}
+  .story-body p{font-size:17px;line-height:1.78;color:var(--ink);margin-bottom:24px;max-width:620px;}
+  .story-body p:last-child{margin-bottom:0;color:var(--ink-55);}
+  .story-pull{margin-top:40px;padding-top:28px;border-top:1px solid var(--line);font-family:var(--serif);font-style:italic;font-size:23px;line-height:1.45;color:var(--navy);max-width:560px;}
+
+  /* ---------- STATS ---------- */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);}
+  .stat{padding:50px 32px;border-right:1px solid var(--line);}
+  .stat:last-child{border-right:none;}
+  .stat-num{font-family:var(--disp);font-weight:800;font-size:clamp(40px,4.8vw,64px);color:var(--navy);line-height:1;letter-spacing:-.02em;}
+  .stat-num span{color:var(--rust);}
+  .stat-label{margin-top:16px;font-size:12.5px;letter-spacing:.03em;text-transform:uppercase;color:var(--ink-55);font-family:var(--mono);}
+  @media(max-width:860px){.stats{grid-template-columns:repeat(2,1fr);}.stat{border-bottom:1px solid var(--line);}}
+
+  /* ---------- DEPARTMENT INDEX ---------- */
+  .depts{background:var(--navy);color:#fff;}
+  .depts .kicker{color:var(--sand);}
+  .depts .section-title{color:#fff;}
+  .depts .section-title em{color:var(--sand);}
+  .depts .section-desc{color:rgba(255,255,255,.62);}
+  .dept-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(255,255,255,.16);border-left:1px solid rgba(255,255,255,.16);}
+  .dept-cell{padding:36px 32px 40px;border-right:1px solid rgba(255,255,255,.16);border-bottom:1px solid rgba(255,255,255,.16);}
+  .dept-cell h3{font-family:var(--disp);font-weight:700;font-size:22px;letter-spacing:-.01em;margin-bottom:14px;}
+  .dept-cell--cta{display:block;background:var(--rust);}
+  .dept-cell--cta .dept-num{color:rgba(255,255,255,.7);}
+  .dept-cell--cta p{color:rgba(255,255,255,.8);}
+  .dept-cell--cta:hover{background:#8E2F19;}
+  .dept-cell--cta:hover h3{color:#fff;}
+  .dept-num{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--sand);display:block;margin-bottom:26px;}
+  .dept-cell h3{font-family:var(--disp);font-weight:700;font-size:22px;letter-spacing:-.01em;margin-bottom:14px;}
+  .dept-cell p{font-size:14px;line-height:1.65;color:rgba(255,255,255,.6);}
+  .dept-heads{margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,.14);font-family:var(--mono);font-size:11.5px;letter-spacing:.03em;color:var(--sand);}
+  @media(max-width:900px){.dept-grid{grid-template-columns:1fr;}}
+
+  /* ---------- PEOPLE ---------- */
+  .people-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:28px;}
+  @media(max-width:1000px){.people-grid{grid-template-columns:repeat(3,1fr);}}
+  @media(max-width:720px){.people-grid{grid-template-columns:repeat(2,1fr);gap:20px;}}
+  .person-card{display:block;transition:transform .4s var(--ease);}
+  .person-card:hover{transform:translateY(-4px);}
+  .pc-photo{aspect-ratio:287/323;background-size:cover;background-position:center top;background-color:var(--bg-alt);border:1px solid var(--line);filter:grayscale(100%) contrast(1.02);transition:filter .5s var(--ease);}
+  .person-card:hover .pc-photo{filter:grayscale(0%);}
+  .pc-body{padding-top:16px;}
+  .pc-name{font-family:var(--disp);font-weight:700;font-size:16.5px;color:var(--navy);letter-spacing:-.01em;}
+  .pc-role{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--rust);margin-top:7px;}
+  .pc-org{font-size:13px;color:var(--ink-55);margin-top:6px;}
+
+  /* ---------- ALUMNI ---------- */
+  .logo-strip{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line);margin-top:52px;}
+  @media(max-width:900px){.logo-strip{grid-template-columns:repeat(2,1fr);}}
+  .logo-cell{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;min-height:120px;padding:28px 20px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);transition:background .3s var(--ease);}
+  .logo-cell:hover{background:var(--rust-dim);}
+  .logo-cell-img{width:34px;height:34px;object-fit:contain;filter:grayscale(100%);opacity:.55;transition:opacity .3s var(--ease), filter .3s var(--ease);}
+  .logo-cell:hover .logo-cell-img{opacity:1;filter:grayscale(0%);}
+  .logo-cell-name{font-family:var(--disp);font-weight:700;font-size:14px;color:var(--navy-80);text-align:center;}
+
+  /* ---------- CONTACT ---------- */
+  .contact{background:var(--navy);color:#fff;}
+  .contact .kicker{color:var(--sand);}
+  .contact .section-title{color:#fff;}
+  .contact .section-title em{color:var(--sand);}
+  .contact-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(255,255,255,.16);border-left:1px solid rgba(255,255,255,.16);margin-top:56px;}
+  .contact-cell{padding:38px 32px;border-right:1px solid rgba(255,255,255,.16);border-bottom:1px solid rgba(255,255,255,.16);transition:background .35s var(--ease);}
+  .contact-cell:hover{background:rgba(231,199,168,.07);}
+  .contact-cell h4{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:20px;}
+  .contact-cell a, .contact-cell p{display:block;font-family:var(--disp);font-weight:600;font-size:16px;color:#fff;padding:6px 0;transition:color .3s var(--ease);}
+  .contact-cell a:hover{color:var(--sand);}
+  .contact-cell p{font-family:var(--sans);font-weight:400;font-size:14.5px;color:rgba(255,255,255,.6);line-height:1.7;}
+  @media(max-width:900px){.contact-grid{grid-template-columns:1fr;}}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:#0A1020;color:#fff;padding-top:90px;position:relative;overflow:hidden;}
+  .footer-mega{font-family:var(--disp);font-weight:800;font-size:clamp(80px,15vw,260px);letter-spacing:-.04em;line-height:.8;color:rgba(255,255,255,.05);white-space:nowrap;padding:0 44px;user-select:none;}
+  .footer-top{display:grid;grid-template-columns:1.4fr repeat(4,1fr);gap:40px;padding:70px 0 60px;border-bottom:1px solid rgba(255,255,255,.12);position:relative;z-index:2;}
+  @media(max-width:900px){.footer-top{grid-template-columns:1fr 1fr;}}
+  .footer-brand{font-family:var(--disp);font-size:24px;font-weight:800;margin-bottom:16px;}
+  .footer-brand span{color:var(--sand);}
+  .footer-desc{font-size:13.5px;color:rgba(255,255,255,.5);line-height:1.7;max-width:280px;}
+  .footer-col h4{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:20px;}
+  .footer-col a{display:block;font-family:var(--disp);font-weight:600;font-size:14px;color:rgba(255,255,255,.85);padding:7px 0;transition:color .3s var(--ease);}
+  .footer-col a:hover{color:var(--sand);}
+  .footer-credit{text-align:center;padding-top:22px;font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:rgba(255,255,255,.4);position:relative;z-index:2;}
+  .footer-bottom{display:flex;justify-content:space-between;padding:14px 0 26px;font-size:12.5px;color:rgba(255,255,255,.35);flex-wrap:wrap;gap:12px;position:relative;z-index:2;}
+
+  /* ---------- GAZETTE MASTHEAD ---------- */
+  .gz-masthead{padding:120px 0 0;}
+  .gz-infobar{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:10px 32px;padding-bottom:22px;border-bottom:2px solid var(--navy);font-family:var(--sans);font-weight:600;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-55);}
+  .gz-infobar strong{color:var(--navy);font-weight:700;}
+  .gz-wordmark{font-family:'Fraunces',serif;font-weight:900;font-style:normal;text-align:center;font-size:clamp(48px,9vw,132px);letter-spacing:-.02em;line-height:.94;color:var(--navy);}
+  .gz-tagline{text-align:center;margin-top:18px;font-family:var(--sans);font-weight:600;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-55);}
+  .gz-tabs{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:48px;padding-bottom:44px;border-bottom:3px double var(--navy);}
+  .gz-tab{font-family:var(--sans);font-weight:700;font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--navy);background:transparent;border:1px solid var(--line);padding:11px 20px;cursor:pointer;transition:all .3s var(--ease);}
+  .gz-tab:hover{border-color:var(--navy-40);}
+  .gz-tab.is-active{background:var(--rust);border-color:var(--rust);color:#fff;}
+
+  /* ---------- FRONT PAGE GRID ---------- */
+  .gz-front{display:grid;grid-template-columns:.86fr 1.72fr .86fr;gap:52px;padding:56px 0 70px;}
+  @media(max-width:1080px){.gz-front{grid-template-columns:1fr;}}
+  .gz-rail-label{display:flex;align-items:center;gap:10px;font-family:var(--sans);font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);margin-bottom:24px;}
+  .gz-rail-label::before{content:"";width:20px;height:2px;background:var(--rust);display:inline-block;}
+  .gz-brief-item{padding-bottom:16px;margin-bottom:16px;border-bottom:1px solid var(--line);}
+  .gz-brief-item:last-child{border-bottom:none;}
+  .gz-brief-num{font-family:var(--sans);font-weight:700;font-size:11px;letter-spacing:.04em;color:var(--rust);}
+  .gz-brief-item a{display:block;font-family:var(--serif);font-style:italic;font-weight:500;font-size:18px;line-height:1.32;color:var(--navy);margin-top:8px;transition:color .3s var(--ease);}
+  .gz-brief-item a:hover{color:var(--rust);}
+
+  .gz-ticker{margin-top:44px;border:1px solid var(--navy);}
+  .gz-ticker-head{background:var(--navy);color:#fff;padding:12px 16px;font-family:var(--sans);font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;}
+  .gz-ticker-row{display:flex;justify-content:space-between;align-items:center;padding:13px 16px;border-bottom:1px solid var(--line);font-family:var(--sans);}
+  .gz-ticker-row:last-of-type{border-bottom:none;}
+  .gz-ticker-pair{font-weight:700;font-size:13.5px;color:var(--navy);}
+  .gz-ticker-val{font-weight:700;font-size:13.5px;color:var(--rust);}
+  .gz-ticker-foot{padding:10px 16px;font-family:var(--sans);font-size:10.5px;color:var(--ink-55);border-top:1px solid var(--line);}
+
+  .gz-lead-tag{font-family:var(--sans);font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--rust);margin-bottom:16px;display:block;}
+  .gz-lead-title{font-family:var(--serif);font-style:normal;font-weight:600;font-size:clamp(32px,3.6vw,50px);line-height:1.06;letter-spacing:-.01em;color:var(--navy);margin-bottom:22px;}
+  .gz-lead-title a{color:inherit;}
+  .gz-lead-title a:hover{color:var(--rust);}
+  .gz-lead-dek{font-family:var(--serif);font-style:italic;font-size:19px;line-height:1.55;color:var(--ink);max-width:640px;margin-bottom:26px;}
+  .gz-lead-byline{font-family:var(--sans);font-weight:600;font-size:12px;letter-spacing:.03em;color:var(--ink-55);padding-bottom:26px;margin-bottom:30px;border-bottom:1px solid var(--line);}
+  .gz-lead-byline strong{color:var(--navy);text-transform:uppercase;}
+  .gz-lead-img{aspect-ratio:16/9;background-size:cover;background-position:center;filter:grayscale(65%) contrast(1.05) sepia(8%);border:1px solid var(--line);margin-bottom:30px;}
+  .gz-pullquote{font-family:var(--serif);font-style:italic;font-weight:500;font-size:24px;line-height:1.5;color:var(--navy);text-align:center;padding:36px 0;border-top:3px double var(--navy);border-bottom:3px double var(--navy);margin-bottom:36px;}
+  .gz-lead-more{font-family:var(--sans);font-weight:700;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--rust);}
+  .gz-lead-more:hover{text-decoration:underline;}
+
+  .gz-opinion{border:1px solid var(--navy);padding:26px;margin-bottom:36px;}
+  .gz-op-byline{display:flex;align-items:center;gap:14px;margin-bottom:20px;}
+  .gz-op-avatar{width:48px;height:48px;border:1px solid var(--navy);display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:700;font-size:15px;color:var(--navy);background:var(--bg-alt);flex-shrink:0;}
+  .gz-op-name{font-family:var(--disp);font-weight:700;font-size:15px;color:var(--navy);}
+  .gz-op-role{font-family:var(--sans);font-weight:600;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-55);margin-top:2px;}
+  .gz-op-title{font-family:var(--serif);font-style:normal;font-weight:600;font-size:20px;color:var(--navy);margin-bottom:12px;}
+  .gz-op-title a{color:inherit;}
+  .gz-op-title a:hover{color:var(--rust);}
+  .gz-op-excerpt{font-size:14.5px;line-height:1.65;color:var(--ink-55);margin-bottom:18px;}
+  .gz-op-btn{display:inline-block;font-family:var(--sans);font-weight:700;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--navy);border:1px solid var(--navy);padding:11px 18px;transition:all .3s var(--ease);}
+  .gz-op-btn:hover{background:var(--navy);color:#fff;}
+
+  .gz-filed-item{padding-bottom:18px;margin-bottom:18px;border-bottom:1px solid var(--line);}
+  .gz-filed-item:last-child{border-bottom:none;}
+  .gz-filed-item a{display:block;font-family:var(--disp);font-weight:700;font-size:16px;line-height:1.3;color:var(--navy);margin-bottom:8px;transition:color .3s var(--ease);}
+  .gz-filed-item a:hover{color:var(--rust);}
+  .gz-filed-meta{font-family:var(--sans);font-weight:500;font-size:11.5px;color:var(--ink-55);}
+  .gz-filed-meta strong{font-weight:700;color:var(--navy-80);}
+
+  /* ---------- CATEGORY ROWS ---------- */
+  .gz-cat-row{padding:56px 0;border-top:2px solid var(--navy);}
+  .gz-cat-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:36px;}
+  .gz-cat-head h2{font-family:var(--disp);font-weight:800;font-size:clamp(22px,2.4vw,30px);letter-spacing:-.01em;color:var(--navy);text-transform:uppercase;}
+  .gz-cat-head a{font-family:var(--sans);font-weight:700;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--rust);}
+  .gz-cat-head a:hover{text-decoration:underline;}
+  .gz-cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;}
+  @media(max-width:900px){.gz-cat-grid{grid-template-columns:1fr;}}
+  .gz-cat-card{display:block;}
+  .gz-cat-icon{aspect-ratio:4/3;background:var(--bg-alt);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;margin-bottom:20px;}
+  .gz-cat-icon svg{width:56%;height:56%;}
+  .gz-cat-tag{font-family:var(--sans);font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--rust);display:block;margin-bottom:12px;}
+  .gz-cat-card h3{font-family:var(--disp);font-weight:700;font-size:21px;line-height:1.28;letter-spacing:-.01em;color:var(--navy);margin-bottom:14px;transition:color .3s var(--ease);}
+  .gz-cat-card:hover h3{color:var(--rust);}
+  .gz-cat-card p{font-size:14.5px;line-height:1.65;color:var(--ink-55);margin-bottom:16px;}
+  .gz-cat-meta{font-family:var(--sans);font-weight:600;font-size:11.5px;color:var(--ink-55);}
+  .gz-cat-meta strong{color:var(--navy);}
+
+  /* ---------- WRITE FOR US ---------- */
+  .gz-write{border:3px double var(--navy);padding:70px 60px;margin:70px 0 60px;}
+  @media(max-width:768px){.gz-write{padding:44px 26px;}}
+  .gz-write-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:60px;}
+  @media(max-width:900px){.gz-write-grid{grid-template-columns:1fr;gap:36px;}}
+  .gz-write h2{font-family:'Fraunces',serif;font-weight:900;font-style:normal;font-size:clamp(30px,4.2vw,52px);letter-spacing:-.01em;color:var(--navy);margin-bottom:24px;text-transform:uppercase;}
+  .gz-write-body p{font-size:16px;line-height:1.75;color:var(--ink);max-width:560px;}
+  .gz-write-facts dl{display:grid;gap:20px;}
+  .gz-write-facts dt{font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--rust);margin-bottom:6px;}
+  .gz-write-facts dd{font-family:var(--serif);font-size:16px;color:var(--navy);padding-bottom:16px;border-bottom:1px solid var(--line);}
+  .gz-write-facts a{color:var(--rust);text-decoration:underline;}
+  .gz-write-btns{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;}
+  .gz-btn-solid{font-family:var(--sans);font-weight:700;font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;color:#fff;background:var(--navy);padding:16px 26px;transition:background .3s var(--ease);}
+  .gz-btn-solid:hover{background:var(--rust);}
+  .gz-btn-outline{font-family:var(--sans);font-weight:700;font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--navy);border:1px solid var(--navy);padding:16px 26px;transition:all .3s var(--ease);}
+  .gz-btn-outline:hover{background:var(--navy);color:#fff;}
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">AUES<span>.</span></a>
+    <nav class="nav-links">
+      <a href="blog.html" class="is-current">The Gazette</a>
+      <a href="auer.html">AUER</a>
+      <div class="nav-item">
+        <button class="nav-trigger" type="button" aria-expanded="false">Initiatives
+          <svg class="nav-caret" viewBox="0 0 8 8" fill="none"><path d="M1 2.5L4 5.5L7 2.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="nav-dropdown">
+          <a href="initiatives.html#conclave">Conclave</a>
+          <a href="initiatives.html#olympiad">Olympiad</a>
+          <a href="initiatives.html#seminars">Seminars</a>
+          <a href="initiatives.html#podcast">Podcast</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <button class="nav-trigger" type="button" aria-expanded="false">Events
+          <svg class="nav-caret" viewBox="0 0 8 8" fill="none"><path d="M1 2.5L4 5.5L7 2.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="nav-dropdown">
+          <a href="events.html#academic">Academic Events</a>
+          <a href="events.html#social">Social Events</a>
+        </div>
+      </div>
+      <a href="opportunities.html">Opportunities</a>
+    </nav>
+    <a href="events.html#equilibrium" class="nav-cta">Equilibrium 4.0</a>
+  </div>
+</header>
+
+<!-- MASTHEAD -->
+<section class="gz-masthead">
+  <div class="wrap">
+    <div class="gz-infobar">
+      <span>Vol. <strong>I</strong> &middot; No. <strong>1</strong></span>
+      <span id="gzDate"><strong>Loading date</strong></span>
+      <span>Price: <strong>Free, as ever</strong></span>
+    </div>
+    <h1 class="gz-wordmark" style="margin-top:34px;">The Gazette</h1>
+
+    <div class="gz-tabs" id="gzFilters">
+      <a class="gz-tab is-active" href="https://www.ashokaeconsoc.com/blog" target="_blank" rel="noopener">All Sections</a>
+      <a class="gz-tab" href="https://www.ashokaeconsoc.com/blog/categories/economics-policy" target="_blank" rel="noopener">Economics &amp; Policy</a>
+      <a class="gz-tab" href="https://www.ashokaeconsoc.com/blog/categories/global" target="_blank" rel="noopener">Global Affairs</a>
+      <a class="gz-tab" href="https://www.ashokaeconsoc.com/blog/categories/behavioural-economics" target="_blank" rel="noopener">Behavioural</a>
+      <a class="gz-tab" href="https://www.ashokaeconsoc.com/blog/categories/society-and-behaviour" target="_blank" rel="noopener">Society &amp; Behaviour</a>
+    </div>
+  </div>
+</section>
+
+<!-- FRONT PAGE -->
+<section class="section" style="padding-top:0;">
+  <div class="wrap">
+    <div class="gz-front">
+
+      <!-- LEFT RAIL -->
+      <div>
+        <div class="gz-rail-label">In Brief</div>
+
+        <div class="gz-brief-item"><span class="gz-brief-num">01</span>
+          <a href="https://www.ashokaeconsoc.com/post/gst-2-0-cut-taxes-but-will-you-really-pay-less" target="_blank" rel="noopener">GST 2.0 Cut Taxes, But Will You Really Pay Less?</a>
+        </div>
+        <div class="gz-brief-item"><span class="gz-brief-num">02</span>
+          <a href="https://www.ashokaeconsoc.com/post/is-your-degree-working-as-hard-as-you" target="_blank" rel="noopener">Is Your Degree Working as Hard as You?</a>
+        </div>
+        <div class="gz-brief-item"><span class="gz-brief-num">03</span>
+          <a href="https://www.ashokaeconsoc.com/post/gaming-tariffs-finding-logic-in-economic-stupidity" target="_blank" rel="noopener">Gaming Tariffs: Finding Logic in Economic Stupidity</a>
+        </div>
+        <div class="gz-brief-item"><span class="gz-brief-num">04</span>
+          <a href="https://www.ashokaeconsoc.com/post/why-fixing-trust-issues-might-help-you-grow" target="_blank" rel="noopener">Why Fixing Trust Issues Might Help You Grow</a>
+        </div>
+        <div class="gz-brief-item"><span class="gz-brief-num">05</span>
+          <a href="https://www.ashokaeconsoc.com/post/formula-1-the-drs-of-asian-economy" target="_blank" rel="noopener">Formula 1: The DRS of Asian Economy</a>
+        </div>
+
+        <div class="gz-ticker">
+          <div class="gz-ticker-head">Live &middot; FX Rates</div>
+          <div id="gzTickerBody">
+            <div class="gz-ticker-row"><span class="gz-ticker-pair">USD / INR</span><span class="gz-ticker-val">&hellip;</span></div>
+            <div class="gz-ticker-row"><span class="gz-ticker-pair">EUR / INR</span><span class="gz-ticker-val">&hellip;</span></div>
+            <div class="gz-ticker-row"><span class="gz-ticker-pair">GBP / INR</span><span class="gz-ticker-val">&hellip;</span></div>
+          </div>
+          <div class="gz-ticker-foot" id="gzTickerFoot">Fetching live rates&hellip;</div>
+        </div>
+      </div>
+
+      <!-- LEAD -->
+      <div>
+        <span class="gz-lead-tag" id="gzLeadTag">Global Affairs &middot; The Lead</span>
+        <h2 class="gz-lead-title" id="gzLeadTitleWrap"><a id="gzLeadTitle" href="https://www.ashokaeconsoc.com/post/a-principal-ed-sponsor-reading-fifa-s-due-diligence-problem-through-agency-theory" target="_blank" rel="noopener">A Principal-ed Sponsor: Reading FIFA&rsquo;s Due-Diligence Problem Through Agency Theory</a></h2>
+        <p class="gz-lead-dek" id="gzLeadDek">A look at FIFA's major sponsors through the lens of principal-agent theory, and why due diligence performed after a hosting decision is already locked in cannot undo it.</p>
+        <div class="gz-lead-byline" id="gzLeadByline">By <strong>Hardik Srivastava</strong> &middot; 6 min read &middot; Front Page</div>
+        <div class="gz-lead-img" id="gzLeadImg" style="background-image:url('https://static.wixstatic.com/media/815c2f_896c95eb584e43f4bc101337e8744fdc~mv2.jpg/v1/fill/w_800,h_450,fp_0.50_0.50,q_90,enc_avif,quality_auto/815c2f_896c95eb584e43f4bc101337e8744fdc~mv2.webp')"></div>
+        <div class="gz-pullquote" id="gzPullquote">Monitoring only works on decisions still open to influence. It cannot undo a delegation made years earlier.</div>
+        <a class="gz-lead-more" id="gzLeadMore" href="https://www.ashokaeconsoc.com/post/a-principal-ed-sponsor-reading-fifa-s-due-diligence-problem-through-agency-theory" target="_blank" rel="noopener">Read the full piece &rarr;</a>
+      </div>
+
+      <!-- RIGHT RAIL -->
+      <div>
+        <div class="gz-rail-label">Opinion</div>
+        <div class="gz-opinion">
+          <div class="gz-op-byline">
+            <div class="gz-op-avatar">AA</div>
+            <div><div class="gz-op-name">Anandini Agrawal</div><div class="gz-op-role">Columnist</div></div>
+          </div>
+          <h3 class="gz-op-title"><a href="https://www.ashokaeconsoc.com/post/the-paradox-of-thrift" target="_blank" rel="noopener">The Paradox of Thrift</a></h3>
+          <p class="gz-op-excerpt">Everyone tightening their belt at once is the fastest route to everyone having less to tighten. A look at why individual prudence can become a collective problem.</p>
+          <a class="gz-op-btn" href="https://www.ashokaeconsoc.com/post/the-paradox-of-thrift" target="_blank" rel="noopener">Read the Column</a>
+        </div>
+
+        <div class="gz-rail-label">Also Filed</div>
+        <div class="gz-filed-item">
+          <a href="https://www.ashokaeconsoc.com/post/india-vs-china-can-india-ever-come-out-on-top" target="_blank" rel="noopener">India Vs China: Can India Ever Come Out on Top?</a>
+          <div class="gz-filed-meta">By <strong>Kavya Reddy</strong> &middot; 6 min</div>
+        </div>
+        <div class="gz-filed-item">
+          <a href="https://www.ashokaeconsoc.com/post/the-rational-way-s-of-measuring-irrationality" target="_blank" rel="noopener">The Rational Way(s) of Measuring Irrationality</a>
+          <div class="gz-filed-meta">By <strong>Hardik Srivastava</strong> &middot; 7 min</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- MORE FROM THE GAZETTE -->
+<section class="wrap">
+  <div class="gz-cat-row">
+    <div class="gz-cat-head">
+      <h2>More From the Gazette</h2>
+      <a href="#gzFilters">See All Sections</a>
+    </div>
+    <div class="gz-cat-grid">
+
+      <a class="gz-cat-card" href="https://www.ashokaeconsoc.com/post/economic-nationalism-on-trial-tariffs-treaties-and-the-future-of-global-markets" target="_blank" rel="noopener">
+        <div class="gz-cat-icon">
+          <svg viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polyline points="8,60 28,42 44,52 62,20 92,10" stroke="#A6391F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="92" cy="10" r="4" fill="#A6391F"/>
+            <line x1="8" y1="70" x2="92" y2="70" stroke="#0D1B3E" stroke-width="2"/>
+          </svg>
+        </div>
+        <span class="gz-cat-tag">Global Affairs</span>
+        <h3>Economic Nationalism on Trial: Tariffs, Treaties, and the Future of Global Markets</h3>
+        <p>How a wave of tariffs and treaty disputes is reshaping the assumptions behind global trade.</p>
+        <div class="gz-cat-meta">By <strong>Vinayak Topa</strong> &middot; 6 min</div>
+      </a>
+
+      <a class="gz-cat-card" href="https://www.ashokaeconsoc.com/post/why-do-some-rich-countries-redistribute-more-than-others" target="_blank" rel="noopener">
+        <div class="gz-cat-icon">
+          <svg viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="40" r="28" stroke="#0D1B3E" stroke-width="3"/>
+            <line x1="50" y1="12" x2="50" y2="68" stroke="#A6391F" stroke-width="3"/>
+          </svg>
+        </div>
+        <span class="gz-cat-tag">Economics &amp; Policy</span>
+        <h3>Why Do Some Rich Countries Redistribute More Than Others?</h3>
+        <p>Comparable levels of national income, very different appetites for redistribution. What explains the gap.</p>
+        <div class="gz-cat-meta">By <strong>Rehaan Gulati</strong> &middot; 4 min</div>
+      </a>
+
+      <a class="gz-cat-card" href="https://www.ashokaeconsoc.com/post/lights-gifts-and-expectations-why-indians-gift-beyond-tradition" target="_blank" rel="noopener">
+        <div class="gz-cat-icon">
+          <svg viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="24" y="32" width="52" height="38" stroke="#0D1B3E" stroke-width="3"/>
+            <line x1="24" y1="46" x2="76" y2="46" stroke="#A6391F" stroke-width="3"/>
+            <line x1="50" y1="32" x2="50" y2="70" stroke="#A6391F" stroke-width="3"/>
+            <path d="M50 32 C 40 12, 20 18, 50 32 C 80 18, 60 12, 50 32 Z" stroke="#0D1B3E" stroke-width="2.5"/>
+          </svg>
+        </div>
+        <span class="gz-cat-tag">Behavioural Economics</span>
+        <h3>Lights, Gifts and Expectations: Why Indians Gift Beyond Tradition</h3>
+        <p>The behavioural economics behind why festival-season gifting keeps expanding past what tradition requires.</p>
+        <div class="gz-cat-meta">By <strong>Shaurya Taneja</strong> &middot; 5 min</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- WRITE FOR US -->
+<section class="wrap">
+  <div class="gz-write">
+    <div class="gz-rail-label">To Our Readers</div>
+    <div class="gz-write-grid">
+      <div class="gz-write-body">
+        <h2>Write for the Gazette</h2>
+        <p>We publish undergraduates from every discipline. Several of our strongest contributors have never taken an Economics paper. Send a pitch of roughly 150 words: the claim you want to make, why it is arguable, and what evidence you would use. If it holds up, an editor works through it with you before it runs.</p>
+        <div class="gz-write-btns">
+          <a class="gz-btn-solid" href="mailto:econsoc@ashoka.edu.in?subject=Gazette%20Pitch">Pitch an Article</a>
+          <a class="gz-btn-outline" href="auer.html">Submit to the AUER Instead</a>
+        </div>
+      </div>
+      <div class="gz-write-facts">
+        <dl>
+          <dt>Sections</dt>
+          <dd>Policy &middot; Global &middot; Behaviour &middot; Book Reviews</dd>
+          <dt>Send To</dt>
+          <dd><a href="mailto:econsoc@ashoka.edu.in">econsoc@ashoka.edu.in</a></dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-mega">AUES</div>
+  <div class="wrap footer-top">
+    <div><div class="footer-brand">AUES<span>.</span></div><p class="footer-desc">The Ashoka University Economics Society. Economics, beyond the classroom.</p></div>
+    <div class="footer-col"><h4>Society</h4><a href="index.html#story">About Us</a><a href="index.html#team">The Team</a><a href="index.html#alumni">Alumni</a><a href="index.html#contact">Contact</a></div>
+    <div class="footer-col"><h4>Initiatives</h4><a href="blog.html">The Gazette</a><a href="initiatives.html#podcast">Podcast</a><a href="auer.html">AUER</a></div>
+    <div class="footer-col"><h4>Events</h4><a href="events.html#equilibrium">Equilibrium</a><a href="initiatives.html#conclave">Leadership Conclave</a><a href="initiatives.html#olympiad">Economics Olympiad</a></div>
+    <div class="footer-col"><h4>Connect</h4><a href="https://www.instagram.com/econsoc.ashoka/">Instagram</a><a href="https://in.linkedin.com/company/ashokaeconsoc">LinkedIn</a><a href="mailto:econsoc@ashoka.edu.in">Email</a></div>
+  </div>
+  <div class="wrap footer-credit"><span>Lead Developer: Shranya Gupta, Aneesh Dasgupta</span></div>
+  <div class="wrap footer-bottom"><span>&copy; 2026 Ashoka University Economics Society</span><span>Rajiv Gandhi Education City, Sonipat, Haryana 131029</span></div>
+</footer>
+
+<script>
+  // Nav dropdowns: hover on desktop, tap-to-toggle on touch/keyboard
+  document.querySelectorAll('.nav-item').forEach(item => {
+    const trigger = item.querySelector('.nav-trigger');
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = item.classList.contains('is-open');
+      document.querySelectorAll('.nav-item.is-open').forEach(i => { i.classList.remove('is-open'); i.querySelector('.nav-trigger').setAttribute('aria-expanded','false'); });
+      if(!isOpen){ item.classList.add('is-open'); trigger.setAttribute('aria-expanded','true'); }
+    });
+  });
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.nav-item.is-open').forEach(i => { i.classList.remove('is-open'); i.querySelector('.nav-trigger').setAttribute('aria-expanded','false'); });
+  });
+
+  // Masthead date: uses the visitor's own device clock, so this
+  // relabels itself to the correct date automatically, every day, for everyone.
+  const gzDate = document.getElementById('gzDate');
+  if(gzDate){
+    const d = new Date();
+    gzDate.innerHTML = '<strong>' + d.toLocaleDateString('en-GB', { weekday:'long', day:'numeric', month:'long', year:'numeric' }) + '</strong>';
+  }
+
+  // ---------------------------------------------------------------
+  // LEAD ARTICLE: auto-pulls the newest WordPress post once live.
+  //
+  // Until WordPress is installed and this URL is filled in, the block
+  // below fails quietly and the hand-written FIFA piece above just
+  // stays as-is, nothing breaks, nothing goes blank.
+  //
+  // Once the Gazette's WordPress is live, set WP_API_BASE to it, e.g.
+  //   const WP_API_BASE = 'https://blog.ashokaeconsoc.com/wp-json/wp/v2';
+  // and every new published post will replace this section automatically,
+  // no HTML editing required.
+  //
+  // Optional: install the free "Advanced Custom Fields" plugin and add
+  // one field, slug "pull_quote", with "Show in REST API" turned on.
+  // Whoever writes the post pastes one sentence in that field and it
+  // becomes the boxed quote below. Skip it and the quote box just hides.
+  // ---------------------------------------------------------------
+  const WP_API_BASE = ''; // <-- set this once WordPress is live
+
+  (async function loadLatestPost(){
+    if(!WP_API_BASE) return;
+    try {
+      const res = await fetch(`${WP_API_BASE}/posts?per_page=1&_embed`);
+      if(!res.ok) return;
+      const posts = await res.json();
+      const post = posts[0];
+      if(!post) return;
+
+      const strip = (html) => (html || '').replace(/<[^>]+>/g, '').trim();
+      const title = strip(post.title?.rendered);
+      const dek = strip(post.excerpt?.rendered);
+      const author = post._embedded?.author?.[0]?.name || 'The Gazette';
+      const wordCount = strip(post.content?.rendered).split(/\s+/).length;
+      const readMins = Math.max(1, Math.round(wordCount / 200));
+      const category = post._embedded?.['wp:term']?.[0]?.[0]?.name || 'Front Page';
+      const image = post._embedded?.['wp:featuredmedia']?.[0]?.source_url;
+      const quote = post.acf?.pull_quote;
+
+      document.getElementById('gzLeadTag').textContent = `${category} · The Lead`;
+      const titleLink = document.getElementById('gzLeadTitle');
+      titleLink.textContent = title;
+      titleLink.href = post.link;
+      document.getElementById('gzLeadDek').textContent = dek;
+      document.getElementById('gzLeadByline').innerHTML = `By <strong>${author}</strong> &middot; ${readMins} min read &middot; Front Page`;
+      if(image) document.getElementById('gzLeadImg').style.backgroundImage = `url('${image}')`;
+      const quoteEl = document.getElementById('gzPullquote');
+      if(quote){ quoteEl.textContent = quote; quoteEl.style.display = ''; }
+      else { quoteEl.style.display = 'none'; }
+      document.getElementById('gzLeadMore').href = post.link;
+    } catch(e) {
+      // silent, static fallback content stays visible
+    }
+  })();
+
+  // Live FX ticker (open.er-api.com, free, no key required)
+  (function(){
+    const body = document.getElementById('gzTickerBody');
+    const foot = document.getElementById('gzTickerFoot');
+    if(!body) return;
+    fetch('https://open.er-api.com/v6/latest/USD')
+      .then(r => r.json())
+      .then(data => {
+        if(data && data.rates){
+          const inr = data.rates.INR;
+          const eurToInr = inr / data.rates.EUR;
+          const gbpToInr = inr / data.rates.GBP;
+          const rows = body.querySelectorAll('.gz-ticker-val');
+          if(rows[0]) rows[0].textContent = '₹' + inr.toFixed(2);
+          if(rows[1]) rows[1].textContent = '₹' + eurToInr.toFixed(2);
+          if(rows[2]) rows[2].textContent = '₹' + gbpToInr.toFixed(2);
+          const stamp = data.time_last_update_utc ? new Date(data.time_last_update_utc) : new Date();
+          foot.textContent = 'Live · updated ' + stamp.toLocaleTimeString('en-GB', { hour:'2-digit', minute:'2-digit' }) + ' UTC';
+        } else {
+          foot.textContent = 'Live rates unavailable right now.';
+        }
+      })
+      .catch(() => { foot.textContent = 'Live rates unavailable right now.'; });
+  })();
+</script>
+
+</body>
+</html>

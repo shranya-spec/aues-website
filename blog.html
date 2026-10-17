@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Gazette | Ashoka University Economics Society</title>
+<meta name="description" content="The Gazette, AUES's student-run economics publication.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,800;9..144,900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Bitter:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#E0102A; --red-soft:#FF4D5E; --blue:#0B1E4D; --blue-soft:#3B5BDB;
+    --white:#FFFFFF; --panel:#F7F4EE; --ink:#0A0A0A; --muted:#5B6472; --muted-light:#B9C2DA;
+    --display:'Fraunces', serif; --body:'Source Serif 4', serif; --accent:'Bitter', serif;
+    --ease: cubic-bezier(.16,.84,.24,1);
+    --r-lg: 40px; --r-md: 24px; --r-sm: 14px; --r-pill: 999px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%;}
+  body{background:var(--blue);color:#fff;font-family:var(--body);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  button{font-family:inherit;}
+  .wrap{max-width:1320px;margin:0 auto;padding:0 48px;}
+  @media(max-width:768px){.wrap{padding:0 24px;}}
+  ::selection{background:var(--red);color:#fff;}
+
+  header.site-nav{position:sticky;top:0;z-index:100;background:rgba(11,30,77,.92);backdrop-filter:blur(14px);}
+  .nav-inner{max-width:1320px;margin:0 auto;padding:18px 48px;display:flex;align-items:center;justify-content:center;position:relative;}
+  .nav-pill{display:flex;align-items:center;gap:36px;background:var(--blue);border-radius:var(--r-pill);padding:10px 10px 10px 24px;box-shadow:0 8px 30px rgba(0,0,0,.25);}
+  .nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--accent);font-weight:800;font-size:18px;color:#fff;}
+  .nav-brand .dot{width:9px;height:9px;border-radius:50%;background:var(--red);display:inline-block;}
+  nav.nav-links{display:flex;gap:28px;align-items:center;}
+  nav.nav-links > a{font-family:var(--accent);font-size:13px;font-weight:600;color:#fff;position:relative;padding:6px 0;transition:color .3s var(--ease);}
+  nav.nav-links > a:hover{color:var(--red);}
+  nav.nav-links > a.is-current{color:var(--red);}
+  .nav-item{position:relative;}
+  .nav-item > .nav-trigger{font-family:var(--accent);font-size:13px;font-weight:600;color:#fff;background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:5px;padding:6px 0;transition:color .3s var(--ease);}
+  .nav-item:hover > .nav-trigger, .nav-item.is-open > .nav-trigger{color:var(--red);}
+  .nav-caret{width:8px;height:8px;flex-shrink:0;transition:transform .3s var(--ease);}
+  .nav-item:hover .nav-caret, .nav-item.is-open .nav-caret{transform:rotate(180deg);}
+  .nav-dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%);padding-top:20px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .25s var(--ease), visibility .25s;}
+  .nav-dropdown-inner{min-width:200px;background:#16265c;border-radius:var(--r-md);box-shadow:0 20px 50px rgba(0,0,0,.35);padding:8px;transform:translateY(6px);transition:transform .25s var(--ease);}
+  .nav-item:hover .nav-dropdown, .nav-item.is-open .nav-dropdown{opacity:1;visibility:visible;pointer-events:auto;}
+  .nav-item:hover .nav-dropdown-inner, .nav-item.is-open .nav-dropdown-inner{transform:translateY(0);}
+  .nav-dropdown a{display:block;font-family:var(--accent);font-size:13px;font-weight:600;color:#fff;padding:12px 18px;border-radius:var(--r-sm);transition:background .2s var(--ease), color .2s var(--ease);}
+  .nav-dropdown a:hover{background:rgba(255,255,255,.12);color:var(--red-soft);}
+  .nav-cta{position:relative;overflow:hidden;font-family:var(--accent);font-size:13px;font-weight:700;color:#fff;background:var(--red);padding:12px 26px;border-radius:var(--r-pill);isolation:isolate;}
+  .nav-cta span{position:relative;z-index:1;}
+  .nav-cta::before{content:"";position:absolute;inset:0;background:var(--blue);transform:translateY(100%);transition:transform .35s var(--ease);z-index:0;}
+  .nav-cta:hover::before{transform:translateY(0);}
+  @media(max-width:1080px){nav.nav-links{display:none;}.nav-cta{padding:10px 18px;font-size:12px;white-space:nowrap;}.nav-pill{gap:14px;padding:8px 8px 8px 18px;}}
+
+  .nav-burger{display:none;background:none;border:none;cursor:pointer;padding:8px;flex-direction:column;justify-content:center;gap:5px;z-index:210;position:absolute;right:48px;}
+  @media(max-width:1080px){.nav-burger{display:flex;}}
+  @media(max-width:768px){.nav-burger{right:24px;}}
+  .nav-burger span{display:block;width:22px;height:2px;border-radius:2px;background:#fff;transition:transform .3s var(--ease), opacity .3s var(--ease);}
+  .nav-burger.is-active span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .nav-burger.is-active span:nth-child(2){opacity:0;}
+  .nav-burger.is-active span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  .mobile-menu{position:fixed;inset:0;z-index:200;background:var(--blue);transform:translateX(100%);transition:transform .45s var(--ease);overflow-y:auto;visibility:hidden;}
+  .mobile-menu.is-open{transform:translateX(0);visibility:visible;}
+  .mobile-menu-inner{padding:110px 32px 60px;max-width:520px;margin:0 auto;}
+  .mm-link{display:block;font-family:var(--accent);font-weight:700;font-size:24px;color:#fff;padding:18px 0;}
+  .mm-link.is-current{color:var(--red);}
+  .mm-group-trigger{display:flex;justify-content:space-between;align-items:center;width:100%;background:none;border:none;font-family:var(--accent);font-weight:700;font-size:24px;color:#fff;padding:18px 0;cursor:pointer;}
+  .mm-caret{font-family:var(--accent);font-size:20px;color:var(--muted);transition:transform .3s var(--ease);}
+  .mm-group.is-open .mm-caret{transform:rotate(45deg);}
+  .mm-sub{max-height:0;overflow:hidden;transition:max-height .4s var(--ease);}
+  .mm-group.is-open .mm-sub{max-height:260px;}
+  .mm-sub a{display:block;font-family:var(--body);font-weight:500;font-size:16px;color:var(--muted-light);padding:12px 0 12px 4px;}
+  .mobile-menu-close{position:absolute;top:26px;right:28px;background:none;border:none;font-size:30px;color:#fff;cursor:pointer;line-height:1;}
+  .mm-cta{margin-top:28px;display:inline-block;}
+
+  /* ---------- MASTHEAD ---------- */
+  .gz-masthead{background:var(--red);color:#fff;padding:150px 0 44px;border-radius:0 0 var(--r-lg) var(--r-lg);}
+  .gz-infobar{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;font-family:var(--accent);font-weight:600;font-size:12px;color:rgba(255,255,255,.8);margin-bottom:24px;}
+  .gz-wordmark{font-family:var(--display);font-weight:900;letter-spacing:-.02em;font-size:clamp(48px,9vw,108px);text-align:center;line-height:.95;}
+  .gz-tabs{display:flex;justify-content:center;gap:12px;margin-top:34px;flex-wrap:wrap;}
+  .gz-tab{font-family:var(--accent);font-weight:600;font-size:13px;color:rgba(255,255,255,.7);background:rgba(255,255,255,.12);border-radius:var(--r-pill);padding:10px 18px;transition:all .3s var(--ease);}
+  .gz-tab:hover, .gz-tab.is-active{color:var(--red);background:#fff;}
+
+  /* ---------- FRONT PAGE ---------- */
+  .gz-front{display:grid;grid-template-columns:1fr 1.9fr 1fr;gap:44px;padding:70px 0;}
+  @media(max-width:1080px){.gz-front{grid-template-columns:1fr;}}
+  .gz-rail-label{font-family:var(--accent);font-weight:700;font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--red);margin-bottom:18px;}
+  .gz-brief-item{padding:16px 18px;border-radius:var(--r-sm);font-family:var(--display);font-weight:600;font-size:15px;line-height:1.4;color:var(--ink);transition:background .3s var(--ease);}
+  .gz-brief-item:nth-child(odd){background:var(--panel);}
+  .gz-brief-item:nth-child(even){background:var(--white);}
+  .gz-brief-item + .gz-brief-item{margin-top:8px;}
+  .gz-brief-item a:hover{color:var(--red);}
+
+  .gz-ticker{margin-top:40px;border-radius:var(--r-md);overflow:hidden;background:var(--panel);}
+  .gz-ticker-head{background:var(--blue);color:#fff;font-family:var(--accent);font-weight:700;font-size:11px;padding:14px 18px;}
+  .gz-ticker-row{display:flex;justify-content:space-between;padding:12px 18px;font-size:13.5px;color:var(--ink);}
+  .gz-ticker-val{font-weight:700;}
+  .gz-ticker-foot{padding:12px 18px;font-size:11px;color:var(--muted);}
+
+  .gz-lead-tag{font-family:var(--accent);font-weight:700;font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--red);}
+  .gz-lead-title{font-family:var(--display);font-weight:800;font-size:clamp(26px,3vw,38px);line-height:1.1;margin-top:14px;}
+  .gz-lead-title a:hover{color:var(--red);}
+  .gz-lead-dek{font-family:var(--body);font-size:15.5px;color:var(--muted);line-height:1.7;margin-top:18px;}
+  .gz-lead-byline{font-family:var(--accent);font-weight:600;font-size:12.5px;margin-top:16px;}
+  .gz-lead-img{margin-top:24px;aspect-ratio:16/9;background-size:cover;background-position:center;background-color:rgba(11,30,77,.05);border-radius:var(--r-md);}
+  .gz-pullquote{font-family:var(--display);font-weight:700;font-size:20px;line-height:1.4;background:var(--blue);color:#fff;border-radius:var(--r-md);padding:26px 28px;margin-top:26px;}
+  .gz-lead-more{display:inline-block;margin-top:22px;font-family:var(--accent);font-weight:700;font-size:13px;color:#fff;background:var(--red);border-radius:var(--r-pill);padding:12px 22px;transition:background .3s var(--ease);}
+  .gz-lead-more:hover{background:var(--blue);}
+
+  .gz-opinion{background:var(--panel);border-radius:var(--r-md);padding:24px;}
+  .gz-op-byline{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+  .gz-op-avatar{width:36px;height:36px;background:var(--blue);color:#fff;font-family:var(--accent);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;border-radius:50%;}
+  .gz-op-name{font-family:var(--display);font-weight:700;font-size:13.5px;color:var(--ink);}
+  .gz-op-role{font-size:11px;color:var(--muted);}
+  .gz-op-title{font-family:var(--display);font-weight:800;font-size:19px;margin-bottom:10px;color:var(--ink);}
+  .gz-op-title a:hover{color:var(--red);}
+  .gz-op-excerpt{font-family:var(--body);font-size:13.5px;color:var(--muted);line-height:1.65;margin-bottom:16px;}
+  .gz-op-btn{font-family:var(--accent);font-weight:700;font-size:12px;color:var(--red);}
+
+  .gz-filed-item{padding:16px 18px;border-radius:var(--r-sm);background:var(--panel);color:var(--ink);}
+  .gz-filed-item + .gz-filed-item{margin-top:8px;}
+  .gz-filed-item a{font-family:var(--display);font-weight:700;font-size:14.5px;line-height:1.35;color:var(--ink);}
+  .gz-filed-item a:hover{color:var(--red);}
+  .gz-filed-meta{font-family:var(--accent);font-size:11.5px;color:var(--muted);margin-top:6px;}
+
+  .gz-write{background:var(--panel);color:var(--ink);padding:80px 0;border-radius:var(--r-lg);margin:0 24px;}
+  .gz-write h2{font-family:var(--display);font-weight:800;font-size:clamp(26px,3vw,36px);margin-bottom:18px;}
+  .gz-write p{font-family:var(--body);font-size:15px;color:var(--muted);line-height:1.7;max-width:640px;margin-bottom:26px;}
+  .gz-write a{font-family:var(--accent);font-weight:700;font-size:13px;color:#fff;background:var(--red);border-radius:var(--r-pill);padding:14px 26px;display:inline-block;}
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <div class="nav-pill">
+      <a href="index.html" class="nav-brand"><span class="dot"></span>AUES</a>
+      <nav class="nav-links">
+        <a href="team.html">Team</a>
+        <a href="blog.html" class="is-current">The Gazette</a>
+        <a href="auer.html">AUER</a>
+        <div class="nav-item">
+          <button class="nav-trigger" type="button" aria-expanded="false">Initiatives
+            <svg class="nav-caret" viewBox="0 0 8 8" fill="none"><path d="M1 2.5L4 5.5L7 2.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="nav-dropdown"><div class="nav-dropdown-inner">
+            <a href="initiatives.html#conclave">Conclave</a>
+            <a href="initiatives.html#olympiad">Olympiad</a>
+            <a href="initiatives.html#seminars">Seminars</a>
+            <a href="initiatives.html#podcast">Podcast</a>
+          </div></div>
+        </div>
+        <a href="events.html">Events</a>
+        <a href="opportunities.html">Opportunities</a>
+      </nav>
+      <a href="equilibrium.html" class="nav-cta"><span>Equilibrium 5.0</span></a>
+    </div>
+    <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="mobile-menu">
+  <button class="mobile-menu-close" aria-label="Close menu">&times;</button>
+  <div class="mobile-menu-inner">
+    <a class="mm-link" href="team.html">Team</a>
+    <a class="mm-link is-current" href="blog.html">The Gazette</a>
+    <a class="mm-link" href="auer.html">AUER</a>
+    <div class="mm-group">
+      <button class="mm-group-trigger">Initiatives <span class="mm-caret">+</span></button>
+      <div class="mm-sub">
+        <a href="initiatives.html#conclave">Conclave</a>
+        <a href="initiatives.html#olympiad">Olympiad</a>
+        <a href="initiatives.html#seminars">Seminars</a>
+        <a href="initiatives.html#podcast">Podcast</a>
+      </div>
+    </div>
+    <a class="mm-link" href="events.html">Events</a>
+    <a class="mm-link" href="opportunities.html">Opportunities</a>
+    <a class="mm-cta nav-cta" href="equilibrium.html"><span>Equilibrium 5.0</span></a>
+  </div>
+</div>
+
+<!-- MASTHEAD -->
+<section class="gz-masthead">
+  <div class="wrap">
+    <div class="gz-infobar">
+      <span id="gzDate">Loading date</span>
+      <span>Price: Free, as ever</span>
+    </div>
+    <h1 class="gz-wordmark">The Gazette</h1>
+    <div class="gz-tabs" id="gzFilters">
+      <span class="gz-tab is-active">All Sections</span>
+      <span class="gz-tab">Economics &amp; Policy</span>
+      <span class="gz-tab">Global Affairs</span>
+      <span class="gz-tab">Behavioural</span>
+      <span class="gz-tab">Society &amp; Behaviour</span>
+    </div>
+  </div>
+</section>
+
+<!-- FRONT PAGE -->
+<section class="wrap">
+  <div class="gz-front">
+
+    <!-- LEFT RAIL -->
+    <div>
+      <div class="gz-rail-label">In Brief</div>
+      <div class="gz-brief-item"><span>GST 2.0 Cut Taxes, But Will You Really Pay Less?</span></div>
+      <div class="gz-brief-item"><span>Is Your Degree Working as Hard as You?</span></div>
+      <div class="gz-brief-item"><span>Gaming Tariffs: Finding Logic in Economic Stupidity</span></div>
+      <div class="gz-brief-item"><span>Why Fixing Trust Issues Might Help You Grow</span></div>
+      <div class="gz-brief-item"><span>Formula 1: The DRS of Asian Economy</span></div>
+
+      <div class="gz-ticker">
+        <div class="gz-ticker-head">Live FX Rates</div>
+        <div id="gzTickerBody">
+          <div class="gz-ticker-row"><span>USD / INR</span><span class="gz-ticker-val">&hellip;</span></div>
+          <div class="gz-ticker-row"><span>EUR / INR</span><span class="gz-ticker-val">&hellip;</span></div>
+          <div class="gz-ticker-row"><span>GBP / INR</span><span class="gz-ticker-val">&hellip;</span></div>
+        </div>
+        <div class="gz-ticker-foot" id="gzTickerFoot">Fetching live rates&hellip;</div>
+      </div>
+    </div>
+
+    <!-- LEAD -->
+    <div>
+      <span class="gz-lead-tag" id="gzLeadTag">Global Affairs &middot; The Lead</span>
+      <h2 class="gz-lead-title" id="gzLeadTitleWrap"><span id="gzLeadTitle">A Principal-ed Sponsor: Reading FIFA&rsquo;s Due-Diligence Problem Through Agency Theory</span></h2>
+      <p class="gz-lead-dek" id="gzLeadDek">A look at FIFA's major sponsors through the lens of principal-agent theory, and why due diligence performed after a hosting decision is already locked in cannot undo it.</p>
+      <div class="gz-lead-byline" id="gzLeadByline">By Hardik Srivastava &middot; 6 min read</div>
+      <div class="gz-lead-img" id="gzLeadImg" style="background-image:url('https://static.wixstatic.com/media/815c2f_896c95eb584e43f4bc101337e8744fdc~mv2.jpg/v1/fill/w_800,h_450,fp_0.50_0.50,q_90,enc_avif,quality_auto/815c2f_896c95eb584e43f4bc101337e8744fdc~mv2.webp')"></div>
+      <div class="gz-pullquote" id="gzPullquote">Monitoring only works on decisions still open to influence. It cannot undo a delegation made years earlier.</div>
+      <span class="gz-lead-more" id="gzLeadMore">Read the full piece &#8594;</span>
+    </div>
+
+    <!-- RIGHT RAIL -->
+    <div>
+      <div class="gz-rail-label">Opinion</div>
+      <div class="gz-opinion">
+        <div class="gz-op-byline">
+          <div class="gz-op-avatar">AA</div>
+          <div><div class="gz-op-name">Anandini Agrawal</div><div class="gz-op-role">Columnist</div></div>
+        </div>
+        <h3 class="gz-op-title"><span>The Paradox of Thrift</span></h3>
+        <p class="gz-op-excerpt">Everyone tightening their belt at once is the fastest route to everyone having less to tighten. A look at why individual prudence can become a collective problem.</p>
+        <span class="gz-op-btn">Read the Column &#8594;</span>
+      </div>
+
+      <div class="gz-rail-label" style="margin-top:40px;">Also Filed</div>
+      <div class="gz-filed-item">
+        <span>India Vs China: Can India Ever Come Out on Top?</span>
+        <div class="gz-filed-meta">By Kavya Reddy &middot; 6 min</div>
+      </div>
+      <div class="gz-filed-item">
+        <span>The Rational Way(s) of Measuring Irrationality</span>
+        <div class="gz-filed-meta">By Hardik Srivastava &middot; 7 min</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WRITE FOR US -->
+<section class="gz-write">
+  <div class="wrap">
+    <h2>Write for the Gazette</h2>
+    <p>We publish undergraduates from every discipline. Several of our strongest contributors have never taken an Economics course. Send a pitch of roughly 150 words: the claim you want to make, why it is arguable, and what evidence you would use. If it holds up, an editor works through it with you before it runs.</p>
+    <a href="mailto:econsoc@ashoka.edu.in">Pitch a piece</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap footer-mega">AUES</div>
+  <div class="wrap footer-top">
+    <div><div style="font-family:var(--accent);font-size:22px;font-weight:800;margin-bottom:16px;display:flex;align-items:center;gap:8px;"><span style="width:7px;height:7px;border-radius:50%;background:var(--red);display:inline-block;"></span>AUES</div><p style="font-family:var(--body);font-size:13.5px;color:rgba(255,255,255,.5);line-height:1.7;max-width:280px;">The Ashoka University Economics Society. Economics, beyond the classroom.</p></div>
+    <div class="footer-col"><h4>Society</h4><a href="index.html#story">About Us</a><a href="team.html">Team</a><a href="index.html#alumni">Alumni</a><a href="index.html#contact">Contact</a></div>
+    <div class="footer-col"><h4>Initiatives</h4><a href="blog.html">The Gazette</a><a href="initiatives.html#podcast">Podcast</a><a href="auer.html">AUER</a></div>
+    <div class="footer-col"><h4>Events</h4><a href="equilibrium.html">Equilibrium</a><a href="initiatives.html#conclave">Leadership Conclave</a><a href="initiatives.html#olympiad">Economics Olympiad</a></div>
+    <div class="footer-col"><h4>Connect</h4><a href="https://www.instagram.com/econsoc.ashoka" target="_blank" rel="noopener">Instagram</a><a href="https://www.linkedin.com/company/ashokaeconsoc/home/" target="_blank" rel="noopener">LinkedIn</a><a href="mailto:econsoc@ashoka.edu.in">Email</a></div>
+  </div>
+  <div class="wrap footer-credit">Lead Developer: Shranya Gupta, Aneesh Dasgupta</div>
+  <div class="wrap footer-bottom"><span>&copy; 2026 Ashoka University Economics Society</span><span>Rajiv Gandhi Education City, Sonipat, Haryana 131029</span></div>
+</footer>
+<style>
+  .site-footer{background:#060B22;border-top:1px solid rgba(255,255,255,.08);color:#fff;padding-top:80px;margin-top:40px;position:relative;overflow:hidden;}
+  .footer-mega{font-family:var(--display);font-weight:800;font-size:clamp(70px,14vw,240px);letter-spacing:-.03em;line-height:.8;color:rgba(255,255,255,.05);white-space:nowrap;overflow:hidden;user-select:none;}
+  .footer-top{display:grid;grid-template-columns:1.4fr repeat(4,1fr);gap:40px;padding:60px 0 50px;position:relative;z-index:2;}
+  .footer-top > div{min-width:0;}
+  .footer-col h4{font-family:var(--accent);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:18px;}
+  .footer-col a{display:block;font-family:var(--body);font-weight:500;font-size:14px;color:rgba(255,255,255,.82);padding:6px 0;transition:color .3s var(--ease);word-break:break-word;}
+  .footer-col a:hover{color:var(--red-soft);}
+  .footer-credit{text-align:center;padding-top:20px;font-family:var(--body);font-size:12px;color:rgba(255,255,255,.35);position:relative;z-index:2;border-top:1px solid rgba(255,255,255,.08);}
+  .footer-bottom{display:flex;justify-content:space-between;padding:20px 0 30px;font-family:var(--body);font-size:12.5px;color:rgba(255,255,255,.3);flex-wrap:wrap;gap:10px;position:relative;z-index:2;}
+  @media(max-width:900px){ .footer-top{grid-template-columns:1fr 1fr;} }
+  @media(max-width:560px){ .footer-top{grid-template-columns:1fr;gap:32px;} .footer-bottom{flex-direction:column;text-align:center;gap:6px;} }
+</style>
+
+<script>
+  document.querySelectorAll('.nav-item').forEach(item => {
+    const trigger = item.querySelector('.nav-trigger');
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = item.classList.contains('is-open');
+      document.querySelectorAll('.nav-item.is-open').forEach(i => i.classList.remove('is-open'));
+      if(!isOpen) item.classList.add('is-open');
+    });
+  });
+  document.addEventListener('click', () => document.querySelectorAll('.nav-item.is-open').forEach(i => i.classList.remove('is-open')));
+
+  const navBurger = document.querySelector('.nav-burger');
+  const mobileMenu = document.querySelector('.mobile-menu');
+  const mmCloseBtn = document.querySelector('.mobile-menu-close');
+  if(navBurger && mobileMenu){
+    const openMM = ()=>{ mobileMenu.classList.add('is-open'); navBurger.classList.add('is-active'); document.body.style.overflow='hidden'; };
+    const closeMM = ()=>{ mobileMenu.classList.remove('is-open'); navBurger.classList.remove('is-active'); document.body.style.overflow=''; };
+    navBurger.addEventListener('click', ()=> mobileMenu.classList.contains('is-open') ? closeMM() : openMM());
+    if(mmCloseBtn) mmCloseBtn.addEventListener('click', closeMM);
+    mobileMenu.querySelectorAll('.mm-link, .mm-sub a, .mm-cta').forEach(a=> a.addEventListener('click', closeMM));
+    mobileMenu.querySelectorAll('.mm-group-trigger').forEach(btn=> btn.addEventListener('click', ()=> btn.closest('.mm-group').classList.toggle('is-open')));
+  }
+
+  const gzDate = document.getElementById('gzDate');
+  if(gzDate){
+    const d = new Date();
+    gzDate.textContent = d.toLocaleDateString('en-GB', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
+  }
+
+  const WP_API_BASE = '';
+  (async function loadLatestPost(){
+    if(!WP_API_BASE) return;
+    try {
+      const res = await fetch(`${WP_API_BASE}/posts?per_page=1&_embed`);
+      if(!res.ok) return;
+      const posts = await res.json();
+      const post = posts[0];
+      if(!post) return;
+      const strip = (html) => (html || '').replace(/<[^>]+>/g, '').trim();
+      const title = strip(post.title?.rendered);
+      const dek = strip(post.excerpt?.rendered);
+      const author = post._embedded?.author?.[0]?.name || 'The Gazette';
+      const wordCount = strip(post.content?.rendered).split(/\s+/).length;
+      const readMins = Math.max(1, Math.round(wordCount / 200));
+      const category = post._embedded?.['wp:term']?.[0]?.[0]?.name || 'Front Page';
+      const image = post._embedded?.['wp:featuredmedia']?.[0]?.source_url;
+      const quote = post.acf?.pull_quote;
+      document.getElementById('gzLeadTag').textContent = `${category} \u00b7 The Lead`;
+      const titleLink = document.getElementById('gzLeadTitle');
+      titleLink.textContent = title;
+      titleLink.href = post.link;
+      document.getElementById('gzLeadDek').textContent = dek;
+      document.getElementById('gzLeadByline').textContent = `By ${author} \u00b7 ${readMins} min read`;
+      if(image) document.getElementById('gzLeadImg').style.backgroundImage = `url('${image}')`;
+      const quoteEl = document.getElementById('gzPullquote');
+      if(quote){ quoteEl.textContent = quote; quoteEl.style.display = ''; } else { quoteEl.style.display = 'none'; }
+      document.getElementById('gzLeadMore').href = post.link;
+    } catch(e) {}
+  })();
+
+  fetch('https://open.er-api.com/v6/latest/USD')
+    .then(r => r.json())
+    .then(data => {
+      const inr = data.rates.INR;
+      const eur = inr / data.rates.EUR;
+      const gbp = inr / data.rates.GBP;
+      const rows = document.querySelectorAll('#gzTickerBody .gz-ticker-val');
+      if(rows.length === 3){
+        rows[0].textContent = inr.toFixed(2);
+        rows[1].textContent = eur.toFixed(2);
+        rows[2].textContent = gbp.toFixed(2);
+      }
+      document.getElementById('gzTickerFoot').textContent = 'Live \u00b7 updated ' + new Date(data.time_last_update_utc).toLocaleTimeString('en-GB', { hour:'2-digit', minute:'2-digit' }) + ' UTC';
+    })
+    .catch(() => { document.getElementById('gzTickerFoot').textContent = 'Live rates unavailable right now.'; });
+
+  // Mailto links: copy the address to clipboard as a fallback in case
+  // the device has no default mail app configured
+  document.querySelectorAll('a[href^="mailto:"]').forEach(a => {
+    a.addEventListener('click', () => {
+      const email = a.getAttribute('href').replace('mailto:', '').split('?')[0];
+      if(navigator.clipboard){ navigator.clipboard.writeText(email).catch(()=>{}); }
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ashoka University Economics Society</title>
+<meta name="description" content="The official academic economics society of Ashoka University. Run entirely by undergraduates across eleven departments.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,800;9..144,900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Bitter:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /*
+    Font substitution note (no paid font files available):
+    Zodiak        -> Fraunces        (--display, big headlines)
+    Bespoke Serif -> Source Serif 4  (--body, paragraph text)
+    Erode         -> Bitter          (--accent, labels / nav / secondary heads)
+  */
+  :root{
+    --red:#E0102A; --red-soft:#FF4D5E; --blue:#0B1E4D; --blue-soft:#3B5BDB;
+    --white:#FFFFFF; --panel:#F7F4EE; --ink:#0A0A0A; --muted:#5B6472; --muted-light:#B9C2DA;
+    --display:'Fraunces', serif; --body:'Source Serif 4', serif; --accent:'Bitter', serif;
+    --ease: cubic-bezier(.16,.84,.24,1);
+    --r-lg: 40px; --r-md: 24px; --r-sm: 14px; --r-pill: 999px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%;}
+  body{background:var(--blue);color:#fff;font-family:var(--body);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  button{font-family:inherit;}
+  .wrap{max-width:1320px;margin:0 auto;padding:0 48px;}
+  @media(max-width:768px){.wrap{padding:0 24px;}}
+  ::selection{background:var(--red);color:#fff;}
+
+  /* ---------- AURA GRADIENTS ---------- */
+    .aura-wash{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;
+    background:
+      radial-gradient(ellipse 900px 500px at 88% 20%, rgba(224,16,42,.55) 0%, rgba(224,16,42,.22) 35%, transparent 65%),
+      radial-gradient(ellipse 900px 500px at 6% 80%, rgba(11,30,77,.55) 0%, rgba(11,30,77,.22) 35%, transparent 65%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 82%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 82%, transparent 100%);
+  }
+/* ---------- NAV ---------- */
+  header.site-nav{position:sticky;top:0;z-index:100;background:rgba(11,30,77,.92);backdrop-filter:blur(14px);}
+  .nav-inner{max-width:1320px;margin:0 auto;padding:18px 48px;display:flex;align-items:center;justify-content:center;position:relative;}
+  .nav-pill{display:flex;align-items:center;gap:36px;background:var(--blue);border-radius:var(--r-pill);padding:10px 10px 10px 24px;box-shadow:0 8px 30px rgba(0,0,0,.25);}
+  .nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--accent);font-weight:800;font-size:18px;letter-spacing:-.01em;color:#fff;}
+  .nav-brand .dot{width:9px;height:9px;border-radius:50%;background:var(--red);display:inline-block;}
+  nav.nav-links{display:flex;gap:28px;align-items:center;}
+  nav.nav-links > a{font-family:var(--accent);font-size:13px;font-weight:600;color:#fff;position:relative;padding:6px 0;transition:color .3s var(--ease);}
+  nav.nav-links > a:hover{color:var(--red);}
+  nav.nav-links > a.is-current{color:var(--red);}
+  .nav-item{position:relative;}
+  .nav-item > .nav-trigger{font-family:var(--accent);font-size:13px;font-weight:600;color:#fff;background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:5px;padding:6px 0;transition:color .3s var(--ease);}
+  .nav-item:hover > .nav-trigger, .nav-item.is-open > .nav-trigger{color:var(--red);}
+  .nav-caret{width:8px;height:8px;flex-shrink:0;transition:transform .3s var(--ease);}
+  .nav-item:hover .nav-caret, .nav-item.is-open .nav-caret{transform:rotate(180deg);}
+  .nav-dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%);padding-top:20px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .25s var(--ease), visibility .25s;}
+  .nav-dropdown-inner{min-width:200px;background:#16265c;border-radius:var(--r-md);box-shadow:0 20px 50px rgba(0,0,0,.35);padding:8px;transform:translateY(6px);transition:transform .25s var(--ease);}
+  .nav-item:hover .nav-dropdown, .nav-item.is-open .nav-dropdown{opacity:1;visibility:visible;pointer-events:auto;}
+  .nav-item:hover .nav-dropdown-inner, .nav-item.is-open .nav-dropdown-inner{transform:translateY(0);}
+  .nav-dropdown a{display:block;font-family:var(--accent);font-size:13px;font-weight:600;color:#fff;padding:12px 18px;border-radius:var(--r-sm);transition:background .2s var(--ease), color .2s var(--ease);}
+  .nav-dropdown a:hover{background:rgba(255,255,255,.12);color:var(--red-soft);}
+  .nav-cta{position:relative;overflow:hidden;font-family:var(--accent);font-size:13px;font-weight:700;color:#fff;background:var(--red);padding:12px 26px;border-radius:var(--r-pill);isolation:isolate;}
+  .nav-cta span{position:relative;z-index:1;}
+  .nav-cta::before{content:"";position:absolute;inset:0;background:var(--blue);transform:translateY(100%);transition:transform .35s var(--ease);z-index:0;}
+  .nav-cta:hover::before{transform:translateY(0);}
+  @media(max-width:1080px){nav.nav-links{display:none;}}
+  @media(max-width:1080px){.nav-cta{padding:10px 18px;font-size:12px;white-space:nowrap;}.nav-pill{gap:14px;padding:8px 8px 8px 18px;}}
+
+  .nav-burger{display:none;background:none;border:none;cursor:pointer;padding:8px;flex-direction:column;justify-content:center;gap:5px;z-index:210;position:relative;}
+  @media(max-width:1080px){.nav-burger{display:flex;}}
+  .nav-burger span{display:block;width:22px;height:2px;border-radius:2px;background:#fff;transition:transform .3s var(--ease), opacity .3s var(--ease);}
+  .nav-burger.is-active span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .nav-burger.is-active span:nth-child(2){opacity:0;}
+  .nav-burger.is-active span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  .mobile-menu{position:fixed;inset:0;z-index:200;background:var(--blue);transform:translateX(100%);transition:transform .45s var(--ease);overflow-y:auto;visibility:hidden;}
+  .mobile-menu.is-open{transform:translateX(0);visibility:visible;}
+  .mobile-menu-inner{padding:110px 32px 60px;max-width:520px;margin:0 auto;}
+  .mm-link{display:block;font-family:var(--accent);font-weight:700;font-size:24px;color:#fff;padding:18px 0;}
+  .mm-link.is-current{color:var(--red);}
+  .mm-group-trigger{display:flex;justify-content:space-between;align-items:center;width:100%;background:none;border:none;font-family:var(--accent);font-weight:700;font-size:24px;color:#fff;padding:18px 0;cursor:pointer;}
+  .mm-caret{font-family:var(--accent);font-size:20px;color:var(--muted);transition:transform .3s var(--ease);}
+  .mm-group.is-open .mm-caret{transform:rotate(45deg);}
+  .mm-sub{max-height:0;overflow:hidden;transition:max-height .4s var(--ease);}
+  .mm-group.is-open .mm-sub{max-height:260px;}
+  .mm-sub a{display:block;font-family:var(--body);font-weight:500;font-size:16px;color:var(--muted-light);padding:12px 0 12px 4px;}
+  .mobile-menu-close{position:absolute;top:26px;right:28px;background:none;border:none;font-size:30px;color:#fff;cursor:pointer;line-height:1;}
+  .mm-cta{margin-top:28px;display:inline-block;}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease), transform .8s var(--ease);}
+  .reveal.is-visible{opacity:1;transform:translateY(0);}
+  .reveal-stagger > *{opacity:0;transform:translateY(20px);transition:opacity .6s var(--ease), transform .6s var(--ease);transition-delay:calc(var(--i,0) * 60ms);}
+  .reveal-stagger.is-visible > *{opacity:1;transform:translateY(0);}
+  @media(prefers-reduced-motion: reduce){.reveal,.reveal-stagger>*{opacity:1;transform:none;transition:none;}}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;overflow:hidden;}
+  .hero-bg{position:absolute;inset:0;z-index:0;background:linear-gradient(180deg, rgba(11,30,77,.15) 0%, rgba(11,30,77,.35) 55%, rgba(224,16,42,.55) 100%), url('hero-campus.jpg') center 55%/cover no-repeat;}
+  .hero-grid{position:relative;z-index:2;width:100%;padding-top:70px;padding-bottom:70px;}
+  .hero-content{position:relative;z-index:2;}
+  .hero-title{font-family:var(--display);font-weight:800;letter-spacing:-.02em;line-height:1.04;font-size:clamp(34px,6vw,84px);color:#fff;}
+  @media(max-width:420px){.hero-title{font-size:clamp(30px,9vw,40px);}}
+  .hero-title > span{display:block;}
+  .scramble-char{display:inline-block;}
+  .hero-sub{max-width:560px;margin-top:26px;font-family:var(--body);font-size:18px;line-height:1.7;color:rgba(255,255,255,.86);}
+
+  /* ---------- STATS (color-blocked pill row) ---------- */
+  .stats-wrap{padding:60px 0 40px;}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  @media(max-width:860px){.stats-grid{grid-template-columns:repeat(2,1fr);}}
+  .stat{border-radius:var(--r-md);padding:36px 30px;color:#fff;}
+  .stat:nth-child(1){background:var(--panel);}
+  .stat:nth-child(2){background:var(--red);}
+  .stat:nth-child(3){background:var(--red);}
+  .stat:nth-child(4){background:var(--panel);}
+  .stat:nth-child(1) .stat-num, .stat:nth-child(4) .stat-num{color:var(--ink);}
+  .stat:nth-child(1) .stat-label, .stat:nth-child(4) .stat-label{color:var(--muted);}
+  .stat-num{font-family:var(--display);font-weight:800;font-size:clamp(36px,4.4vw,52px);line-height:1;color:#fff;}
+  .stat-label{margin-top:10px;font-family:var(--accent);font-size:13px;color:rgba(255,255,255,.75);}
+
+  /* ---------- SECTIONS ---------- */
+  .section{padding:130px 0;position:relative;}
+  .section-title{font-family:var(--display);font-weight:700;font-size:clamp(32px,4.2vw,56px);color:#fff;letter-spacing:-.02em;line-height:1.05;}
+
+  /* ---------- STORY ---------- */
+  .story-grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1.2fr;gap:90px;}
+  @media(max-width:900px){.story-grid{grid-template-columns:1fr;gap:44px;}}
+  .story-body p{font-family:var(--body);font-size:19px;line-height:1.75;color:var(--muted-light);margin-bottom:24px;max-width:600px;}
+  .story-body p:first-child{color:#fff;}
+
+  /* ---------- ORG CHART: root + single-row branch flow ---------- */
+  .org-chart{padding:10px 0 20px;position:relative;}
+  .org-root{width:min(260px,80%);margin:0 auto 56px;padding:22px 30px;background:var(--red);color:#fff;border-radius:var(--r-pill);text-align:center;font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:.02em;position:relative;box-shadow:0 18px 40px rgba(224,16,42,.28);}
+  .org-root::after{content:"";position:absolute;left:50%;top:100%;width:2px;height:36px;background:linear-gradient(var(--red), rgba(224,16,42,.15));}
+  .org-branches{display:flex;flex-wrap:nowrap;justify-content:flex-start;gap:10px;overflow-x:auto;padding:4px 4px 14px;scrollbar-width:thin;}
+  .org-branch{flex:0 0 auto;display:block;padding:14px 20px;background:var(--white);border:1px solid rgba(11,30,77,.12);border-radius:var(--r-pill);box-shadow:0 6px 14px rgba(11,30,77,.06);transform:translateY(0);transition:transform .3s var(--ease), box-shadow .3s var(--ease);white-space:nowrap;}
+  .org-branch:hover{transform:translateY(-4px);box-shadow:0 16px 26px rgba(11,30,77,.14);}
+  .org-branch-name{font-family:var(--display);font-weight:700;font-size:14px;color:var(--ink);}
+  @media(max-width:700px){
+    .org-branch{padding:12px 16px;}
+    .org-branch-name{font-size:13px;}
+  }
+
+  /* ---------- TEAM (curved portraits) ---------- */
+  .team-band{padding:130px 0;}
+  .team-strip{display:grid;grid-template-columns:repeat(5,1fr);margin-top:60px;gap:18px;}
+  @media(max-width:900px){.team-strip{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:520px){.team-strip{grid-template-columns:1fr;}}
+  .team-item{position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:var(--r-lg);background:var(--panel);}
+  .team-item img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .6s var(--ease);}
+  .team-item:hover img{transform:scale(1.06);}
+  .team-caption{position:absolute;left:0;right:0;bottom:0;padding:22px;background:linear-gradient(180deg, transparent, rgba(0,0,0,.85));}
+  .team-name{font-family:var(--accent);font-weight:700;font-size:16px;color:#fff;}
+  .team-role{font-family:var(--body);font-size:12.5px;color:var(--red-soft);margin-top:6px;}
+
+  /* ---------- ALUMNI MARQUEE ---------- */
+  .alumni-section{padding:100px 0;overflow:hidden;}
+  .marquee-row{white-space:nowrap;overflow:hidden;}
+  .marquee-track{display:inline-flex;align-items:center;animation:marqueeSlow 34s linear infinite;}
+  .marquee-item{display:inline-flex;align-items:center;gap:14px;padding:0 40px;}
+  .marquee-item img{width:36px;height:36px;border-radius:8px;flex-shrink:0;background:var(--panel);}
+  .marquee-item span{font-family:var(--display);font-weight:700;font-size:clamp(22px,2.8vw,34px);color:#fff;white-space:nowrap;}
+  @keyframes marqueeSlow{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  /* ---------- CONTACT ---------- */
+  .contact-band{background:var(--red);color:#fff;padding:110px 0;border-radius:var(--r-lg);margin:0 24px;}
+  .contact-grid{margin-top:46px;}
+  .contact-band .section-title{color:#fff;max-width:640px;}
+  .contact-list a{display:inline-flex;font-family:var(--accent);font-weight:700;font-size:16px;color:var(--red);background:#fff;border-radius:var(--r-pill);padding:14px 24px;margin:0 10px 10px 0;}
+  .contact-addr{font-family:var(--body);font-size:14.5px;color:rgba(255,255,255,.8);line-height:1.7;max-width:280px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:#060B22;border-top:1px solid rgba(255,255,255,.08);color:#fff;padding-top:80px;margin-top:80px;position:relative;overflow:hidden;}
+  .footer-mega{font-family:var(--display);font-weight:800;font-size:clamp(70px,14vw,240px);letter-spacing:-.03em;line-height:.8;color:rgba(11,30,77,.06);white-space:nowrap;overflow:hidden;user-select:none;}
+  .footer-top{display:grid;grid-template-columns:1.4fr repeat(4,1fr);gap:40px;padding-top:60px;padding-bottom:50px;position:relative;z-index:2;}
+  .footer-top > div{min-width:0;}
+  @media(max-width:900px){.footer-top{grid-template-columns:1fr 1fr;}}
+  @media(max-width:560px){.footer-top{grid-template-columns:1fr;gap:32px;}.footer-bottom{flex-direction:column;text-align:center;gap:6px;}}
+  .footer-brand{font-family:var(--accent);font-size:22px;font-weight:800;margin-bottom:16px;display:flex;align-items:center;gap:8px;color:#fff;}
+  .footer-brand .dot{width:8px;height:8px;border-radius:50%;background:var(--red);display:inline-block;}
+  .footer-desc{font-family:var(--body);font-size:13.5px;color:var(--muted);line-height:1.7;max-width:280px;}
+  .footer-col h4{font-family:var(--accent);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:18px;}
+  .footer-col a{display:block;font-family:var(--body);font-weight:500;font-size:14px;color:rgba(255,255,255,.82);padding:6px 0;transition:color .3s var(--ease);}
+  .footer-col a:hover{color:var(--red-soft);}
+  .footer-credit{text-align:center;padding-top:24px;font-family:var(--body);font-size:12px;color:rgba(11,30,77,.45);position:relative;z-index:2;}
+  .footer-bottom{display:flex;justify-content:space-between;padding-top:14px;padding-bottom:30px;font-family:var(--body);font-size:12.5px;color:rgba(11,30,77,.4);flex-wrap:wrap;gap:12px;position:relative;z-index:2;}
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <div class="nav-pill">
+      <a href="index.html" class="nav-brand"><span class="dot"></span>AUES</a>
+      <nav class="nav-links">
+        <a href="team.html">Team</a>
+        <a href="blog.html">The Gazette</a>
+        <a href="auer.html">AUER</a>
+        <div class="nav-item">
+          <button class="nav-trigger" type="button" aria-expanded="false">Initiatives
+            <svg class="nav-caret" viewBox="0 0 8 8" fill="none"><path d="M1 2.5L4 5.5L7 2.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="nav-dropdown"><div class="nav-dropdown-inner">
+            <a href="initiatives.html#conclave">Conclave</a>
+            <a href="initiatives.html#olympiad">Olympiad</a>
+            <a href="initiatives.html#seminars">Seminars</a>
+            <a href="initiatives.html#podcast">Podcast</a>
+          </div></div>
+        </div>
+        <a href="events.html">Events</a>
+        <a href="opportunities.html">Opportunities</a>
+      </nav>
+      <a href="equilibrium.html" class="nav-cta"><span>Equilibrium 5.0</span></a>
+    </div>
+    <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="mobile-menu">
+  <button class="mobile-menu-close" aria-label="Close menu">&times;</button>
+  <div class="mobile-menu-inner">
+    <a class="mm-link" href="team.html">Team</a>
+    <a class="mm-link" href="blog.html">The Gazette</a>
+    <a class="mm-link" href="auer.html">AUER</a>
+    <div class="mm-group">
+      <button class="mm-group-trigger">Initiatives <span class="mm-caret">+</span></button>
+      <div class="mm-sub">
+        <a href="initiatives.html#conclave">Conclave</a>
+        <a href="initiatives.html#olympiad">Olympiad</a>
+        <a href="initiatives.html#seminars">Seminars</a>
+        <a href="initiatives.html#podcast">Podcast</a>
+      </div>
+    </div>
+    <a class="mm-link" href="events.html">Events</a>
+    <a class="mm-link" href="opportunities.html">Opportunities</a>
+    <a class="mm-cta nav-cta" href="equilibrium.html"><span>Equilibrium 5.0</span></a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="wrap hero-grid">
+    <div class="hero-content">
+      <h1 class="hero-title" id="scrambleTitle"><span>Ashoka University</span><span>Economics Society</span></h1>
+      <p class="hero-sub">The official academic economics society of Ashoka University, run entirely by undergraduates across eleven departments.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-wrap">
+  <div class="wrap">
+    <div class="stats-grid reveal-stagger">
+      <div class="stat"><div class="stat-num"><span class="counter" data-target="11">0</span></div><div class="stat-label">Departments</div></div>
+      <div class="stat"><div class="stat-num"><span class="counter" data-target="100">0</span>+</div><div class="stat-label">Members on the team</div></div>
+      <div class="stat"><div class="stat-num"><span class="counter" data-target="50">0</span>+</div><div class="stat-label">Seminars conducted</div></div>
+      <div class="stat"><div class="stat-num"><span class="counter" data-target="40">0</span>+</div><div class="stat-label">Universities at Equilibrium</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="section" id="story" style="overflow:hidden;">
+  <div class="aura-wash"></div>
+  <div class="wrap">
+    <div class="story-grid">
+      <h2 class="section-title reveal">What we are</h2>
+      <div class="story-body reveal">
+        <p>The Ashoka University Economics Society contributes to the dialogue around economics at Ashoka. We take the subject beyond the classroom, giving students an environment to engage critically with the issues gripping the world.</p>
+        <p>That work runs through competitions, seminars, mentorship, and Equilibrium, our flagship festival. Under the same roof sit the Ashoka University Economic Review, Ashoka's first peer-reviewed undergraduate economics journal, and The Gazette, our student-run publication.</p>
+        <p style="color:#fff;font-family:var(--display);font-weight:600;font-size:22px;line-height:1.5;">Our vision is to make the subject more accessible, and to inspire students to engage with ideas beyond the confines of their courses.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPARTMENTS -->
+<section class="section" style="padding-top:0;" id="departments">
+  <div class="wrap">
+    <h2 class="section-title reveal" style="margin-bottom:70px;">How we are organised</h2>
+    <div class="org-chart reveal">
+      <div class="org-root">AUES</div>
+      <div class="org-branches">
+        <a class="org-branch" href="team.html#dept-seminars"><div class="org-branch-name">Seminars</div></a>
+        <a class="org-branch" href="team.html#dept-academic-events"><div class="org-branch-name">Academic Events</div></a>
+        <a class="org-branch" href="team.html#dept-blog"><div class="org-branch-name">Blog</div></a>
+        <a class="org-branch" href="team.html#dept-auer"><div class="org-branch-name">AUER</div></a>
+        <a class="org-branch" href="team.html#dept-podcast"><div class="org-branch-name">Podcast</div></a>
+        <a class="org-branch" href="team.html#dept-social-events"><div class="org-branch-name">Social Events</div></a>
+        <a class="org-branch" href="team.html#dept-mentorship"><div class="org-branch-name">Mentorship &amp; Opportunities</div></a>
+        <a class="org-branch" href="team.html#dept-outreach"><div class="org-branch-name">Outreach</div></a>
+        <a class="org-branch" href="team.html#dept-marketing"><div class="org-branch-name">Marketing</div></a>
+        <a class="org-branch" href="team.html#dept-tech"><div class="org-branch-name">Technology and AI</div></a>
+        <a class="org-branch" href="team.html#dept-finance"><div class="org-branch-name">Finance</div></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ALUMNI -->
+<section class="alumni-section" id="alumni">
+  <div class="wrap"><h2 class="section-title reveal" style="font-size:clamp(26px,3vw,36px);margin-bottom:44px;">Where they have gone</h2></div>
+  <div class="marquee-row">
+    <div class="marquee-track">
+      <div class="marquee-item"><img src="https://www.google.com/s2/favicons?sz=128&domain=bcg.com" alt="BCG" onerror=\"this.style.display='none'\"><span>BCG</span></div>
+      <div class="marquee-item"><img src="https://www.google.com/s2/favicons?sz=128&domain=mckinsey.com" alt="McKinsey and Co." onerror=\"this.style.display='none'\"><span>McKinsey and Co.</span></div>
+      <div class="marquee-item"><img src="https://www.google.com/s2/favicons?sz=128&domain=deshaw.com" alt="D.E. Shaw and Co." onerror=\"this.style.display='none'\"><span>D.E. Shaw and Co.</span></div>
+      <div class="marquee-item"><img src="https://www.google.com/s2/favicons?sz=128&domain=dalberg.com" alt="Dalberg" onerror=\"this.style.display='none'\"><span>Dalberg</span></div>
+      <div class="marquee-item"><img src="https://www.google.com/s2/favicons?sz=128&domain=bain.com" alt="Bain" onerror=\"this.style.display='none'\"><span>Bain</span></div>
+      <div class="marquee-item"><img src="https://www.google.com/s2/favicons?sz=128&domain=unilever.com" alt="Unilever" onerror=\"this.style.display='none'\"><span>Unilever</span></div>
+      <div class="marquee-item"><img src="https://www.google.com/s2/favicons?sz=128&domain=kearney.com" alt="Kearney" onerror=\"this.style.display='none'\"><span>Kearney</span></div>
+      <div class="marquee-item"><img src="https://www.google.com/s2/favicons?sz=128&domain=thexandergroup.com" alt="Xander" onerror=\"this.style.display='none'\"><span>Xander</span></div>
+      <div class="marquee-item"><img src="https://www.google.com/s2/favicons?sz=128&domain=avendus.com" alt="Avendus" onerror=\"this.style.display='none'\"><span>Avendus</span></div>
+      <div class="marquee-item"><img src="https://www.google.com/s2/favicons?sz=128&domain=bcg.com" alt="BCG" onerror=\"this.style.display='none'\"><span>BCG</span></div>
+      <div class="marquee-item"><img src="https://www.google.com/s2/favicons?sz=128&domain=mckinsey.com" alt="McKinsey and Co." onerror=\"this.style.display='none'\"><span>McKinsey and Co.</span></div>
+      <div class="marquee-item"><img src="https://www.google.com/s2/favicons?sz=128&domain=deshaw.com" alt="D.E. Shaw and Co." onerror=\"this.style.display='none'\"><span>D.E. Shaw and Co.</span></div>
+      <div class="marquee-item"><img src="https://www.google.com/s2/favicons?sz=128&domain=dalberg.com" alt="Dalberg" onerror=\"this.style.display='none'\"><span>Dalberg</span></div>
+      <div class="marquee-item"><img src="https://www.google.com/s2/favicons?sz=128&domain=bain.com" alt="Bain" onerror=\"this.style.display='none'\"><span>Bain</span></div>
+      <div class="marquee-item"><img src="https://www.google.com/s2/favicons?sz=128&domain=unilever.com" alt="Unilever" onerror=\"this.style.display='none'\"><span>Unilever</span></div>
+      <div class="marquee-item"><img src="https://www.google.com/s2/favicons?sz=128&domain=kearney.com" alt="Kearney" onerror=\"this.style.display='none'\"><span>Kearney</span></div>
+      <div class="marquee-item"><img src="https://www.google.com/s2/favicons?sz=128&domain=thexandergroup.com" alt="Xander" onerror=\"this.style.display='none'\"><span>Xander</span></div>
+      <div class="marquee-item"><img src="https://www.google.com/s2/favicons?sz=128&domain=avendus.com" alt="Avendus" onerror=\"this.style.display='none'\"><span>Avendus</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-band" id="contact">
+  <div class="wrap">
+    <h2 class="section-title reveal">Reach out for collaborations and submissions.</h2>
+    <div class="contact-grid reveal">
+      <div class="contact-list">
+        <a href="mailto:econsoc@ashoka.edu.in">Email us</a>
+        <a href="https://www.instagram.com/econsoc.ashoka" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.linkedin.com/company/ashokaeconsoc/home/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-mega">AUES</div>
+  <div class="wrap footer-top">
+    <div><div class="footer-brand"><span class="dot"></span>AUES</div><p class="footer-desc">The Ashoka University Economics Society. Economics, beyond the classroom.</p></div>
+    <div class="footer-col"><h4>Society</h4><a href="index.html#story">About Us</a><a href="team.html">Team</a><a href="index.html#alumni">Alumni</a><a href="index.html#contact">Contact</a></div>
+    <div class="footer-col"><h4>Initiatives</h4><a href="blog.html">The Gazette</a><a href="initiatives.html#podcast">Podcast</a><a href="auer.html">AUER</a></div>
+    <div class="footer-col"><h4>Events</h4><a href="equilibrium.html">Equilibrium</a><a href="initiatives.html#conclave">Leadership Conclave</a><a href="initiatives.html#olympiad">Economics Olympiad</a></div>
+    <div class="footer-col"><h4>Connect</h4><a href="https://www.instagram.com/econsoc.ashoka">Instagram</a><a href="https://www.linkedin.com/company/ashokaeconsoc/home/">LinkedIn</a><a href="mailto:econsoc@ashoka.edu.in">Email</a></div>
+  </div>
+  <div class="wrap footer-credit"><span>Lead Developer: Shranya Gupta, Aneesh Dasgupta</span></div>
+  <div class="wrap footer-bottom"><span>&copy; 2026 Ashoka University Economics Society</span><span>Rajiv Gandhi Education City, Sonipat, Haryana 131029</span></div>
+</footer>
+
+<script>
+  document.querySelectorAll('.nav-item').forEach(item => {
+    const trigger = item.querySelector('.nav-trigger');
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = item.classList.contains('is-open');
+      document.querySelectorAll('.nav-item.is-open').forEach(i => i.classList.remove('is-open'));
+      if(!isOpen) item.classList.add('is-open');
+    });
+  });
+  document.addEventListener('click', () => document.querySelectorAll('.nav-item.is-open').forEach(i => i.classList.remove('is-open')));
+
+  const navBurger = document.querySelector('.nav-burger');
+  const mobileMenu = document.querySelector('.mobile-menu');
+  const mmCloseBtn = document.querySelector('.mobile-menu-close');
+  if(navBurger && mobileMenu){
+    const openMM = ()=>{ mobileMenu.classList.add('is-open'); navBurger.classList.add('is-active'); document.body.style.overflow='hidden'; };
+    const closeMM = ()=>{ mobileMenu.classList.remove('is-open'); navBurger.classList.remove('is-active'); document.body.style.overflow=''; };
+    navBurger.addEventListener('click', ()=> mobileMenu.classList.contains('is-open') ? closeMM() : openMM());
+    if(mmCloseBtn) mmCloseBtn.addEventListener('click', closeMM);
+    mobileMenu.querySelectorAll('.mm-link, .mm-sub a, .mm-cta').forEach(a=> a.addEventListener('click', closeMM));
+    mobileMenu.querySelectorAll('.mm-group-trigger').forEach(btn=> btn.addEventListener('click', ()=> btn.closest('.mm-group').classList.toggle('is-open')));
+  }
+
+  // Counters
+  const counters = document.querySelectorAll('.counter');
+  const cio = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        const el = entry.target;
+        const target = parseInt(el.dataset.target,10);
+        let cur = 0; const step = Math.max(1, Math.floor(target/40));
+        const tick = ()=>{ cur += step; if(cur>=target){el.textContent=target;} else{el.textContent=cur; requestAnimationFrame(tick);} };
+        tick(); cio.unobserve(el);
+      }
+    });
+  },{threshold:.4});
+  counters.forEach(c=>cio.observe(c));
+
+  // Reveal on scroll
+  document.querySelectorAll('.reveal-stagger').forEach(group=>{
+    Array.from(group.children).forEach((child,i)=> child.style.setProperty('--i', i));
+  });
+  const rio = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('is-visible'); rio.unobserve(entry.target); } });
+  },{threshold:.15, rootMargin:'0px 0px -60px 0px'});
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach(t=>rio.observe(t));
+
+  // Hyper-text scramble (Magic UI "hyper-text" adaptation) on the hero headline
+  const scrambleEl = document.getElementById('scrambleTitle');
+  if(scrambleEl){
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    const totalFrames = 22;
+    let frame = 0;
+    const allSpans = [];
+    scrambleEl.querySelectorAll(':scope > span').forEach(lineEl => {
+      const finalText = lineEl.textContent;
+      lineEl.textContent = '';
+      finalText.split('').forEach(ch => {
+        const s = document.createElement('span');
+        s.className = 'scramble-char';
+        s.textContent = ch === ' ' ? '\u00A0' : ch;
+        lineEl.appendChild(s);
+        allSpans.push({el:s, final:ch, lockFrame: Math.floor(Math.random()*totalFrames*0.7)});
+      });
+    });
+    function tick(){
+      frame++;
+      allSpans.forEach(s => {
+        if(s.final === ' '){ return; }
+        if(frame >= s.lockFrame + 8){ s.el.textContent = s.final; }
+        else { s.el.textContent = chars[Math.floor(Math.random()*chars.length)]; }
+      });
+      if(frame < totalFrames + 8){ requestAnimationFrame(tick); }
+      else { allSpans.forEach(s => s.el.textContent = s.final === ' ' ? '\u00A0' : s.final); }
+    }
+    requestAnimationFrame(tick);
+  }
+
+  // Mailto links: copy the address to clipboard as a fallback in case
+  // the device has no default mail app configured
+  document.querySelectorAll('a[href^="mailto:"]').forEach(a => {
+    a.addEventListener('click', () => {
+      const email = a.getAttribute('href').replace('mailto:', '').split('?')[0];
+      if(navigator.clipboard){ navigator.clipboard.writeText(email).catch(()=>{}); }
+    });
+  });
+</script>
+
+</body>
+</html>

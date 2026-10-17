@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AUER | Ashoka University Economics Society</title>
+<meta name="description" content="The Ashoka University Economic Review: a peer-reviewed undergraduate economics journal founded in 2020, managed by the Ashoka University Economics Society.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,500;0,600;0,700;0,800;1,600&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0D1B3E;
+    --navy-80: rgba(13,27,62,.8);
+    --navy-40: rgba(13,27,62,.4);
+    --navy-12: rgba(13,27,62,.12);
+    --navy-06: rgba(13,27,62,.06);
+    --rust:#A6391F;
+    --rust-dim: rgba(166,57,31,.14);
+    --sand:#E7C7A8;
+    --bg:#FAF7F1;
+    --bg-alt:#F0E9DC;
+    --ink:#141310;
+    --ink-55: rgba(20,19,16,.55);
+    --line: rgba(13,27,62,.13);
+    --disp: 'Archivo', sans-serif;
+    --serif: 'Fraunces', serif;
+    --sans: 'IBM Plex Sans', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+    --ease: cubic-bezier(.16,.84,.24,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1280px;margin:0 auto;padding:0 44px;}
+  @media(max-width:768px){.wrap{padding:0 22px;}}
+  ::selection{background:var(--rust);color:#fff;}
+
+  /* ---------- NAV ---------- */
+  header.site-nav{position:sticky;top:0;z-index:100;background:rgba(250,247,241,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);}
+  .nav-inner{max-width:1280px;margin:0 auto;padding:20px 44px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-brand{font-family:var(--disp);font-weight:800;font-size:19px;letter-spacing:-.01em;color:var(--navy);}
+  .nav-brand span{color:var(--rust);}
+  nav.nav-links{display:flex;gap:36px;align-items:center;}
+  nav.nav-links > a{font-family:var(--disp);font-size:13px;font-weight:600;letter-spacing:.02em;text-transform:uppercase;color:var(--navy);position:relative;padding:4px 0;transition:color .3s var(--ease);}
+  nav.nav-links > a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--rust);transition:width .35s var(--ease);}
+  nav.nav-links > a:hover{color:var(--rust);}
+  nav.nav-links > a:hover::after{width:100%;}
+  nav.nav-links > a.is-current{color:var(--rust);}
+  nav.nav-links > a.is-current::after{width:100%;}
+  .nav-item{position:relative;}
+  .nav-item > .nav-trigger{font-family:var(--disp);font-size:13px;font-weight:600;letter-spacing:.02em;text-transform:uppercase;color:var(--navy);position:relative;padding:4px 0;background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:5px;transition:color .3s var(--ease);}
+  .nav-item > .nav-trigger::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--rust);transition:width .35s var(--ease);}
+  .nav-item:hover > .nav-trigger, .nav-item.is-open > .nav-trigger{color:var(--rust);}
+  .nav-item:hover > .nav-trigger::after, .nav-item.is-open > .nav-trigger::after{width:100%;}
+  .nav-caret{width:8px;height:8px;flex-shrink:0;transition:transform .3s var(--ease);}
+  .nav-item:hover .nav-caret, .nav-item.is-open .nav-caret{transform:rotate(180deg);}
+  .nav-dropdown{position:absolute;top:calc(100% + 18px);left:50%;transform:translateX(-50%) translateY(6px);min-width:200px;background:var(--bg);border:1px solid var(--line);box-shadow:0 18px 40px rgba(13,27,62,.14);padding:8px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .25s var(--ease), transform .25s var(--ease), visibility .25s;}
+  .nav-item:hover .nav-dropdown, .nav-item.is-open .nav-dropdown{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0);}
+  .nav-dropdown a{display:block;font-family:var(--disp);font-size:13px;font-weight:600;letter-spacing:.02em;color:var(--navy);padding:11px 16px;transition:background .25s var(--ease), color .25s var(--ease);}
+  .nav-dropdown a:hover{background:var(--rust-dim);color:var(--rust);}
+  .nav-cta{font-family:var(--disp);font-size:13px;font-weight:700;letter-spacing:.02em;text-transform:uppercase;color:#fff;background:var(--rust);padding:11px 22px;transition:background .3s var(--ease), transform .3s var(--ease);}
+  .nav-cta:hover{background:var(--navy);transform:translateY(-1px);}
+  @media(max-width:1080px){nav.nav-links{display:none;}}
+
+  /* ---------- HERO ---------- */
+  .auer-hero{background:var(--navy);color:#fff;padding:100px 0 90px;position:relative;overflow:hidden;}
+  .auer-hero::before{content:"";position:absolute;top:-30%;right:-10%;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle, rgba(231,199,168,.10) 0%, rgba(231,199,168,0) 70%);}
+  .auer-eyebrow{font-family:var(--sans);font-weight:600;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--sand);margin-bottom:20px;position:relative;}
+  .auer-hero-row{display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:flex-end;position:relative;}
+  @media(max-width:760px){.auer-hero-row{grid-template-columns:1fr;}}
+  .auer-title{font-family:var(--serif);font-weight:900;letter-spacing:-.02em;line-height:.94;font-size:clamp(52px,9vw,124px);}
+  .auer-sub{max-width:520px;margin-top:0;font-size:16px;line-height:1.7;color:rgba(255,255,255,.68);padding-bottom:10px;}
+  .auer-since{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--sand);margin-top:24px;position:relative;}
+
+  /* ---------- SECTIONS ---------- */
+  .section{padding:100px 0;border-bottom:1px solid var(--line);}
+  .section-alt{background:var(--bg-alt);}
+  .section-head{max-width:680px;margin-bottom:52px;}
+  .kicker{font-family:var(--sans);font-weight:600;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--rust);display:block;margin-bottom:18px;}
+  .section-title{font-family:var(--disp);font-weight:700;font-size:clamp(30px,3.8vw,44px);color:var(--navy);letter-spacing:-.02em;line-height:1.08;}
+  .section-desc{margin-top:18px;font-size:16px;color:var(--ink-55);line-height:1.75;}
+  .section-desc + .section-desc{margin-top:14px;}
+
+  /* ---------- TOPICS ---------- */
+  .topic-pills{display:flex;flex-wrap:wrap;gap:10px;}
+  .topic-pill{font-family:var(--mono);font-size:12px;letter-spacing:.03em;color:var(--navy);border:1px solid var(--line);padding:9px 16px;background:var(--bg);}
+
+  /* ---------- SUBMISSION GRID ---------- */
+  .sub-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line);margin-top:52px;}
+  @media(max-width:800px){.sub-grid{grid-template-columns:1fr;}}
+  .sub-cell{padding:32px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .sub-cell h4{font-family:var(--disp);font-weight:700;font-size:16px;color:var(--navy);margin-bottom:10px;}
+  .sub-cell p{font-size:13.5px;color:var(--ink-55);line-height:1.65;}
+
+  /* ---------- VOLUME CATALOGUE (bookshelf) ---------- */
+  .shelf-wrap{position:relative;padding:60px 0 0;}
+  .shelf{display:flex;align-items:flex-end;gap:18px;padding:0 4px 26px;perspective:1400px;}
+  .vol-spine{position:relative;flex:0 0 92px;height:340px;background:var(--navy);cursor:pointer;transform-origin:bottom center;transition:transform .5s var(--ease), box-shadow .5s var(--ease);display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:26px 0;box-shadow:2px 0 0 rgba(0,0,0,.08) inset;}
+  .vol-spine:nth-child(odd){background:var(--navy);}
+  .vol-spine:nth-child(even){background:#1a2e5c;}
+  .vol-spine:hover{transform:translateY(-22px) rotate(-1.5deg);box-shadow:0 30px 40px -10px rgba(13,27,62,.35);z-index:2;}
+  .vol-spine:nth-child(even):hover{transform:translateY(-22px) rotate(1.5deg);}
+  .vol-num{font-family:var(--serif);font-weight:800;font-size:34px;color:var(--sand);line-height:1;}
+  .vol-label{writing-mode:vertical-rl;transform:rotate(180deg);font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:rgba(255,255,255,.55);text-transform:uppercase;}
+  .vol-issue{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:rgba(255,255,255,.4);}
+  .vol-spine--current{background:var(--rust) !important;}
+  .vol-spine--current .vol-num{color:#fff;}
+  .vol-spine--current .vol-label{color:rgba(255,255,255,.75);}
+  .vol-spine--current .vol-issue{color:rgba(255,255,255,.6);}
+  .shelf-gap{flex:0 0 30px;}
+  .vol-spine--article{flex:0 0 150px;height:320px;background:var(--sand) !important;justify-content:space-between;padding:22px 0;}
+  .vol-spine--article .vol-label{writing-mode:vertical-rl;transform:rotate(180deg);color:var(--navy);opacity:.85;font-family:var(--serif);font-style:italic;font-weight:500;font-size:13.5px;line-height:1.35;letter-spacing:.01em;height:272px;text-transform:none;white-space:normal;}
+  .vol-spine--article .vol-tag{writing-mode:vertical-rl;transform:rotate(180deg);font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--rust);}
+  .shelf-surface{height:14px;background:linear-gradient(180deg, var(--navy-12) 0%, var(--line) 100%);border-radius:1px;}
+  .shelf-surface::after{content:"";display:block;height:8px;background:rgba(13,27,62,.06);}
+  @media(max-width:700px){.shelf{overflow-x:auto;padding-bottom:30px;}}
+
+  /* ---------- MASTHEAD ---------- */
+  .masthead-row{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:8px;background:var(--line);border:1px solid var(--line);}
+  @media(max-width:760px){.masthead-row{grid-template-columns:repeat(2,1fr);}}
+  .masthead-card{padding:24px 28px;background:var(--bg);}
+  .masthead-card h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-55);margin-bottom:10px;}
+  .masthead-card .name{font-family:var(--disp);font-weight:700;font-size:17px;color:var(--navy);}
+  .masthead-card .role{font-family:var(--mono);font-size:11px;color:var(--rust);margin-top:4px;}
+
+  /* ---------- DISCLAIMER ---------- */
+  .disclaimer{font-size:12.5px;color:var(--ink-55);line-height:1.7;max-width:760px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:#0A1020;color:#fff;padding-top:90px;position:relative;overflow:hidden;}
+  .footer-mega{font-family:var(--disp);font-weight:800;font-size:clamp(80px,15vw,260px);letter-spacing:-.04em;line-height:.8;color:rgba(255,255,255,.05);white-space:nowrap;padding:0 44px;user-select:none;}
+  .footer-top{display:grid;grid-template-columns:1.4fr repeat(4,1fr);gap:40px;padding:70px 0 60px;border-bottom:1px solid rgba(255,255,255,.12);position:relative;z-index:2;}
+  @media(max-width:900px){.footer-top{grid-template-columns:1fr 1fr;}}
+  .footer-brand{font-family:var(--disp);font-size:24px;font-weight:800;margin-bottom:16px;}
+  .footer-brand span{color:var(--sand);}
+  .footer-desc{font-size:13.5px;color:rgba(255,255,255,.5);line-height:1.7;max-width:280px;}
+  .footer-col h4{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:20px;}
+  .footer-col a{display:block;font-family:var(--disp);font-weight:600;font-size:14px;color:rgba(255,255,255,.85);padding:7px 0;transition:color .3s var(--ease);}
+  .footer-col a:hover{color:var(--sand);}
+  .footer-credit{text-align:center;padding-top:22px;font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:rgba(255,255,255,.4);position:relative;z-index:2;}
+  .footer-bottom{display:flex;justify-content:space-between;padding:14px 0 26px;font-size:12.5px;color:rgba(255,255,255,.35);flex-wrap:wrap;gap:12px;position:relative;z-index:2;}
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">AUES<span>.</span></a>
+    <nav class="nav-links">
+      <a href="blog.html">The Gazette</a>
+      <a href="auer.html" class="is-current">AUER</a>
+      <div class="nav-item">
+        <button class="nav-trigger" type="button" aria-expanded="false">Initiatives
+          <svg class="nav-caret" viewBox="0 0 8 8" fill="none"><path d="M1 2.5L4 5.5L7 2.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="nav-dropdown">
+          <a href="initiatives.html#conclave">Conclave</a>
+          <a href="initiatives.html#olympiad">Olympiad</a>
+          <a href="initiatives.html#seminars">Seminars</a>
+          <a href="initiatives.html#podcast">Podcast</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <button class="nav-trigger" type="button" aria-expanded="false">Events
+          <svg class="nav-caret" viewBox="0 0 8 8" fill="none"><path d="M1 2.5L4 5.5L7 2.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="nav-dropdown">
+          <a href="events.html#academic">Academic Events</a>
+          <a href="events.html#social">Social Events</a>
+        </div>
+      </div>
+      <a href="opportunities.html">Opportunities</a>
+    </nav>
+    <a href="events.html#equilibrium" class="nav-cta">Equilibrium 4.0</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="auer-hero">
+  <div class="wrap">
+    <span class="auer-eyebrow">The Ashoka University Economic Review</span>
+    <div class="auer-hero-row">
+      <h1 class="auer-title">AUER</h1>
+      <p class="auer-sub">Ashoka's first peer-reviewed undergraduate economics journal. Founded in 2020, run entirely by students, and built to give undergraduate research a real place to be published.</p>
+    </div>
+    <div class="auer-since">Founded 2020 &middot; Currently on Volume 4</div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">About the review</span>
+      <h2 class="section-title">Peer-reviewed, student-run, and open to more than economics majors.</h2>
+      <p class="section-desc">The AUER is managed by the Ashoka University Economics Society and seeks out novel, insightful undergraduate research. It accepts research papers, commentaries and articles, and book reviews, and actively encourages submissions with a developing-world lens.</p>
+      <p class="section-desc">Articles are received on a rolling annual basis, and a selection is published each year in a single volume. Every volume needs a minimum of five accepted pieces to go to print.</p>
+    </div>
+
+    <div class="topic-pills">
+      <span class="topic-pill">Macroeconomic Policy</span>
+      <span class="topic-pill">Inequality &amp; Growth</span>
+      <span class="topic-pill">Political Science</span>
+      <span class="topic-pill">Financial Markets</span>
+      <span class="topic-pill">Health &amp; Education</span>
+      <span class="topic-pill">Business</span>
+      <span class="topic-pill">Statistics</span>
+      <span class="topic-pill">Environmental Economics</span>
+      <span class="topic-pill">Technology &amp; Innovation</span>
+      <span class="topic-pill">Economic History</span>
+      <span class="topic-pill">Microeconomics</span>
+    </div>
+
+    <div class="sub-grid">
+      <div class="sub-cell">
+        <h4>What we publish</h4>
+        <p>Research papers, commentaries and articles, and book reviews, on any of the topics above or related fields.</p>
+      </div>
+      <div class="sub-cell">
+        <h4>How it works</h4>
+        <p>Submissions are accepted year-round. Selected pieces are compiled into a single volume once a year, minimum five articles.</p>
+      </div>
+      <div class="sub-cell">
+        <h4>Get in touch</h4>
+        <p>Email <a href="mailto:auer@ashoka.edu.in" style="color:var(--rust);">auer@ashoka.edu.in</a> with submissions or questions about the review.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VOLUMES CATALOGUE -->
+<section class="section section-alt">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">The archive</span>
+      <h2 class="section-title">Four volumes, one shelf.</h2>
+      <p class="section-desc">A running catalogue of every AUER volume published so far. Hover a spine to pull it forward, click to open the volume.</p>
+    </div>
+
+    <div class="shelf-wrap">
+      <div class="shelf">
+        <!-- VOLUME 1: replace href below with your real link -->
+        <a class="vol-spine" href="volumes/auer-vol-1.pdf" target="_blank" rel="noopener">
+          <div class="vol-num">01</div>
+          <div class="vol-label">AUER</div>
+          <div class="vol-issue">2020</div>
+        </a>
+        <!-- VOLUME 2: replace href below with your real link -->
+        <a class="vol-spine" href="volumes/auer-vol-2.pdf" target="_blank" rel="noopener">
+          <div class="vol-num">02</div>
+          <div class="vol-label">AUER</div>
+          <div class="vol-issue">2022</div>
+        </a>
+        <!-- VOLUME 3: replace href below with your real link -->
+        <a class="vol-spine" href="volumes/auer-vol-3.pdf" target="_blank" rel="noopener">
+          <div class="vol-num">03</div>
+          <div class="vol-label">AUER</div>
+          <div class="vol-issue">2023&ndash;24</div>
+        </a>
+        <!-- VOLUME 4: replace href below with your real link -->
+        <a class="vol-spine vol-spine--current" href="volumes/auer-vol-4.pdf" target="_blank" rel="noopener">
+          <div class="vol-num">04</div>
+          <div class="vol-label">AUER</div>
+          <div class="vol-issue">2025</div>
+        </a>
+
+        <div class="shelf-gap"></div>
+
+        <!-- STANDALONE ARTICLE 1: replace href below with your real link -->
+        <a class="vol-spine vol-spine--article" href="volumes/auer-article-1.pdf" target="_blank" rel="noopener">
+          <div class="vol-tag">Article</div>
+          <div class="vol-label">Why Can&rsquo;t Women Have It All: A Look into Nobel Laureate Claudia Goldin&rsquo;s Research</div>
+        </a>
+        <!-- STANDALONE ARTICLE 2: replace href below with your real link -->
+        <a class="vol-spine vol-spine--article" href="volumes/auer-article-2.pdf" target="_blank" rel="noopener">
+          <div class="vol-tag">Article</div>
+          <div class="vol-label">A Layman&rsquo;s Summary of &lsquo;Democratic Backsliding in the World&rsquo;s Largest Democracy&rsquo;</div>
+        </a>
+      </div>
+      <div class="shelf-surface"></div>
+    </div>
+  </div>
+</section>
+
+<!-- MASTHEAD -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="section-title">Who runs it?</h2>
+    </div>
+    <div class="masthead-row">
+      <div class="masthead-card" style="background:var(--rust-dim);">
+        <h4>2025&ndash;26</h4>
+        <div class="name">Vedika Navani</div>
+        <div class="role">Editor-in-Chief</div>
+      </div>
+      <div class="masthead-card">
+        <h4>2025&ndash;26</h4>
+        <div class="name">Ayushman Sinha</div>
+        <div class="role">Editor</div>
+      </div>
+      <div class="masthead-card">
+        <h4>2025&ndash;26</h4>
+        <div class="name">Sanjana Mathur</div>
+        <div class="role">Editor</div>
+      </div>
+      <div class="masthead-card">
+        <h4>2025&ndash;26</h4>
+        <div class="name">Dhairya Shah</div>
+        <div class="role">Editor</div>
+      </div>
+      <div class="masthead-card">
+        <h4>2025&ndash;26</h4>
+        <div class="name">Karan Chordia</div>
+        <div class="role">Editor</div>
+      </div>
+      <div class="masthead-card">
+        <h4>2025&ndash;26</h4>
+        <div class="name">Aarya Munot</div>
+        <div class="role">Editor</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DISCLAIMER -->
+<section class="section section-alt" style="padding:56px 0;">
+  <div class="wrap">
+    <p class="disclaimer">The views expressed in the AUER, in this publication or on this website, are those of the individual authors or speakers, and do not necessarily reflect the position or policy of AUER staff, the Ashoka University Economics Society, or Ashoka University's Economics Department and faculty.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-mega">AUES</div>
+  <div class="wrap footer-top">
+    <div><div class="footer-brand">AUES<span>.</span></div><p class="footer-desc">The Ashoka University Economics Society. Economics, beyond the classroom.</p></div>
+    <div class="footer-col"><h4>Society</h4><a href="index.html#story">About Us</a><a href="index.html#team">The Team</a><a href="index.html#alumni">Alumni</a><a href="index.html#contact">Contact</a></div>
+    <div class="footer-col"><h4>Initiatives</h4><a href="blog.html">The Gazette</a><a href="initiatives.html#podcast">Podcast</a><a href="auer.html">AUER</a></div>
+    <div class="footer-col"><h4>Events</h4><a href="events.html#equilibrium">Equilibrium</a><a href="initiatives.html#conclave">Leadership Conclave</a><a href="initiatives.html#olympiad">Economics Olympiad</a></div>
+    <div class="footer-col"><h4>Connect</h4><a href="https://www.instagram.com/econsoc.ashoka/">Instagram</a><a href="https://in.linkedin.com/company/ashokaeconsoc">LinkedIn</a><a href="mailto:econsoc@ashoka.edu.in">Email</a></div>
+  </div>
+  <div class="wrap footer-credit"><span>Lead Developer: Shranya Gupta, Aneesh Dasgupta</span></div>
+  <div class="wrap footer-bottom"><span>&copy; 2026 Ashoka University Economics Society</span><span>Rajiv Gandhi Education City, Sonipat, Haryana 131029</span></div>
+</footer>
+
+<script>
+  // Nav dropdowns: hover on desktop, tap-to-toggle on touch/keyboard
+  document.querySelectorAll('.nav-item').forEach(item => {
+    const trigger = item.querySelector('.nav-trigger');
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = item.classList.contains('is-open');
+      document.querySelectorAll('.nav-item.is-open').forEach(i => { i.classList.remove('is-open'); i.querySelector('.nav-trigger').setAttribute('aria-expanded','false'); });
+      if(!isOpen){ item.classList.add('is-open'); trigger.setAttribute('aria-expanded','true'); }
+    });
+  });
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.nav-item.is-open').forEach(i => { i.classList.remove('is-open'); i.querySelector('.nav-trigger').setAttribute('aria-expanded','false'); });
+  });
+</script>
+
+</body>
+</html>

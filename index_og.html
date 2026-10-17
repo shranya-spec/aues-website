@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ashoka University Economics Society | AUES</title>
+<meta name="description" content="The official academic economics society of Ashoka University. Equilibrium, The Gazette, the AUER journal, seminars and eleven student-run departments.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,500;0,600;0,700;0,800;1,600&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0D1B3E;
+    --navy-80: rgba(13,27,62,.8);
+    --navy-40: rgba(13,27,62,.4);
+    --navy-12: rgba(13,27,62,.12);
+    --navy-06: rgba(13,27,62,.06);
+    --rust:#A6391F;
+    --rust-dim: rgba(166,57,31,.14);
+    --sand:#E7C7A8;
+    --bg:#FAF7F1;
+    --bg-alt:#F0E9DC;
+    --ink:#141310;
+    --ink-55: rgba(20,19,16,.55);
+    --line: rgba(13,27,62,.13);
+    --disp: 'Archivo', sans-serif;
+    --serif: 'Fraunces', serif;
+    --sans: 'IBM Plex Sans', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+    --ease: cubic-bezier(.16,.84,.24,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1280px;margin:0 auto;padding:0 44px;}
+  @media(max-width:768px){.wrap{padding:0 22px;}}
+  ::selection{background:var(--rust);color:#fff;}
+
+  /* ---------- NAV ---------- */
+  header.site-nav{position:sticky;top:0;z-index:100;background:rgba(250,247,241,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);}
+  .nav-inner{max-width:1280px;margin:0 auto;padding:20px 44px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-brand{font-family:var(--disp);font-weight:800;font-size:19px;letter-spacing:-.01em;color:var(--navy);}
+  .nav-brand span{color:var(--rust);}
+  nav.nav-links{display:flex;gap:36px;align-items:center;}
+  nav.nav-links > a{font-family:var(--disp);font-size:13px;font-weight:600;letter-spacing:.02em;text-transform:uppercase;color:var(--navy);position:relative;padding:4px 0;transition:color .3s var(--ease);}
+  nav.nav-links > a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--rust);transition:width .35s var(--ease);}
+  nav.nav-links > a:hover{color:var(--rust);}
+  nav.nav-links > a:hover::after{width:100%;}
+  nav.nav-links > a.is-current{color:var(--rust);}
+  nav.nav-links > a.is-current::after{width:100%;}
+  .nav-item{position:relative;}
+  .nav-item > .nav-trigger{font-family:var(--disp);font-size:13px;font-weight:600;letter-spacing:.02em;text-transform:uppercase;color:var(--navy);position:relative;padding:4px 0;background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:5px;transition:color .3s var(--ease);}
+  .nav-item > .nav-trigger::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--rust);transition:width .35s var(--ease);}
+  .nav-item:hover > .nav-trigger, .nav-item.is-open > .nav-trigger{color:var(--rust);}
+  .nav-item:hover > .nav-trigger::after, .nav-item.is-open > .nav-trigger::after{width:100%;}
+  .nav-item.is-current > .nav-trigger{color:var(--rust);}
+  .nav-item.is-current > .nav-trigger::after{width:100%;}
+  .nav-caret{width:8px;height:8px;flex-shrink:0;transition:transform .3s var(--ease);}
+  .nav-item:hover .nav-caret, .nav-item.is-open .nav-caret{transform:rotate(180deg);}
+  .nav-dropdown{position:absolute;top:calc(100% + 18px);left:50%;transform:translateX(-50%) translateY(6px);min-width:200px;background:var(--bg);border:1px solid var(--line);box-shadow:0 18px 40px rgba(13,27,62,.14);padding:8px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .25s var(--ease), transform .25s var(--ease), visibility .25s;}
+  .nav-item:hover .nav-dropdown, .nav-item.is-open .nav-dropdown{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0);}
+  .nav-dropdown a{display:block;font-family:var(--disp);font-size:13px;font-weight:600;letter-spacing:.02em;color:var(--navy);padding:11px 16px;transition:background .25s var(--ease), color .25s var(--ease);}
+  .nav-dropdown a:hover{background:var(--rust-dim);color:var(--rust);}
+  /* no is-current link on this page: the logo self-links home */
+  .nav-cta{font-family:var(--disp);font-size:13px;font-weight:700;letter-spacing:.02em;text-transform:uppercase;color:#fff;background:var(--rust);padding:11px 22px;transition:background .3s var(--ease), transform .3s var(--ease);}
+  .nav-cta:hover{background:var(--navy);transform:translateY(-1px);}
+  @media(max-width:1080px){nav.nav-links{display:none;}}
+
+  /* ---------- PAGE HERO ---------- */
+  .pg-hero{position:relative;min-height:78vh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;border-bottom:1px solid var(--line);}
+  .pg-hero-bg{position:absolute;inset:0;z-index:0;
+    background:linear-gradient(180deg, rgba(13,27,62,.35) 0%, rgba(13,27,62,.5) 45%, rgba(10,16,32,.97) 100%),
+      url('hero-campus.jpg') center 58%/cover no-repeat;
+    transform:scale(1.08);animation:heroZoom 16s var(--ease) forwards;}
+  @keyframes heroZoom{to{transform:scale(1);}}
+  .pg-hero-card{position:absolute;z-index:2;top:22%;right:8%;background:rgba(10,16,32,.82);border:1px solid rgba(255,255,255,.16);padding:16px 18px;backdrop-filter:blur(6px);opacity:0;animation:cardIn .8s var(--ease) .95s forwards;}
+  .pg-hero-card .fc-label{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:8px;}
+  .pg-hero-card .fc-num{font-family:var(--disp);font-size:26px;font-weight:700;color:#fff;line-height:1;}
+  .pg-hero-card .fc-num span{color:var(--sand);}
+  .pg-hero-card .fc-bars{display:flex;gap:3px;align-items:flex-end;height:20px;margin-top:10px;}
+  .pg-hero-card .fc-bars i{display:block;width:4px;background:var(--sand);opacity:.85;}
+  @keyframes cardIn{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+  @media(max-width:860px){.pg-hero-card{display:none;}}
+  .pg-hero-content{position:relative;z-index:3;padding-bottom:60px;}
+  .pg-eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--sand);display:flex;align-items:center;gap:10px;margin-bottom:20px;opacity:0;animation:fadeUp .8s var(--ease) .2s forwards;}
+  .pg-eyebrow::before{content:"";width:24px;height:1px;background:var(--sand);display:inline-block;}
+  .pg-wordmark{font-family:var(--disp);font-weight:800;letter-spacing:-.03em;line-height:.98;font-size:clamp(34px, 6.6vw, 96px);color:#fff;margin-left:-3px;}
+  .pg-wordmark .line{display:block;overflow:hidden;}
+  .pg-wordmark .line span{display:inline-block;transform:translateY(105%);animation:riseIn 1s var(--ease) forwards;}
+  .pg-wordmark .line:nth-child(1) span{animation-delay:.05s;}
+  .pg-wordmark .line:nth-child(2) span{animation-delay:.18s;color:var(--sand);}
+  @keyframes riseIn{to{transform:translateY(0);}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+  .pg-sub{max-width:460px;margin-top:30px;font-size:15.5px;line-height:1.65;color:rgba(255,255,255,.75);opacity:0;animation:fadeUp .8s var(--ease) .55s forwards;}
+
+  /* ---------- SECTIONS ---------- */
+  .section{padding:120px 0;border-bottom:1px solid var(--line);}
+  .section-alt{background:var(--bg-alt);}
+  .section-head{max-width:660px;margin-bottom:64px;}
+  .kicker{font-family:var(--sans);font-weight:600;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--rust);display:block;margin-bottom:18px;}
+  .section-title{font-family:var(--disp);font-weight:700;font-size:clamp(32px,4.2vw,54px);color:var(--navy);letter-spacing:-.02em;line-height:1.04;}
+  .section-title em{font-style:italic;font-family:var(--serif);font-weight:500;color:var(--rust);}
+  .section-desc{margin-top:20px;font-size:16.5px;color:var(--ink-55);line-height:1.7;}
+
+  /* ---------- STORY ---------- */
+  .story-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:90px;align-items:start;}
+  @media(max-width:900px){.story-grid{grid-template-columns:1fr;gap:44px;}}
+  .story-body p{font-size:17px;line-height:1.78;color:var(--ink);margin-bottom:24px;max-width:620px;}
+  .story-body p:last-child{margin-bottom:0;color:var(--ink-55);}
+  .story-pull{margin-top:40px;padding-top:28px;border-top:1px solid var(--line);font-family:var(--serif);font-style:italic;font-size:23px;line-height:1.45;color:var(--navy);max-width:560px;}
+
+  /* ---------- STATS ---------- */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);}
+  .stat{padding:50px 32px;border-right:1px solid var(--line);}
+  .stat:last-child{border-right:none;}
+  .stat-num{font-family:var(--disp);font-weight:800;font-size:clamp(40px,4.8vw,64px);color:var(--navy);line-height:1;letter-spacing:-.02em;}
+  .stat-num span{color:var(--rust);}
+  .stat-label{margin-top:16px;font-size:12.5px;letter-spacing:.03em;text-transform:uppercase;color:var(--ink-55);font-family:var(--mono);}
+  @media(max-width:860px){.stats{grid-template-columns:repeat(2,1fr);}.stat{border-bottom:1px solid var(--line);}}
+
+  /* ---------- DEPARTMENT INDEX ---------- */
+  .depts{background:var(--navy);color:#fff;}
+  .depts .kicker{color:var(--sand);}
+  .depts .section-title{color:#fff;}
+  .depts .section-title em{color:var(--sand);}
+  .depts .section-desc{color:rgba(255,255,255,.62);}
+  .dept-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(255,255,255,.16);border-left:1px solid rgba(255,255,255,.16);}
+  .dept-cell{padding:36px 32px 40px;border-right:1px solid rgba(255,255,255,.16);border-bottom:1px solid rgba(255,255,255,.16);}
+  .dept-cell h3{font-family:var(--disp);font-weight:700;font-size:22px;letter-spacing:-.01em;margin-bottom:14px;}
+  .dept-cell--cta{display:block;background:var(--rust);}
+  .dept-cell--cta .dept-num{color:rgba(255,255,255,.7);}
+  .dept-cell--cta p{color:rgba(255,255,255,.8);}
+  .dept-cell--cta:hover{background:#8E2F19;}
+  .dept-cell--cta:hover h3{color:#fff;}
+  .dept-num{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--sand);display:block;margin-bottom:26px;}
+  .dept-cell h3{font-family:var(--disp);font-weight:700;font-size:22px;letter-spacing:-.01em;margin-bottom:14px;}
+  .dept-cell p{font-size:14px;line-height:1.65;color:rgba(255,255,255,.6);}
+  .dept-heads{margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,.14);font-family:var(--mono);font-size:11.5px;letter-spacing:.03em;color:var(--sand);}
+  @media(max-width:900px){.dept-grid{grid-template-columns:1fr;}}
+
+  /* ---------- PEOPLE ---------- */
+  .people-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:28px;}
+  @media(max-width:1000px){.people-grid{grid-template-columns:repeat(3,1fr);}}
+  @media(max-width:720px){.people-grid{grid-template-columns:repeat(2,1fr);gap:20px;}}
+  .person-card{display:block;transition:transform .4s var(--ease);}
+  .person-card:hover{transform:translateY(-4px);}
+  .pc-photo{aspect-ratio:287/323;background-size:cover;background-position:center top;background-color:var(--bg-alt);border:1px solid var(--line);filter:grayscale(100%) contrast(1.02);transition:filter .5s var(--ease);}
+  .person-card:hover .pc-photo{filter:grayscale(0%);}
+  .pc-body{padding-top:16px;}
+  .pc-name{font-family:var(--disp);font-weight:700;font-size:16.5px;color:var(--navy);letter-spacing:-.01em;}
+  .pc-role{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--rust);margin-top:7px;}
+  .pc-org{font-size:13px;color:var(--ink-55);margin-top:6px;}
+
+  /* ---------- ALUMNI ---------- */
+  .logo-strip{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line);margin-top:52px;}
+  @media(max-width:900px){.logo-strip{grid-template-columns:repeat(2,1fr);}}
+  .logo-cell{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;min-height:120px;padding:28px 20px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);transition:background .3s var(--ease);}
+  .logo-cell:hover{background:var(--rust-dim);}
+  .logo-cell-img{width:34px;height:34px;object-fit:contain;filter:grayscale(100%);opacity:.55;transition:opacity .3s var(--ease), filter .3s var(--ease);}
+  .logo-cell:hover .logo-cell-img{opacity:1;filter:grayscale(0%);}
+  .logo-cell-name{font-family:var(--disp);font-weight:700;font-size:14px;color:var(--navy-80);text-align:center;}
+
+  /* ---------- CONTACT ---------- */
+  .contact{background:var(--navy);color:#fff;}
+  .contact .kicker{color:var(--sand);}
+  .contact .section-title{color:#fff;}
+  .contact .section-title em{color:var(--sand);}
+  .contact-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(255,255,255,.16);border-left:1px solid rgba(255,255,255,.16);margin-top:56px;}
+  .contact-cell{padding:38px 32px;border-right:1px solid rgba(255,255,255,.16);border-bottom:1px solid rgba(255,255,255,.16);transition:background .35s var(--ease);}
+  .contact-cell:hover{background:rgba(231,199,168,.07);}
+  .contact-cell h4{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:20px;}
+  .contact-cell a, .contact-cell p{display:block;font-family:var(--disp);font-weight:600;font-size:16px;color:#fff;padding:6px 0;transition:color .3s var(--ease);}
+  .contact-cell a:hover{color:var(--sand);}
+  .contact-cell p{font-family:var(--sans);font-weight:400;font-size:14.5px;color:rgba(255,255,255,.6);line-height:1.7;}
+  @media(max-width:900px){.contact-grid{grid-template-columns:1fr;}}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:#0A1020;color:#fff;padding-top:90px;position:relative;overflow:hidden;}
+  .footer-mega{font-family:var(--disp);font-weight:800;font-size:clamp(80px,15vw,260px);letter-spacing:-.04em;line-height:.8;color:rgba(255,255,255,.05);white-space:nowrap;padding:0 44px;user-select:none;}
+  .footer-top{display:grid;grid-template-columns:1.4fr repeat(4,1fr);gap:40px;padding:70px 0 60px;border-bottom:1px solid rgba(255,255,255,.12);position:relative;z-index:2;}
+  @media(max-width:900px){.footer-top{grid-template-columns:1fr 1fr;}}
+  .footer-brand{font-family:var(--disp);font-size:24px;font-weight:800;margin-bottom:16px;}
+  .footer-brand span{color:var(--sand);}
+  .footer-desc{font-size:13.5px;color:rgba(255,255,255,.5);line-height:1.7;max-width:280px;}
+  .footer-col h4{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:20px;}
+  .footer-col a{display:block;font-family:var(--disp);font-weight:600;font-size:14px;color:rgba(255,255,255,.85);padding:7px 0;transition:color .3s var(--ease);}
+  .footer-col a:hover{color:var(--sand);}
+  .footer-credit{text-align:center;padding-top:22px;font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:rgba(255,255,255,.4);position:relative;z-index:2;}
+  .footer-bottom{display:flex;justify-content:space-between;padding:14px 0 26px;font-size:12.5px;color:rgba(255,255,255,.35);flex-wrap:wrap;gap:12px;position:relative;z-index:2;}
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">AUES<span>.</span></a>
+    <nav class="nav-links">
+      <a href="blog.html">The Gazette</a>
+      <a href="auer.html">AUER</a>
+      <div class="nav-item">
+        <button class="nav-trigger" type="button" aria-expanded="false">Initiatives
+          <svg class="nav-caret" viewBox="0 0 8 8" fill="none"><path d="M1 2.5L4 5.5L7 2.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="nav-dropdown">
+          <a href="initiatives.html#conclave">Conclave</a>
+          <a href="initiatives.html#olympiad">Olympiad</a>
+          <a href="initiatives.html#seminars">Seminars</a>
+          <a href="initiatives.html#podcast">Podcast</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <button class="nav-trigger" type="button" aria-expanded="false">Events
+          <svg class="nav-caret" viewBox="0 0 8 8" fill="none"><path d="M1 2.5L4 5.5L7 2.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="nav-dropdown">
+          <a href="events.html#academic">Academic Events</a>
+          <a href="events.html#social">Social Events</a>
+        </div>
+      </div>
+      <a href="opportunities.html">Opportunities</a>
+    </nav>
+    <a href="events.html#equilibrium" class="nav-cta">Equilibrium 4.0</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="pg-hero">
+  <div class="pg-hero-bg"></div>
+  <div class="wrap pg-hero-content">
+    <h1 class="pg-wordmark">
+      <div class="line"><span>Ashoka University</span></div>
+      <div class="line"><span>Economics Society</span></div>
+    </h1>
+    <p class="pg-sub">The official academic economics society of Ashoka University, run entirely by undergraduates across eleven departments.</p>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="section" id="story">
+  <div class="wrap">
+    <div class="story-grid">
+      <div>
+        <span class="kicker">Who we are</span>
+        <h2 class="section-title">A society for people who keep <em>asking why.</em></h2>
+      </div>
+      <div class="story-body">
+        <p>The Ashoka University Economics Society aims to actively contribute to the dialogue around economics in Ashoka. As an ever-evolving and dynamic subject, economics plays an important role in the lives of all individuals.</p>
+        <p>We take economics beyond the classroom by providing students with an intellectually stimulating environment which allows them to engage with and critically think and talk about the issues gripping the world.</p>
+        <p>That work runs through competitions, seminars, mentorship programmes and Equilibrium, our flagship economics festival. Under the same roof sit the Ashoka University Economic Review, Ashoka's first peer-reviewed undergraduate economics journal, and The Gazette, our student-run publication.</p>
+        <div class="story-pull">Our vision is to make the subject more accessible, and to inspire students to engage with ideas beyond the confines of their courses.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="section section-alt" style="padding-bottom:0;">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">The society, counted</span>
+      <h2 class="section-title">What eleven teams <em>add up to.</em></h2>
+    </div>
+  </div>
+  <div class="stats">
+    <div class="stat"><div class="stat-num"><span class="counter" data-target="11">0</span></div><div class="stat-label">Departments</div></div>
+    <div class="stat"><div class="stat-num"><span class="counter" data-target="100">0</span><span>+</span></div><div class="stat-label">Members on the team</div></div>
+    <div class="stat"><div class="stat-num"><span class="counter" data-target="50">0</span><span>+</span></div><div class="stat-label">Seminars conducted</div></div>
+    <div class="stat"><div class="stat-num"><span class="counter" data-target="40">0</span><span>+</span></div><div class="stat-label">Universities at Equilibrium</div></div>
+  </div>
+</section>
+
+<!-- DEPARTMENTS -->
+<section class="section depts" id="departments">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">How we are organised</span>
+      <h2 class="section-title">Eleven teams, one <em>society.</em></h2>
+      <p class="section-desc">Inductions run at the start of the academic year and are open to every student, with no preference given to one major over another.</p>
+    </div>
+    <div class="dept-grid">
+      <div class="dept-cell">
+        <span class="dept-num">01</span>
+        <h3>Seminars</h3>
+        <p>Plans and executes talks, webinars and seminars at Ashoka, from inviting professors and public figures through to moderating the session on the day.</p>
+        <div class="dept-heads">Saloni Rego &amp; Anvita Bhogadi</div>
+      </div>
+      <div class="dept-cell">
+        <span class="dept-num">02</span>
+        <h3>Academic Events</h3>
+        <p>Runs research-driven events including the Ashoka University Paper Presentation Competition, managing logistics, participation and marketing throughout.</p>
+        <div class="dept-heads">Ishaan Suri &amp; Sakshya Iyer</div>
+      </div>
+      <div class="dept-cell">
+        <span class="dept-num">03</span>
+        <h3>Blog</h3>
+        <p>Translates ideas into writing. The team handles commissioning, editing and publishing every piece that goes out under The Gazette.</p>
+        <div class="dept-heads">Anandini Agarwal &amp; Hardik Srivastava</div>
+      </div>
+      <div class="dept-cell">
+        <span class="dept-num">04</span>
+        <h3>AUER</h3>
+        <p>Edits the Ashoka University Economic Review, Ashoka's first peer-reviewed undergraduate economics journal, founded in 2020.</p>
+        <div class="dept-heads">Vedika Navani</div>
+      </div>
+      <div class="dept-cell">
+        <span class="dept-num">05</span>
+        <h3>Podcast</h3>
+        <p>Produces Econversations, the society's economics podcast, which has hosted Nobel laureate Robert Aumann alongside faculty and alumni guests.</p>
+        <div class="dept-heads">Kartikeya Singh &amp; Aditi Chhajed</div>
+      </div>
+      <div class="dept-cell">
+        <span class="dept-num">06</span>
+        <h3>Social Events</h3>
+        <p>Plans mixers, stress-busters and team socials that make economics accessible to the whole student body, not only economics majors.</p>
+        <div class="dept-heads">Arushi Vyapak &amp; Anaya Kokra</div>
+      </div>
+      <div class="dept-cell">
+        <span class="dept-num">07</span>
+        <h3>Mentorship and Opportunities</h3>
+        <p>Runs the mentorship programme and helpdesk, pairing students with peers who can advise on courses, research, internships and graduate school.</p>
+        <div class="dept-heads">Advika Jajoo &amp; Vani Lunawat</div>
+      </div>
+      <div class="dept-cell">
+        <span class="dept-num">08</span>
+        <h3>Outreach</h3>
+        <p>Builds the relationships the society runs on, from speaker invitations and inter-university participation to sponsor conversations.</p>
+        <div class="dept-heads">Aaditya Chandra &amp; Suhavi Hiranandani</div>
+      </div>
+      <div class="dept-cell">
+        <span class="dept-num">09</span>
+        <h3>Marketing</h3>
+        <p>Handles design, social media and the public face of everything the society publishes and hosts.</p>
+        <div class="dept-heads">Sneha Pasricha &amp; Mansha Sharangpani</div>
+      </div>
+      <div class="dept-cell">
+        <span class="dept-num">10</span>
+        <h3>Technology and AI</h3>
+        <p>Builds and maintains the society's website and digital infrastructure, and brings new tooling to how the other ten teams work.</p>
+        <div class="dept-heads">Aneesh Dasgupta &amp; Shranya Gupta</div>
+      </div>
+      <div class="dept-cell">
+        <span class="dept-num">11</span>
+        <h3>Finance</h3>
+        <p>Manages budgets, sponsorship revenue and the accounts behind every event the society runs.</p>
+        <div class="dept-heads">Advika Jajodia &amp; Radhika Tandon</div>
+      </div>
+      <a class="dept-cell dept-cell--cta" href="opportunities.html">
+        <span class="dept-num">Join</span>
+        <h3>Inductions</h3>
+        <p>Applications open at the start of every academic year, across all eleven teams.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="section" id="team">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">The team, 2025-26</span>
+      <h2 class="section-title">The Core.</h2>
+      <p class="section-desc">Click any name to view their profile.</p>
+    </div>
+
+    <div class="people-grid">
+      <a class="person-card" href="https://www.linkedin.com/in/annikakhara/" target="_blank" rel="noopener"><div class="pc-photo" style="background-image:url('https://static.wixstatic.com/media/815c2f_73205732a036455ab914e7142fc3a5d5~mv2.jpg')"></div>
+      <div class="pc-body">
+        <div class="pc-name">Annika Khara</div>
+        <div class="pc-role">President</div>
+        <div class="pc-org">&nbsp;</div>
+      </div></a>
+      <a class="person-card" href="https://www.linkedin.com/in/aagastya-jaipuria-9464b1217" target="_blank" rel="noopener"><div class="pc-photo" style="background-image:url('https://static.wixstatic.com/media/815c2f_4d89e291239343529c2fbdadbcb1733a~mv2.jpeg')"></div>
+      <div class="pc-body">
+        <div class="pc-name">Aagasthya Jaipuria</div>
+        <div class="pc-role">President</div>
+        <div class="pc-org">&nbsp;</div>
+      </div></a>
+      <div class="person-card"><div class="pc-photo" style="background-image:url('https://static.wixstatic.com/media/815c2f_fc3b48c4773e4379a9dfbb618920137e~mv2.jpg')"></div>
+      <div class="pc-body">
+        <div class="pc-name">Ushnish Bhattacharya</div>
+        <div class="pc-role">Vice-President</div>
+        <div class="pc-org">&nbsp;</div>
+      </div></div>
+      <a class="person-card" href="https://www.linkedin.com/in/keshav-jalan/" target="_blank" rel="noopener"><div class="pc-photo" style="background-image:url('https://static.wixstatic.com/media/815c2f_9b9e710b22c24d97af2723776806e770~mv2.jpeg')"></div>
+      <div class="pc-body">
+        <div class="pc-name">Keshav Jalan</div>
+        <div class="pc-role">Vice-President</div>
+        <div class="pc-org">&nbsp;</div>
+      </div></a>
+      <a class="person-card" href="https://www.linkedin.com/in/sanath-sharda-0253ab234" target="_blank" rel="noopener"><div class="pc-photo" style="background-image:url('https://static.wixstatic.com/media/7eb0d5_e8c49f338a264dbfbb08915c6923c539~mv2.jpeg')"></div>
+      <div class="pc-body">
+        <div class="pc-name">Sanath Sharda</div>
+        <div class="pc-role">Secretary</div>
+        <div class="pc-org">&nbsp;</div>
+      </div></a>
+    </div>
+  </div>
+</section>
+
+<!-- ALUMNI -->
+<section class="section section-alt" id="alumni">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Where they have gone</span>
+      <h2 class="section-title">Our alumni have made significant strides in <em>their careers.</em></h2>
+      <p class="section-desc">Members and alumni have gained experience through internships and placements across consulting, finance, research and policy. Below is a directory of organisations where our members are currently employed. Feel free to connect with them for guidance and support.</p>
+    </div>
+    <div class="logo-strip"><div class="logo-cell">
+        <img class="logo-cell-img" src="https://www.google.com/s2/favicons?sz=128&domain=kpmg.com" alt="KPMG logo" loading="lazy" onerror="this.remove()">
+        <span class="logo-cell-name">KPMG</span>
+      </div><div class="logo-cell">
+        <img class="logo-cell-img" src="https://www.google.com/s2/favicons?sz=128&domain=ey.com" alt="Ernst & Young logo" loading="lazy" onerror="this.remove()">
+        <span class="logo-cell-name">Ernst & Young</span>
+      </div><div class="logo-cell">
+        <img class="logo-cell-img" src="https://www.google.com/s2/favicons?sz=128&domain=zomato.com" alt="Zomato logo" loading="lazy" onerror="this.remove()">
+        <span class="logo-cell-name">Zomato</span>
+      </div><div class="logo-cell">
+        <img class="logo-cell-img" src="https://www.google.com/s2/favicons?sz=128&domain=fractal.ai" alt="Fractal Analytics logo" loading="lazy" onerror="this.remove()">
+        <span class="logo-cell-name">Fractal Analytics</span>
+      </div><div class="logo-cell">
+        <img class="logo-cell-img" src="https://www.google.com/s2/favicons?sz=128&domain=spencerstuart.com" alt="Spencer Stuart logo" loading="lazy" onerror="this.remove()">
+        <span class="logo-cell-name">Spencer Stuart</span>
+      </div><div class="logo-cell">
+        <img class="logo-cell-img" src="https://www.google.com/s2/favicons?sz=128&domain=nuvama.com" alt="Nuvama Wealth logo" loading="lazy" onerror="this.remove()">
+        <span class="logo-cell-name">Nuvama Wealth</span>
+      </div><div class="logo-cell">
+        <img class="logo-cell-img" src="https://www.google.com/s2/favicons?sz=128&domain=orfonline.org" alt="Observer Research Foundation logo" loading="lazy" onerror="this.remove()">
+        <span class="logo-cell-name">Observer Research Foundation</span>
+      </div><div class="logo-cell">
+        <img class="logo-cell-img" src="https://www.google.com/s2/favicons?sz=128&domain=360.one" alt="360 ONE Wealth logo" loading="lazy" onerror="this.remove()">
+        <span class="logo-cell-name">360 ONE Wealth</span>
+      </div><div class="logo-cell">
+        <img class="logo-cell-img" src="https://www.google.com/s2/favicons?sz=128&domain=1mg.com" alt="Tata 1mg logo" loading="lazy" onerror="this.remove()">
+        <span class="logo-cell-name">Tata 1mg</span>
+      </div><div class="logo-cell">
+        <img class="logo-cell-img" src="https://www.google.com/s2/favicons?sz=128&domain=dbs.com" alt="DBS Bank logo" loading="lazy" onerror="this.remove()">
+        <span class="logo-cell-name">DBS Bank</span>
+      </div><div class="logo-cell">
+        <img class="logo-cell-img" src="https://www.google.com/s2/favicons?sz=128&domain=icicibank.com" alt="ICICI Bank logo" loading="lazy" onerror="this.remove()">
+        <span class="logo-cell-name">ICICI Bank</span>
+      </div><div class="logo-cell">
+        <img class="logo-cell-img" src="https://www.google.com/s2/favicons?sz=128&domain=makemytrip.com" alt="MakeMyTrip logo" loading="lazy" onerror="this.remove()">
+        <span class="logo-cell-name">MakeMyTrip</span>
+      </div><div class="logo-cell">
+        <img class="logo-cell-img" src="https://www.google.com/s2/favicons?sz=128&domain=nseindia.com" alt="National Stock Exchange logo" loading="lazy" onerror="this.remove()">
+        <span class="logo-cell-name">National Stock Exchange</span>
+      </div><div class="logo-cell">
+        <img class="logo-cell-img" src="https://www.google.com/s2/favicons?sz=128&domain=adityabirlacapital.com" alt="Aditya Birla Sun Life AMC logo" loading="lazy" onerror="this.remove()">
+        <span class="logo-cell-name">Aditya Birla Sun Life AMC</span>
+      </div><div class="logo-cell">
+        <img class="logo-cell-img" src="https://www.google.com/s2/favicons?sz=128&domain=shapoorjipallonji.com" alt="Shapoorji Pallonji Finance logo" loading="lazy" onerror="this.remove()">
+        <span class="logo-cell-name">Shapoorji Pallonji Finance</span>
+      </div></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact" id="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Get in touch</span>
+      <h2 class="section-title">Collaborations, submissions, <em>or a coffee chat.</em></h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-cell">
+        <h4>Email</h4>
+        <a href="mailto:econsoc@ashoka.edu.in">econsoc@ashoka.edu.in</a>
+      </div>
+      <div class="contact-cell">
+        <h4>Follow</h4>
+        <a href="https://www.instagram.com/econsoc.ashoka/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://in.linkedin.com/company/ashokaeconsoc" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.youtube.com/channel/UCxQDMCGGtIiYXppFwz3UN2g" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://twitter.com/econsoc_ashoka" target="_blank" rel="noopener">X</a>
+      </div>
+      <div class="contact-cell">
+        <h4>Find us</h4>
+        <p>Ashoka University<br>Rajiv Gandhi Education City<br>Sonipat, Haryana 131029</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-mega">AUES</div>
+  <div class="wrap footer-top">
+    <div><div class="footer-brand">AUES<span>.</span></div><p class="footer-desc">The Ashoka University Economics Society. Economics, beyond the classroom.</p></div>
+    <div class="footer-col"><h4>Society</h4><a href="index.html#story">About Us</a><a href="index.html#team">The Team</a><a href="index.html#alumni">Alumni</a><a href="index.html#contact">Contact</a></div>
+    <div class="footer-col"><h4>Initiatives</h4><a href="blog.html">The Gazette</a><a href="initiatives.html#podcast">Podcast</a><a href="auer.html">AUER</a></div>
+    <div class="footer-col"><h4>Events</h4><a href="events.html#equilibrium">Equilibrium</a><a href="initiatives.html#conclave">Leadership Conclave</a><a href="initiatives.html#olympiad">Economics Olympiad</a></div>
+    <div class="footer-col"><h4>Connect</h4><a href="https://www.instagram.com/econsoc.ashoka/">Instagram</a><a href="https://in.linkedin.com/company/ashokaeconsoc">LinkedIn</a><a href="mailto:econsoc@ashoka.edu.in">Email</a></div>
+  </div>
+  <div class="wrap footer-credit"><span>Lead Developer: Shranya Gupta, Aneesh Dasgupta</span></div>
+  <div class="wrap footer-bottom"><span>&copy; 2026 Ashoka University Economics Society</span><span>Rajiv Gandhi Education City, Sonipat, Haryana 131029</span></div>
+</footer>
+
+<script>
+  // Nav dropdowns: hover on desktop, tap-to-toggle on touch/keyboard
+  document.querySelectorAll('.nav-item').forEach(item => {
+    const trigger = item.querySelector('.nav-trigger');
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = item.classList.contains('is-open');
+      document.querySelectorAll('.nav-item.is-open').forEach(i => { i.classList.remove('is-open'); i.querySelector('.nav-trigger').setAttribute('aria-expanded','false'); });
+      if(!isOpen){ item.classList.add('is-open'); trigger.setAttribute('aria-expanded','true'); }
+    });
+  });
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.nav-item.is-open').forEach(i => { i.classList.remove('is-open'); i.querySelector('.nav-trigger').setAttribute('aria-expanded','false'); });
+  });
+
+  const counters = document.querySelectorAll('.counter');
+  const cio = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        const el = entry.target;
+        const target = parseInt(el.dataset.target,10);
+        let cur = 0; const step = Math.max(1, Math.floor(target/40));
+        const tick = ()=>{ cur += step; if(cur>=target){el.textContent=target;} else{el.textContent=cur; requestAnimationFrame(tick);} };
+        tick(); cio.unobserve(el);
+      }
+    });
+  },{threshold:.4});
+  counters.forEach(c=>cio.observe(c));
+</script>
+
+</body>
+</html>

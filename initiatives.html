@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Initiatives | Ashoka University Economics Society</title>
+<meta name="description" content="Conclave, the Economics Olympiad, our seminar series, and Econversations, the four ongoing initiatives run by the Ashoka University Economics Society.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,800;9..144,900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Bitter:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#E0102A; --red-soft:#FF4D5E; --blue:#0B1E4D; --blue-soft:#3B5BDB;
+    --white:#FFFFFF; --panel:#F7F4EE; --ink:#0A0A0A; --muted:#5B6472; --muted-light:#B9C2DA;
+    --display:'Fraunces', serif; --body:'Source Serif 4', serif; --accent:'Bitter', serif;
+    --ease: cubic-bezier(.16,.84,.24,1);
+    --r-lg: 40px; --r-md: 24px; --r-sm: 14px; --r-pill: 999px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%;}
+  body{background:var(--blue);color:#fff;font-family:var(--body);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  button{font-family:inherit;}
+  .wrap{max-width:1320px;margin:0 auto;padding:0 48px;}
+  @media(max-width:768px){.wrap{padding:0 24px;}}
+  ::selection{background:var(--red);color:#fff;}
+
+    .aura-wash{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;
+    background:
+      radial-gradient(ellipse 900px 500px at 88% 20%, rgba(224,16,42,.55) 0%, rgba(224,16,42,.22) 35%, transparent 65%),
+      radial-gradient(ellipse 900px 500px at 6% 80%, rgba(11,30,77,.55) 0%, rgba(11,30,77,.22) 35%, transparent 65%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 82%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 82%, transparent 100%);
+  }
+header.site-nav{position:sticky;top:0;z-index:100;background:rgba(11,30,77,.92);backdrop-filter:blur(14px);}
+  .nav-inner{max-width:1320px;margin:0 auto;padding:18px 48px;display:flex;align-items:center;justify-content:center;position:relative;}
+  .nav-pill{display:flex;align-items:center;gap:36px;background:var(--blue);border-radius:var(--r-pill);padding:10px 10px 10px 24px;box-shadow:0 8px 30px rgba(0,0,0,.25);}
+  .nav-brand{display:flex;align-items:center;gap:8px;font-family:var(--accent);font-weight:800;font-size:18px;letter-spacing:-.01em;color:#fff;}
+  .nav-brand .dot{width:9px;height:9px;border-radius:50%;background:var(--red);display:inline-block;}
+  nav.nav-links{display:flex;gap:28px;align-items:center;}
+  nav.nav-links > a{font-family:var(--accent);font-size:13px;font-weight:600;color:#fff;position:relative;padding:6px 0;transition:color .3s var(--ease);}
+  nav.nav-links > a:hover{color:var(--red);}
+  nav.nav-links > a.is-current{color:var(--red);}
+  .nav-item{position:relative;}
+  .nav-item > .nav-trigger{font-family:var(--accent);font-size:13px;font-weight:600;color:var(--red);background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:5px;padding:6px 0;}
+  .nav-caret{width:8px;height:8px;flex-shrink:0;transition:transform .3s var(--ease);}
+  .nav-item:hover .nav-caret, .nav-item.is-open .nav-caret{transform:rotate(180deg);}
+  .nav-dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%);padding-top:20px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .25s var(--ease), visibility .25s;}
+  .nav-dropdown-inner{min-width:200px;background:#16265c;border-radius:var(--r-md);box-shadow:0 20px 50px rgba(0,0,0,.35);padding:8px;transform:translateY(6px);transition:transform .25s var(--ease);}
+  .nav-item:hover .nav-dropdown, .nav-item.is-open .nav-dropdown{opacity:1;visibility:visible;pointer-events:auto;}
+  .nav-item:hover .nav-dropdown-inner, .nav-item.is-open .nav-dropdown-inner{transform:translateY(0);}
+  .nav-dropdown a{display:block;font-family:var(--accent);font-size:13px;font-weight:600;color:#fff;padding:12px 18px;border-radius:var(--r-sm);transition:background .2s var(--ease), color .2s var(--ease);}
+  .nav-dropdown a:hover{background:rgba(255,255,255,.12);color:var(--red-soft);}
+  .nav-cta{position:relative;overflow:hidden;font-family:var(--accent);font-size:13px;font-weight:700;color:#fff;background:var(--red);padding:12px 26px;border-radius:var(--r-pill);isolation:isolate;}
+  .nav-cta span{position:relative;z-index:1;}
+  .nav-cta::before{content:"";position:absolute;inset:0;background:var(--blue);transform:translateY(100%);transition:transform .35s var(--ease);z-index:0;}
+  .nav-cta:hover::before{transform:translateY(0);}
+  @media(max-width:1080px){nav.nav-links{display:none;}.nav-cta{padding:10px 18px;font-size:12px;white-space:nowrap;}.nav-pill{gap:14px;padding:8px 8px 8px 18px;}}
+
+  .nav-burger{display:none;background:none;border:none;cursor:pointer;padding:8px;flex-direction:column;justify-content:center;gap:5px;z-index:210;position:absolute;right:48px;}
+  @media(max-width:1080px){.nav-burger{display:flex;}}
+  @media(max-width:768px){.nav-burger{right:24px;}}
+  .nav-burger span{display:block;width:22px;height:2px;border-radius:2px;background:#fff;transition:transform .3s var(--ease), opacity .3s var(--ease);}
+  .nav-burger.is-active span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .nav-burger.is-active span:nth-child(2){opacity:0;}
+  .nav-burger.is-active span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  .mobile-menu{position:fixed;inset:0;z-index:200;background:var(--blue);transform:translateX(100%);transition:transform .45s var(--ease);overflow-y:auto;visibility:hidden;}
+  .mobile-menu.is-open{transform:translateX(0);visibility:visible;}
+  .mobile-menu-inner{padding:110px 32px 60px;max-width:520px;margin:0 auto;}
+  .mm-link{display:block;font-family:var(--accent);font-weight:700;font-size:24px;color:#fff;padding:18px 0;}
+  .mm-link.is-current{color:var(--red);}
+  .mm-group-trigger{display:flex;justify-content:space-between;align-items:center;width:100%;background:none;border:none;font-family:var(--accent);font-weight:700;font-size:24px;color:var(--red);padding:18px 0;cursor:pointer;}
+  .mm-caret{font-family:var(--accent);font-size:20px;color:var(--muted);transition:transform .3s var(--ease);}
+  .mm-group.is-open .mm-caret{transform:rotate(45deg);}
+  .mm-sub{max-height:0;overflow:hidden;transition:max-height .4s var(--ease);}
+  .mm-group.is-open .mm-sub{max-height:260px;}
+  .mm-sub a{display:block;font-family:var(--body);font-weight:500;font-size:16px;color:var(--muted-light);padding:12px 0 12px 4px;}
+  .mobile-menu-close{position:absolute;top:26px;right:28px;background:none;border:none;font-size:30px;color:#fff;cursor:pointer;line-height:1;}
+  .mm-cta{margin-top:28px;display:inline-block;}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease), transform .8s var(--ease);}
+  .reveal.is-visible{opacity:1;transform:translateY(0);}
+  .reveal-stagger > *{opacity:0;transform:translateY(20px);transition:opacity .6s var(--ease), transform .6s var(--ease);transition-delay:calc(var(--i,0) * 60ms);}
+  .reveal-stagger.is-visible > *{opacity:1;transform:translateY(0);}
+  @media(prefers-reduced-motion: reduce){.reveal,.reveal-stagger>*{opacity:1;transform:none;transition:none;}}
+
+  /* ---------- HERO ---------- */
+  .page-hero{position:relative;padding:150px 0 70px;overflow:hidden;}
+  .page-hero h1{position:relative;z-index:2;font-family:var(--display);font-weight:800;letter-spacing:-.02em;font-size:clamp(42px,6.4vw,84px);line-height:1;}
+  .page-hero p{position:relative;z-index:2;max-width:600px;margin-top:22px;font-family:var(--body);font-size:17px;line-height:1.7;color:var(--muted-light);}
+  .page-nav-links{position:relative;z-index:2;display:flex;gap:32px;margin-top:44px;flex-wrap:wrap;}
+  .page-nav-links a{font-family:var(--accent);font-weight:700;font-size:14px;color:var(--muted);background:rgba(11,30,77,.05);border-radius:var(--r-pill);padding:10px 20px;transition:all .3s var(--ease);}
+  .page-nav-links a:hover{color:#fff;background:var(--blue);}
+
+  .section{padding:110px 0;position:relative;}
+  .section-head{max-width:680px;margin-bottom:56px;}
+  .section-title{font-family:var(--display);font-weight:700;font-size:clamp(30px,3.8vw,48px);color:#fff;letter-spacing:-.02em;}
+  .section-desc{margin-top:16px;font-family:var(--body);font-size:16px;color:var(--muted-light);line-height:1.7;}
+
+  /* ---------- CONCLAVE: image + type composition ---------- */
+  .ed-block{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-bottom:80px;}
+  .ed-block:last-child{margin-bottom:0;}
+  .ed-block:nth-child(even){direction:rtl;}
+  .ed-block:nth-child(even) > *{direction:ltr;}
+  @media(max-width:900px){.ed-block{grid-template-columns:1fr;direction:ltr !important;}}
+  .ed-photos{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .ed-photos img{width:100%;height:280px;object-fit:cover;border-radius:var(--r-md);}
+  .ed-photos img:nth-child(1){margin-top:32px;}
+  .ed-date{font-family:var(--accent);font-weight:700;font-size:13px;color:var(--red);margin-bottom:14px;}
+  .ed-name{font-family:var(--display);font-weight:800;font-size:clamp(26px,2.6vw,36px);margin-bottom:16px;}
+  .ed-copy{font-family:var(--body);font-size:15px;color:var(--muted-light);line-height:1.75;margin-bottom:22px;}
+  .ed-stats{display:flex;gap:36px;}
+  .ed-stats b{display:block;font-family:var(--display);font-weight:800;font-size:24px;}
+  .ed-stats span{display:block;font-family:var(--accent);font-size:12px;color:var(--muted-light);margin-top:2px;}
+
+  /* ---------- COLOUR-BLOCKED LIST ---------- */
+  .item-list{display:flex;flex-direction:column;gap:12px;}
+  .item-row{border-radius:var(--r-md);overflow:hidden;transition:background .4s var(--ease);}
+  .item-row:nth-child(odd){background:var(--panel);}
+  .item-row:nth-child(even){background:var(--white);}
+  .item-row:hover{background:var(--blue);}
+  .item-row-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:26px 28px;}
+  .item-left{display:flex;align-items:baseline;gap:24px;flex-wrap:wrap;}
+  .item-year{font-family:var(--display);font-weight:800;font-size:20px;color:var(--red);transition:color .4s var(--ease);width:52px;}
+  .item-row:hover .item-year{color:#fff;}
+  .item-title{font-family:var(--display);font-weight:700;font-size:20px;color:var(--ink);transition:color .4s var(--ease);}
+  .item-row:hover .item-title{color:#fff;}
+  .item-sub{font-family:var(--body);font-size:14px;color:var(--muted);transition:color .4s var(--ease);max-width:480px;}
+  .item-row:hover .item-sub{color:rgba(255,255,255,.78);}
+  .item-cta{font-family:var(--accent);font-weight:700;font-size:12.5px;color:var(--ink);background:#fff;border-radius:var(--r-pill);padding:9px 18px;transition:all .3s var(--ease);white-space:nowrap;}
+  .item-row--next{background:var(--red) !important;}
+  .item-row--next .item-year, .item-row--next .item-title{color:#fff;}
+  .item-row--next .item-sub{color:rgba(255,255,255,.82);}
+
+  /* ---------- SEMINARS ---------- */
+  .sem-scroll{display:flex;gap:28px;overflow-x:auto;padding:8px 0 20px;}
+  .sem-scroll::-webkit-scrollbar{display:none;}
+  .sem-card{flex:0 0 220px;}
+  .sem-photo{aspect-ratio:4/5;background-size:cover;background-position:center top;background-color:rgba(11,30,77,.05);border-radius:var(--r-md);}
+  .sem-name{font-family:var(--display);font-weight:700;font-size:16px;margin-top:16px;}
+  .sem-role{font-family:var(--accent);font-size:12px;color:var(--red);font-weight:600;margin-top:4px;}
+  .sem-desc{font-family:var(--body);font-size:13px;color:var(--muted-light);margin-top:8px;line-height:1.55;}
+
+  .summit{margin-top:60px;background:var(--panel);color:var(--ink);padding:54px;border-radius:var(--r-lg);}
+  .summit-title{font-family:var(--display);font-weight:800;font-size:clamp(24px,2.6vw,32px);}
+
+  /* ---------- PODCAST ---------- */
+  .pod-intro{margin-bottom:50px;}
+  .pod-spotify-btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--accent);font-weight:700;font-size:13px;color:#fff;background:var(--ink);border-radius:var(--r-pill);padding:14px 26px;transition:background .3s var(--ease);}
+  .pod-spotify-btn:hover{background:var(--red);}
+  .pod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
+  @media(max-width:960px){.pod-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:640px){.pod-grid{grid-template-columns:1fr;}}
+  .pod-art{aspect-ratio:1/1;background-size:cover;background-position:center;background-color:var(--panel);position:relative;overflow:hidden;border-radius:var(--r-md);}
+  .pod-art img{width:100%;height:100%;object-fit:cover;}
+  .pod-ep-tag{position:absolute;top:12px;left:12px;z-index:1;font-family:var(--accent);font-size:11px;font-weight:700;color:#fff;background:rgba(11,30,77,.85);border-radius:var(--r-pill);padding:5px 12px;}
+  .pod-title{font-family:var(--display);font-weight:700;font-size:15px;line-height:1.35;margin-top:14px;}
+  .pod-meta{font-family:var(--accent);font-size:11.5px;color:var(--red);font-weight:600;margin-top:6px;}
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <div class="nav-pill">
+      <a href="index.html" class="nav-brand"><span class="dot"></span>AUES</a>
+      <nav class="nav-links">
+        <a href="team.html">Team</a>
+        <a href="blog.html">The Gazette</a>
+        <a href="auer.html">AUER</a>
+        <div class="nav-item">
+          <button class="nav-trigger" type="button" aria-expanded="false">Initiatives
+            <svg class="nav-caret" viewBox="0 0 8 8" fill="none"><path d="M1 2.5L4 5.5L7 2.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="nav-dropdown"><div class="nav-dropdown-inner">
+            <a href="initiatives.html#conclave">Conclave</a>
+            <a href="initiatives.html#olympiad">Olympiad</a>
+            <a href="initiatives.html#seminars">Seminars</a>
+            <a href="initiatives.html#podcast">Podcast</a>
+          </div></div>
+        </div>
+        <a href="events.html">Events</a>
+        <a href="opportunities.html">Opportunities</a>
+      </nav>
+      <a href="equilibrium.html" class="nav-cta"><span>Equilibrium 5.0</span></a>
+    </div>
+    <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="mobile-menu">
+  <button class="mobile-menu-close" aria-label="Close menu">&times;</button>
+  <div class="mobile-menu-inner">
+    <a class="mm-link" href="team.html">Team</a>
+    <a class="mm-link" href="blog.html">The Gazette</a>
+    <a class="mm-link" href="auer.html">AUER</a>
+    <div class="mm-group">
+      <button class="mm-group-trigger">Initiatives <span class="mm-caret">+</span></button>
+      <div class="mm-sub">
+        <a href="initiatives.html#conclave">Conclave</a>
+        <a href="initiatives.html#olympiad">Olympiad</a>
+        <a href="initiatives.html#seminars">Seminars</a>
+        <a href="initiatives.html#podcast">Podcast</a>
+      </div>
+    </div>
+    <a class="mm-link" href="events.html">Events</a>
+    <a class="mm-link" href="opportunities.html">Opportunities</a>
+    <a class="mm-cta nav-cta" href="equilibrium.html"><span>Equilibrium 5.0</span></a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="aura-wash"></div>
+  <div class="wrap">
+    <h1>Initiatives</h1>
+    <p>Four ongoing programmes that carry the society's work between festivals: a leadership network, a national olympiad, a running seminar series, and a podcast now in its fourth season.</p>
+    <div class="page-nav-links">
+      <a href="#conclave">Conclave</a>
+      <a href="#olympiad">Olympiad</a>
+      <a href="#seminars">Seminars</a>
+      <a href="#podcast">Podcast</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONCLAVE -->
+<section class="section" id="conclave">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2 class="section-title">Conclave</h2>
+      <p class="section-desc">An invite-only gathering for Presidents, Vice Presidents, Directors and Coordinators from economics, business, consulting and finance societies across Delhi NCR, run in collaboration with the Ashoka Business Club.</p>
+    </div>
+
+    <div class="ed-block reveal">
+      <div class="ed-photos">
+        <img src="conclave-24-1.jpg" alt="Conclave 2024">
+        <img src="conclave-24-2.jpg" alt="Conclave 2024">
+      </div>
+      <div>
+        <div class="ed-date">4th February 2024 &middot; Delhi NCR</div>
+        <div class="ed-name">Conclave '24</div>
+        <p class="ed-copy">The inaugural Leadership Conclave was jointly organised with the Ashoka Business Club as a precursor to Equilibrium 2.0. It gave leaders of clubs and societies across economics, business, entrepreneurship, consulting and finance a shared platform, drawing 65+ delegates from prominent colleges across Delhi NCR for a day of insightful dialogue and on-the-spot networking that sparked long-term connections and collaborations.</p>
+        <div class="ed-stats">
+          <div><b>65+</b><span>Delegates</span></div>
+          <div><b>1st</b><span>Edition</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ed-block reveal">
+      <div class="ed-photos">
+        <img src="conclave-25-1.jpg" alt="Conclave 2025">
+        <img src="conclave-25-2.jpg" alt="Conclave 2025">
+      </div>
+      <div>
+        <div class="ed-date">2nd February 2025 &middot; Delhi</div>
+        <div class="ed-name">Conclave '25</div>
+        <p class="ed-copy">The second edition, again jointly hosted with the Ashoka Business Club, grew the room to 80+ representatives from more than 30 colleges and societies across Delhi NCR and beyond. Delegates spoke on their own society's vision and past work, sparking fresh conversation around collaboration and knowledge-sharing between the leaders driving these communities forward.</p>
+        <div class="ed-stats">
+          <div><b>80+</b><span>Delegates</span></div>
+          <div><b>30+</b><span>Colleges &amp; societies</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OLYMPIAD -->
+<section class="section" id="olympiad">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2 class="section-title">Olympiad</h2>
+      <p class="section-desc">Open to grades 10 to 12 across India, run entirely online through Unstop: a 40-question application quiz, then group discussion rounds that narrow the field to a final podium. Winners take home a full ride to Ashoka's Young Scholar Programme or Ashoka Horizons.</p>
+    </div>
+
+    <div class="item-list reveal">
+      <div class="item-row">
+        <div class="item-row-inner">
+          <div class="item-left">
+            <div class="item-year">'23</div>
+            <div><div class="item-title">Olympiad '23</div><div class="item-sub">The first edition, the format every later one would build on.</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="item-row">
+        <div class="item-row-inner">
+          <div class="item-left">
+            <div class="item-year">'24</div>
+            <div><div class="item-title">Olympiad 2024</div><div class="item-sub">Round 1 (quiz) on 26th October, Round 2 (discussion) on 27th October.</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="item-row">
+        <div class="item-row-inner">
+          <div class="item-left">
+            <div class="item-year">'25</div>
+            <div><div class="item-title">Olympiad '25</div><div class="item-sub">Held online on 3&ndash;4 October 2025: a 40-question quiz then a live group discussion for finalists.</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="item-row item-row--next">
+        <div class="item-row-inner">
+          <div class="item-left">
+            <div class="item-year">'26</div>
+            <div><div class="item-title">Olympiad '26</div><div class="item-sub">Coming soon. The Unstop listing goes live closer to the date.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEMINARS -->
+<section class="section" id="seminars">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2 class="section-title">Seminars</h2>
+      <p class="section-desc">The Seminars team plans and runs talks, book launches and webinars at Ashoka. Some of the people who have joined us:</p>
+    </div>
+
+    <div class="sem-scroll reveal">
+      <div class="sem-card">
+        <div class="sem-photo" style="background-image:url('seminar-arvind-virmani.jpg')"></div>
+        <div class="sem-name">Dr. Arvind Virmani</div>
+        <div class="sem-role">Hon'ble Member, NITI Aayog</div>
+        <p class="sem-desc">Joined AUES for a seminar on India's development policy.</p>
+      </div>
+      <div class="sem-card">
+        <div class="sem-photo" style="background-image:url('seminar-monika-halan.jpg')"></div>
+        <div class="sem-name">Monika Halan</div>
+        <div class="sem-role">Author &amp; Speaker</div>
+        <p class="sem-desc">Spoke on building good money habits early in a career.</p>
+      </div>
+      <div class="sem-card">
+        <div class="sem-photo" style="background-image:url('seminar-mahendra-dev.jpg')"></div>
+        <div class="sem-name">Prof. S. Mahendra Dev</div>
+        <div class="sem-role">Chairman, EAC-PM</div>
+        <p class="sem-desc">On how research travels from the desk to policy.</p>
+      </div>
+      <div class="sem-card">
+        <div class="sem-photo" style="background-image:url('seminar-duvvuri-subbarao.jpg')"></div>
+        <div class="sem-name">Duvvuri Subbarao</div>
+        <div class="sem-role">Former Governor, RBI</div>
+        <p class="sem-desc">Spoke on the dilemmas of central banking.</p>
+      </div>
+      <div class="sem-card">
+        <div class="sem-photo" style="background-image:url('seminar-gurucharan-das.jpg')"></div>
+        <div class="sem-name">Gurucharan Das</div>
+        <div class="sem-role">Former Managing Director, P&amp;G Worldwide</div>
+        <p class="sem-desc">A session on economics, ideas, and public life.</p>
+      </div>
+      <div class="sem-card">
+        <div class="sem-photo" style="background-image:url('speaker-ludovit-odor.jpg')"></div>
+        <div class="sem-name">L'udovit Ódor</div>
+        <div class="sem-role">Former Prime Minister, Slovakia</div>
+        <p class="sem-desc">Joined AUES's speaker series.</p>
+      </div>
+      <div class="sem-card">
+        <div class="sem-photo" style="background-image:url('speaker-prachi-mishra.jpg')"></div>
+        <div class="sem-name">Prachi Mishra</div>
+        <div class="sem-role">Former Advisor, IMF &amp; Goldman Sachs India Chief Economist</div>
+        <p class="sem-desc">Joined AUES's speaker series.</p>
+      </div>
+      <div class="sem-card">
+        <div class="sem-photo" style="background-image:url('speaker-raghuram-rajan.jpg')"></div>
+        <div class="sem-name">Dr. Raghuram Rajan</div>
+        <div class="sem-role">Former Governor, RBI</div>
+        <p class="sem-desc">Joined AUES's speaker series.</p>
+      </div>
+      <div class="sem-card">
+        <div class="sem-photo" style="background-image:url('speaker-arvind-panagariya.jpg')"></div>
+        <div class="sem-name">Dr. Arvind Panagariya</div>
+        <div class="sem-role">Chairperson, Finance Commission of India</div>
+        <p class="sem-desc">Joined AUES's speaker series.</p>
+      </div>
+      <div class="sem-card">
+        <div class="sem-photo" style="background-image:url('speaker-robert-aumann.jpg')"></div>
+        <div class="sem-name">Robert Aumann</div>
+        <div class="sem-role">Nobel Laureate, Economic Sciences</div>
+        <p class="sem-desc">Joined AUES's speaker series.</p>
+      </div>
+      <div class="sem-card">
+        <div class="sem-photo" style="background-image:url('speaker-montek-ahluwalia.jpg')"></div>
+        <div class="sem-name">Montek Singh Ahluwalia</div>
+        <div class="sem-role">Former Deputy Chairman, Planning Commission of India</div>
+        <p class="sem-desc">Joined AUES's speaker series.</p>
+      </div>
+      <div class="sem-card">
+        <div class="sem-photo" style="background-image:url('speaker-v-anantha-nageswaran.jpg')"></div>
+        <div class="sem-name">Dr. V. Anantha Nageswaran</div>
+        <div class="sem-role">Chief Economic Advisor to the Govt. of India</div>
+        <p class="sem-desc">Joined AUES's speaker series.</p>
+      </div>
+    </div>
+
+    <div class="summit reveal">
+      <div class="summit-title">The Econ Summit, coming soon.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PODCAST -->
+<section class="section" id="podcast">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2 class="section-title">Podcast</h2>
+      <p class="section-desc">Econversations, AUES's podcast, now in its fourth season: conversations with alumni, academics and policymakers, from Nobel laureate Robert Aumann to product managers three years out of Ashoka.</p>
+    </div>
+
+    <div class="pod-intro reveal">
+      <a class="pod-spotify-btn" href="https://open.spotify.com/show/2SWuybORp27wg1h0ewj2PH" target="_blank" rel="noopener">Listen on Spotify</a>
+    </div>
+
+    <div class="pod-grid reveal-stagger">
+      <a class="pod-card" href="https://open.spotify.com/episode/2vMa3DL4gjNZtSnvEp8iYD" target="_blank" rel="noopener">
+        <div class="pod-art"><span class="pod-ep-tag">S4 &middot; EP5</span><img src="https://image-cdn-fa.spotifycdn.com/image/ab6772ab000015be422f02bfb0e20a6a96a88d14" alt=""></div>
+        <div class="pod-title">Letters to My College Self: Janhavee Hada, Ashoka Alumna</div>
+        <div class="pod-meta">Jun 2026 &middot; 50 min</div>
+      </a>
+      <a class="pod-card" href="https://open.spotify.com/episode/1mOIAMknoZlGV71HUEv81M" target="_blank" rel="noopener">
+        <div class="pod-art"><span class="pod-ep-tag">S4 &middot; EP4</span><img src="https://image-cdn-fa.spotifycdn.com/image/ab6772ab000015be4796e2555b2b1c674ea5c604" alt=""></div>
+        <div class="pod-title">From Classrooms to Coursera: Mani Bansal</div>
+        <div class="pod-meta">Dec 2025 &middot; 41 min</div>
+      </a>
+      <a class="pod-card" href="https://open.spotify.com/episode/5cSw6kOs8Uv3KS6uJsivvU" target="_blank" rel="noopener">
+        <div class="pod-art"><span class="pod-ep-tag">S4 &middot; EP3</span><img src="https://image-cdn-fa.spotifycdn.com/image/ab6772ab000015bee14d401b45f1527b507d1baf" alt=""></div>
+        <div class="pod-title">Leadership, Balance and Purpose: Rohit Kale</div>
+        <div class="pod-meta">Nov 2025 &middot; 39 min</div>
+      </a>
+      <a class="pod-card" href="https://open.spotify.com/episode/5PU8OfDNUXcPoFXgF5jFDo" target="_blank" rel="noopener">
+        <div class="pod-art"><span class="pod-ep-tag">S4 &middot; EP2</span><img src="https://i.scdn.co/image/ab6765630000f68d8f93826f679a12222d584416" alt=""></div>
+        <div class="pod-title">Breaking into Product: Aryan Kumar</div>
+        <div class="pod-meta">Nov 2025 &middot; 49 min</div>
+      </a>
+      <a class="pod-card" href="https://open.spotify.com/episode/6czk4EkcCbb18FlTvGhBKH" target="_blank" rel="noopener">
+        <div class="pod-art"><span class="pod-ep-tag">S4 &middot; EP1</span><img src="https://image-cdn-fa.spotifycdn.com/image/ab6772ab000015be2ab13caf933a4abed179697f" alt=""></div>
+        <div class="pod-title">How Economic Ideas Reach the PM's Office: Prof. S. Mahendra Dev</div>
+        <div class="pod-meta">Oct 2025 &middot; 26 min</div>
+      </a>
+      <a class="pod-card" href="https://open.spotify.com/show/2SWuybORp27wg1h0ewj2PH" target="_blank" rel="noopener">
+        <div class="pod-art" style="background:var(--blue);display:flex;align-items:center;justify-content:center;"><span style="color:#fff;font-family:var(--display);font-weight:700;">All episodes &#8594;</span></div>
+        <div class="pod-title">Four seasons, dozens of conversations</div>
+        <div class="pod-meta">Open on Spotify</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap footer-mega">AUES</div>
+  <div class="wrap footer-top">
+    <div><div style="font-family:var(--accent);font-size:22px;font-weight:800;margin-bottom:16px;display:flex;align-items:center;gap:8px;"><span style="width:7px;height:7px;border-radius:50%;background:var(--red);display:inline-block;"></span>AUES</div><p style="font-family:var(--body);font-size:13.5px;color:rgba(255,255,255,.5);line-height:1.7;max-width:280px;">The Ashoka University Economics Society. Economics, beyond the classroom.</p></div>
+    <div class="footer-col"><h4>Society</h4><a href="index.html#story">About Us</a><a href="team.html">Team</a><a href="index.html#alumni">Alumni</a><a href="index.html#contact">Contact</a></div>
+    <div class="footer-col"><h4>Initiatives</h4><a href="blog.html">The Gazette</a><a href="initiatives.html#podcast">Podcast</a><a href="auer.html">AUER</a></div>
+    <div class="footer-col"><h4>Events</h4><a href="equilibrium.html">Equilibrium</a><a href="initiatives.html#conclave">Leadership Conclave</a><a href="initiatives.html#olympiad">Economics Olympiad</a></div>
+    <div class="footer-col"><h4>Connect</h4><a href="https://www.instagram.com/econsoc.ashoka" target="_blank" rel="noopener">Instagram</a><a href="https://www.linkedin.com/company/ashokaeconsoc/home/" target="_blank" rel="noopener">LinkedIn</a><a href="mailto:econsoc@ashoka.edu.in">Email</a></div>
+  </div>
+  <div class="wrap footer-credit">Lead Developer: Shranya Gupta, Aneesh Dasgupta</div>
+  <div class="wrap footer-bottom"><span>&copy; 2026 Ashoka University Economics Society</span><span>Rajiv Gandhi Education City, Sonipat, Haryana 131029</span></div>
+</footer>
+<style>
+  .site-footer{background:#060B22;border-top:1px solid rgba(255,255,255,.08);color:#fff;padding-top:80px;margin-top:40px;position:relative;overflow:hidden;}
+  .footer-mega{font-family:var(--display);font-weight:800;font-size:clamp(70px,14vw,240px);letter-spacing:-.03em;line-height:.8;color:rgba(255,255,255,.05);white-space:nowrap;overflow:hidden;user-select:none;}
+  .footer-top{display:grid;grid-template-columns:1.4fr repeat(4,1fr);gap:40px;padding:60px 0 50px;position:relative;z-index:2;}
+  .footer-top > div{min-width:0;}
+  .footer-col h4{font-family:var(--accent);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:18px;}
+  .footer-col a{display:block;font-family:var(--body);font-weight:500;font-size:14px;color:rgba(255,255,255,.82);padding:6px 0;transition:color .3s var(--ease);word-break:break-word;}
+  .footer-col a:hover{color:var(--red-soft);}
+  .footer-credit{text-align:center;padding-top:20px;font-family:var(--body);font-size:12px;color:rgba(255,255,255,.35);position:relative;z-index:2;border-top:1px solid rgba(255,255,255,.08);}
+  .footer-bottom{display:flex;justify-content:space-between;padding:20px 0 30px;font-family:var(--body);font-size:12.5px;color:rgba(255,255,255,.3);flex-wrap:wrap;gap:10px;position:relative;z-index:2;}
+  @media(max-width:900px){ .footer-top{grid-template-columns:1fr 1fr;} }
+  @media(max-width:560px){ .footer-top{grid-template-columns:1fr;gap:32px;} .footer-bottom{flex-direction:column;text-align:center;gap:6px;} }
+</style>
+
+<script>
+  document.querySelectorAll('.nav-item').forEach(item => {
+    const trigger = item.querySelector('.nav-trigger');
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = item.classList.contains('is-open');
+      document.querySelectorAll('.nav-item.is-open').forEach(i => i.classList.remove('is-open'));
+      if(!isOpen) item.classList.add('is-open');
+    });
+  });
+  document.addEventListener('click', () => document.querySelectorAll('.nav-item.is-open').forEach(i => i.classList.remove('is-open')));
+
+  const navBurger = document.querySelector('.nav-burger');
+  const mobileMenu = document.querySelector('.mobile-menu');
+  const mmCloseBtn = document.querySelector('.mobile-menu-close');
+  if(navBurger && mobileMenu){
+    const openMM = ()=>{ mobileMenu.classList.add('is-open'); navBurger.classList.add('is-active'); document.body.style.overflow='hidden'; };
+    const closeMM = ()=>{ mobileMenu.classList.remove('is-open'); navBurger.classList.remove('is-active'); document.body.style.overflow=''; };
+    navBurger.addEventListener('click', ()=> mobileMenu.classList.contains('is-open') ? closeMM() : openMM());
+    if(mmCloseBtn) mmCloseBtn.addEventListener('click', closeMM);
+    mobileMenu.querySelectorAll('.mm-link, .mm-sub a, .mm-cta').forEach(a=> a.addEventListener('click', closeMM));
+    mobileMenu.querySelectorAll('.mm-group-trigger').forEach(btn=> btn.addEventListener('click', ()=> btn.closest('.mm-group').classList.toggle('is-open')));
+  }
+
+  document.querySelectorAll('.reveal-stagger').forEach(group=>{
+    Array.from(group.children).forEach((child,i)=> child.style.setProperty('--i', i));
+  });
+  const rio = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('is-visible'); rio.unobserve(entry.target); } });
+  },{threshold:.15, rootMargin:'0px 0px -60px 0px'});
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach(t=>rio.observe(t));
+
+  // Mailto links: copy the address to clipboard as a fallback in case
+  // the device has no default mail app configured
+  document.querySelectorAll('a[href^="mailto:"]').forEach(a => {
+    a.addEventListener('click', () => {
+      const email = a.getAttribute('href').replace('mailto:', '').split('?')[0];
+      if(navigator.clipboard){ navigator.clipboard.writeText(email).catch(()=>{}); }
+    });
+  });
+</script>
+
+</body>
+</html>
